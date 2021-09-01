@@ -1,1 +1,71 @@
-test
+User Name: admin
+Password: pa$$w0rd
+
+Search Head 1: 10.0.1.1
+Search Head 2: 10.0.1.2
+Search Head 3: 10.0.1.3
+
+Indexer 1: 10.0.2.1
+Indexer 2: 10.0.2.2
+Indexer 3: 10.0.2.3
+
+Universal Forwarder 1: 10.0.3.1
+Universal Forwarder 2: 10.0.3.2
+Universal Forwarder 3: 10.0.3.3
+
+Heavy Forwarder 1: 10.0.4.1
+Heavy Forwarder 2: 10.0.4.2
+
+Search Head Deployer: 10.5.0.1
+Cluster Master (Manager, Master Node): 10.5.0.2
+Monitoring Console: 10.5.0.3
+Deployment Server: 10.5.0.4
+License Master: 10.5.0.5
+
+* The OS is CentOS 7
+* Splunk version 8.2.2
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#run as root
+
+#Download Splunk 
+wget -O splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/splunk/releases/8.2.2/linux/splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
+
+################################################################### Installation ###################################################################
+
+yum localinstall splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
+
+#Enable to run Splunk at boot start:
+#Enable boot-start on machines that run systemd
+/opt/splunk/bin/splunk enable boot-start -user splunk -systemd-managed 1 --accept-license --answer-yes
+
+#If the machine doesn't run systemd
+/opt/splunk/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
+
+################################################################### Splunk removal ###################################################################
+################################################################### Uninstall with package management ###################################################################
+
+#Disable boot start (if needed)
+/opt/splunk/bin/splunk disable boot-start
+
+#Delete package
+rpm -e splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64
+
+################################################################### Uninstall Splunk Enterprise manually ###################################################################
+
+#Stop Splunk Enterprise
+/opt/splunk/bin/splunk stop
+
+#Find and kill any lingering processes that contain "splunk" in their name
+kill -9 `ps -ef | grep splunk | grep -v grep | awk '{print $2;}'`
+
+#remove Splunk directory
+rm -rf /opt/splunk
+
+#Remove any Splunk Enterprise datastore or indexes outside the top-level directory, if they exist
+rm -rf /opt/splunkdata
+
+#Delete the Splunk user and group, if they exist
+userdel splunk
+groupdel splunk
