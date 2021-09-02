@@ -80,3 +80,14 @@ rm -rf /opt/splunkdata
 userdel splunk
 groupdel splunk
 
+Set server and host name
+____________________________________________________________________________________________________________________________________________________
+
+#In order to see names of the server/host instead of IP address
+#run on each instance
+
+#The name used to identify this Splunk instance for features such as distributed search
+/opt/splunk/bin/splunk set servername sh1
+
+#Primarily used to control the host field, which will be used for events coming in via this input stanza.
+/opt/splunk/bin/splunk set default-hostname sh1
