@@ -32,9 +32,16 @@ License Master: 10.5.0.5
 #Download Splunk 
 wget -O splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/splunk/releases/8.2.2/linux/splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
 
-################################################################### Installation ###################################################################
+Installation
+____________________________________________________________________________________________________________________________________________________
 
+#Install
 yum localinstall splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
+# or rpm -i splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
+
+#Change user:group ownership to splunk user and group
+#if you have other user:group change below
+chown -R splunk:splunk /opt/splunk/
 
 #Enable to run Splunk at boot start:
 #Enable boot-start on machines that run systemd
@@ -43,8 +50,10 @@ yum localinstall splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
 #If the machine doesn't run systemd
 /opt/splunk/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
 
-################################################################### Splunk removal ###################################################################
-################################################################### Uninstall with package management ###################################################################
+Splunk removal 
+____________________________________________________________________________________________________________________________________________________
+
+Uninstall with package management 
 
 #Disable boot start (if needed)
 /opt/splunk/bin/splunk disable boot-start
@@ -52,7 +61,8 @@ yum localinstall splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
 #Delete package
 rpm -e splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64
 
-################################################################### Uninstall Splunk Enterprise manually ###################################################################
+Uninstall Splunk Enterprise manually 
+____________________________________________________________________________________________________________________________________________________
 
 #Stop Splunk Enterprise
 /opt/splunk/bin/splunk stop
@@ -69,3 +79,4 @@ rm -rf /opt/splunkdata
 #Delete the Splunk user and group, if they exist
 userdel splunk
 groupdel splunk
+
