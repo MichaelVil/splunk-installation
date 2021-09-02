@@ -1,6 +1,5 @@
-#Forward manager node data to the indexer layer
+#Forward internal data (_internal, _audit and etc) to the indexer layer
 
-# Turn off indexing on the manager node
 [indexAndForward]
 index = false
  
@@ -10,4 +9,4 @@ forwardedindex.filter.disable = true
 indexAndForward = false 
  
 [tcpout:my_peers_nodes]
-server=10.10.10.1:9997,10.10.10.2:9997,10.10.10.3:9997
+server=<peer1>:9997,<peer2>:9997,<peer3>:9997
