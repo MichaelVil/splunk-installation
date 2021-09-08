@@ -47,11 +47,7 @@ yum localinstall splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
 #if you have other user:group change below
 chown -R splunk:splunk /opt/splunk/
 
-#Enable to run Splunk at boot start:
-#Enable boot-start on machines that run systemd
-/opt/splunk/bin/splunk enable boot-start -user splunk -systemd-managed 1 --accept-license --answer-yes
-
-#If the machine doesn't run systemd
+#Enable to run Splunk at boot start and accept license
 /opt/splunk/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
 
 #Start Splunk
