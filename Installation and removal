@@ -54,6 +54,9 @@ chown -R splunk:splunk /opt/splunk/
 #If the machine doesn't run systemd
 /opt/splunk/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
 
+#Start Splunk
+/opt/splunk/bin/splunk start
+
 Splunk removal 
 ____________________________________________________________________________________________________________________________________________________
 
