@@ -69,4 +69,21 @@ TIME_PREFIX = {\"time\":\"
 MAX_TIMESTAMP_LOOKAHEAD = 25
 TIME_FORMAT = %Y-%m-%dT%H:%M:%S.%6N%:z
 TRUNCATE = 999999 
+TRANSFORMS = null_queue
+
+#data transformation with transforms.conf
+#transforms.conf example
+#Remove events that have the following event codes: 4634|4688|4648|4907
+
+[null_queue]
+REGEX=EventCode=(4634|4688|4648|4907)
+DEST_KEY=queue
+FORMAT=nullQueue
+
+
+
+
+
+
+
 
