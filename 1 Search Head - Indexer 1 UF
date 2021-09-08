@@ -1,0 +1,72 @@
+#Splunk Enterprise
+
+wget -O splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/splunk/releases/8.2.2/linux/splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
+yum localinstall splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
+chown -R splunk:splunk /opt/splunk/
+/opt/splunk/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
+/opt/splunk/bin/splunk start
+
+#Change to Splunk user
+su - splunk
+
+#Enable listening port (usualy 9997)
+/opt/splunk/bin/splunk enable listen 9997 -auth admin:pa$$w0rd
+
+Universal Forwarder Installation
+____________________________________________________________________________________________________________________________________________________
+
+wget -O splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/universalforwarder/releases/8.2.2/linux/splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
+yum localinstall splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
+chown -R splunk:splunk /opt/splunkforwarder/
+/opt/splunkforwarder/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
+/opt/splunkforwarder/bin/splunk start
+
+#Change to Splunk user
+su - splunk
+
+#Configure the universal forwarder to send data to the Splunk Enterprise indexer
+#The configuration of the outputs.conf located at: /opt/splunkforwarder/etc/system/local/outputs.conf
+/opt/splunkforwarder/bin/splunk add forward-server 192.168.56.50:9997 -auth admin:pa$$w0rd
+
+Forward data to Splunk Enterprise using configuration files (outputs.conf)
+#Can be done in 2 way: CLI or configuration file inputs.conf
+#Best practice (for me) is to use directories in the $SPLUNK_HOME/etc/apps since it's easier to manage, since all the changes that are done via CLI are written to $SPLUNK_HOME/etc/system
+____________________________________________________________________________________________________________________________________________________
+
+#Create directory in the $SPLUNK_HOME/etc/apps
+mkdir -p /opt/splunkforwarder/etc/apps/uf_inputs/local
+
+#Create inputs.conf file
+opt/splunkforwarder/etc/apps/uf_inputs/local/inputs.conf
+
+#inputs.conf example
+
+[monitor:///var/log/*.log]
+disabled = false
+sourcetype = linux_logs
+index = linux_logs
+
+#For greater efficiency and performance when getting data into Splunk, use props.conf settings (The "Magic" 8)
+#https://www.aplura.com/assets/pdf/onboarding_cheatsheet.pdf
+#https://www.somerfordassociates.com/splunk-overall-best-practice-data-onboarding-process/
+#The last 2 are for improving distribution of data in load balancing
+
+SHOULD_LINEMERGE = false (always false)
+LINE_BREAKER = regular expression for event breaks
+TIME_PREFIX = regex of the text that leads up to the timestamp
+MAX_TIMESTAMP_LOOKAHEAD = how many characters for the timestamp
+TIME_FORMAT = strptime format of the timestamp
+TRUNCATE = 999999 (always a high number)
+EVENT_BREAKER_ENABLE = true*
+EVENT_BREAKER = regular expression for event breaks*
+
+#props.conf example
+
+[linux_logs]
+SHOULD_LINEMERGE = false
+LINE_BREAKER = ([\r\n]+)
+TIME_PREFIX = {\"time\":\"
+MAX_TIMESTAMP_LOOKAHEAD = 25
+TIME_FORMAT = %Y-%m-%dT%H:%M:%S.%6N%:z
+TRUNCATE = 999999 
+
