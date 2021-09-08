@@ -43,8 +43,14 @@ nano opt/splunkforwarder/etc/apps/uf_inputs/local/inputs.conf
 
 [monitor:///var/log/*.log]
 disabled = false
-sourcetype = linux_logs
+sourcetype = linux_messages_syslog
 index = linux_logs
+
+#reatart Splunk
+systemctl restart Splunkd
+/opt/splunkforwarder/bin/splunk restart
+/opt/splunkforwarder/bin/splunk _internal call /services/data/inputs/monitor/_reload -auth
+
 
 #For greater efficiency and performance when getting data into Splunk, use props.conf settings (The "Magic" 8)
 #https://www.aplura.com/assets/pdf/onboarding_cheatsheet.pdf
