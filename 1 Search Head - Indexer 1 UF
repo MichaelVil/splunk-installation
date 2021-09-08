@@ -37,7 +37,7 @@ ________________________________________________________________________________
 mkdir -p /opt/splunkforwarder/etc/apps/uf_inputs/local
 
 #Create inputs.conf file
-opt/splunkforwarder/etc/apps/uf_inputs/local/inputs.conf
+nano opt/splunkforwarder/etc/apps/uf_inputs/local/inputs.conf
 
 #inputs.conf example
 
