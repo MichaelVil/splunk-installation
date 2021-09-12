@@ -18,13 +18,10 @@ Heavy Forwarder 2: 10.0.4.2
 
 Search Head Deployer: 10.5.0.1
 Cluster Master (Manager, Master Node): 10.5.0.2
-Monitoring Console: 10.5.0.3
-Deployment Server: 10.5.0.4
-License Master: 10.5.0.5
+Monitoring Console + Deployment Server + License Master: 10.5.0.3
 
 * Some of the instances can work together, for example:
-One instance of Splunk can include MC, LM and DS
-In that case just use the same ip/host in cli.
+One instance of Splunk can include MC, LM and DS. In that case just use the same ip/host
 
 * The OS is CentOS 7
 * Splunk version 8.2.2
