@@ -12,14 +12,6 @@ Indexer 2: 10.0.2.2
 Indexer 3: 10.0.2.3
 Index Cluster Label: idx_label
 
-Universal Forwarder 1: 10.0.3.1
-Universal Forwarder 2: 10.0.3.2
-Universal Forwarder 3: 10.0.3.3
-
-Heavy Forwarder 1: 10.0.4.1
-Heavy Forwarder 2: 10.0.4.2
-
-Search Head Deployer: 10.5.0.1
 Cluster Master (Manager, Master Node): 10.5.0.2
 Monitoring Console + Deployment Server + License Master: 10.5.0.3
 
