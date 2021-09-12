@@ -32,3 +32,5 @@ su - splunk
 #https://docs.splunk.com/Documentation/Splunk/8.2.2/Data/MonitorfilesanddirectoriesusingtheCLI
 /opt/splunkforwarder/bin/splunk add monitor /var/log/messages -sourcetype <sourcetype name> -index <destination index> -host <host name for events>
 
+#Restart Splunk
+/opt/splunkforwarder/bin/splunk restart or systemctl restart Splunkd
