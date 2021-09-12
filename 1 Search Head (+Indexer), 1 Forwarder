@@ -28,6 +28,7 @@ su - splunk
 #The configuration of the outputs.conf located at: /opt/splunkforwarder/etc/system/local/outputs.conf
 /opt/splunkforwarder/bin/splunk add forward-server 192.168.56.50:9997 -auth admin:pa$$w0rd
 
-#Forward data to Splunk Enterprise using
-/opt/splunkforwarder/bin/splunk add monitor /var/log/messages
+#Forward data to Splunk Enterprise
+#https://docs.splunk.com/Documentation/Splunk/8.2.2/Data/MonitorfilesanddirectoriesusingtheCLI
+/opt/splunkforwarder/bin/splunk add monitor /var/log/messages -sourcetype <sourcetype name> -index <destination index> -host <host name for events>
 
