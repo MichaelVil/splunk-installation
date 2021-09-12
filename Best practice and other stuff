@@ -1,4 +1,4 @@
-#Forward internal data (_internal, _audit and etc) to the indexer layer
+################################## Forward internal data (_internal, _audit and etc) to the indexer layer ##################################
 
 [indexAndForward]
 index = false
@@ -10,3 +10,40 @@ indexAndForward = false
  
 [tcpout:my_peers_nodes]
 server=<peer1>:9997,<peer2>:9997,<peer3>:9997
+
+
+################################## inputs, props and transforms examples ##################################
+
+#props.conf example
+
+#For greater efficiency and performance when getting data into Splunk, use props.conf settings (The "Magic" 8)
+#https://www.aplura.com/assets/pdf/onboarding_cheatsheet.pdf
+#https://www.somerfordassociates.com/splunk-overall-best-practice-data-onboarding-process/
+#The last 2 are for improving distribution of data in load balancing
+
+SHOULD_LINEMERGE = false (always false)
+LINE_BREAKER = regular expression for event breaks
+TIME_PREFIX = regex of the text that leads up to the timestamp
+MAX_TIMESTAMP_LOOKAHEAD = how many characters for the timestamp
+TIME_FORMAT = strptime format of the timestamp
+TRUNCATE = 999999 (always a high number)
+EVENT_BREAKER_ENABLE = true*
+EVENT_BREAKER = regular expression for event breaks*
+
+[linux_messages_syslog]
+SHOULD_LINEMERGE = false
+LINE_BREAKER = ([\r\n]+)
+TIME_PREFIX = {\"time\":\"
+MAX_TIMESTAMP_LOOKAHEAD = 25
+TIME_FORMAT = %Y-%m-%dT%H:%M:%S.%6N%:z
+TRUNCATE = 999999 
+TRANSFORMS = null_queue
+
+#transforms.conf example
+
+#Remove events that have the following event codes: 4634|4688|4648|4907
+
+[null_queue]
+REGEX=EventCode=(4634|4688|4648|4907)
+DEST_KEY=queue
+FORMAT=nullQueue
