@@ -28,67 +28,6 @@ su - splunk
 #The configuration of the outputs.conf located at: /opt/splunkforwarder/etc/system/local/outputs.conf
 /opt/splunkforwarder/bin/splunk add forward-server 192.168.56.50:9997 -auth admin:pa$$w0rd
 
-Forward data to Splunk Enterprise using configuration files (outputs.conf)
-#Can be done in 2 way: CLI or configuration file inputs.conf
-#Best practice (for me) is to use directories in the $SPLUNK_HOME/etc/apps since it's easier to manage, since all the changes that are done via CLI are written to $SPLUNK_HOME/etc/system
-____________________________________________________________________________________________________________________________________________________
-
-#Create directory in the $SPLUNK_HOME/etc/apps
-mkdir -p /opt/splunkforwarder/etc/apps/uf_inputs/local
-
-#Create inputs.conf file
-nano opt/splunkforwarder/etc/apps/uf_inputs/local/inputs.conf
-
-#inputs.conf example
-
-[monitor:///var/log/*.log]
-disabled = false
-sourcetype = linux_messages_syslog
-index = linux_logs
-
-#reatart Splunk
-systemctl restart Splunkd
-#or
-/opt/splunkforwarder/bin/splunk restart
-
-#For greater efficiency and performance when getting data into Splunk, use props.conf settings (The "Magic" 8)
-#https://www.aplura.com/assets/pdf/onboarding_cheatsheet.pdf
-#https://www.somerfordassociates.com/splunk-overall-best-practice-data-onboarding-process/
-#The last 2 are for improving distribution of data in load balancing
-
-SHOULD_LINEMERGE = false (always false)
-LINE_BREAKER = regular expression for event breaks
-TIME_PREFIX = regex of the text that leads up to the timestamp
-MAX_TIMESTAMP_LOOKAHEAD = how many characters for the timestamp
-TIME_FORMAT = strptime format of the timestamp
-TRUNCATE = 999999 (always a high number)
-EVENT_BREAKER_ENABLE = true*
-EVENT_BREAKER = regular expression for event breaks*
-
-#props.conf example
-
-[linux_messages_syslog]
-SHOULD_LINEMERGE = false
-LINE_BREAKER = ([\r\n]+)
-TIME_PREFIX = {\"time\":\"
-MAX_TIMESTAMP_LOOKAHEAD = 25
-TIME_FORMAT = %Y-%m-%dT%H:%M:%S.%6N%:z
-TRUNCATE = 999999 
-TRANSFORMS = null_queue
-
-#data transformation with transforms.conf
-#transforms.conf example
-#Remove events that have the following event codes: 4634|4688|4648|4907
-
-[null_queue]
-REGEX=EventCode=(4634|4688|4648|4907)
-DEST_KEY=queue
-FORMAT=nullQueue
-
-
-
-
-
-
-
+#Forward data to Splunk Enterprise using
+/opt/splunkforwarder/bin/splunk add monitor /var/log/messages
 
