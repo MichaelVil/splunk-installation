@@ -1,3 +1,6 @@
+Search Head + Indexer: 192.168.56.50
+Universal Forwarder: 192.168.56.60
+
 #Splunk Enterprise
 
 wget -O splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/splunk/releases/8.2.2/linux/splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
