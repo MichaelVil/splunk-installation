@@ -67,15 +67,12 @@ su - splunk
 #On Captain (10.0.1.1)
 /opt/splunk/bin/splunk add shcluster-member -new_member_uri https://<SH URL>:8089
 
+
+
+
+
 #Push a bundle (on the Deployer 10.5.0.4)
 /opt/splunk/bin/splunk apply shcluster-bundle --answer-yes -target https://10.0.1.1:8089 -auth admin:pa$$w0rd
-
-
-
-
-
-
-
 
 #Check SH Cluster status (from any SH member)
 /opt/splunk/bin/splunk show shcluster-status -auth admin:pa$$w0rd
