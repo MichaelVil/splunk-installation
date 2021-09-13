@@ -12,8 +12,10 @@ Indexer 2: 10.0.2.2
 Indexer 3: 10.0.2.3
 Index Cluster Label: idx_label
 
-Cluster Master (Manager, Master Node): 10.5.0.2
+Search Head Deployer: 10.5.0.1
+Cluster Master (Indexer) (Manager, Master Node): 10.5.0.2
 Monitoring Console + Deployment Server + License Master: 10.5.0.3
+Deployer (SH): 10.5.0.4
 
 #Splunk Enterprise Installation
 #run as root
@@ -38,3 +40,32 @@ su - splunk
 /opt/splunk/bin/splunk edit licenser-localslave -master_uri https://10.5.0.3:8089 -auth admin:pa$$w0rd
 /opt/splunk/bin/splunk edit cluster-config -mode peer -master_uri https://10.5.0.2:8089 -secret secret -replication_port 9100
 /opt/splunk/bin/splunk restart OR systemctl restart Splunkd
+
+#SH Cluster Configuration
+
+#SH1 (10.0.1.1)
+/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://10.0.1.1:8089 -conf_deploy_fetch_url https://10.5.0.4:8089 -replication_port 9200 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://10.5.0.2:8089 -secret secret -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk restart OR systemctl restart Splunkd
+
+#SH2 (10.0.1.2)
+/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://10.0.1.2:8089 -conf_deploy_fetch_url https://10.5.0.4:8089 -replication_port 9200 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://10.5.0.2:8089 -secret secret -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk restart OR systemctl restart Splunkd
+
+#SH3 (10.0.1.3)
+/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://10.0.1.3:8089 -conf_deploy_fetch_url https://10.5.0.4:8089 -replication_port 9200 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://10.5.0.2:8089 -secret secret -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk restart OR systemctl restart Splunkd
+
+
+
+
+
+
+
+
+
+
+
+
