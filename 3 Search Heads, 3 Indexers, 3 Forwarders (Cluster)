@@ -58,9 +58,17 @@ su - splunk
 /opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://10.5.0.2:8089 -secret secret -auth admin:pa$$w0rd
 /opt/splunk/bin/splunk restart OR systemctl restart Splunkd
 
-#Configure Captain (on SH1)
+#Configure Captain (10.0.1.1)
 /opt/splunk/bin/splunk bootstrap shcluster-captain -servers_list "https://10.0.1.1:8089, https://10.0.1.2:8089, https://10.0.1.2:8089" -auth admin:pa$$w0rd
 
+#Add new member to SH Cluster
+/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://<SH URL>:8089 -conf_deploy_fetch_url https://10.5.0.4:8089 -replication_port 9200 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
+#Conigure new SH for the captain
+#On Captain (10.0.1.1)
+/opt/splunk/bin/splunk add shcluster-member -new_member_uri https://<SH URL>:8089
+
+#Push a bundle (on the Deployer 10.5.0.4)
+/opt/splunk/bin/splunk apply shcluster-bundle --answer-yes -target https://10.0.1.1:8089 -auth admin:pa$$w0rd
 
 
 
@@ -69,5 +77,7 @@ su - splunk
 
 
 
+#Check SH Cluster status (from any SH member)
+/opt/splunk/bin/splunk show shcluster-status -auth admin:pa$$w0rd
 
-
+https://docs.splunk.com/Documentation/Splunk/8.2.2/DistSearch/ViewSHCstatus
