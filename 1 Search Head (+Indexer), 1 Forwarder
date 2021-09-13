@@ -16,7 +16,7 @@ su - splunk
 /opt/splunk/bin/splunk start
 
 #Enable listening port (usualy 9997)
-/opt/splunk/bin/splunk enable listen 9997 -auth admin:pa$$w0rd
+  /opt/splunk/bin/splunk enable listen 9997 -auth admin:pa$$w0rd
 
 Universal Forwarder Installation
 ____________________________________________________________________________________________________________________________________________________
