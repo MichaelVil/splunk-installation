@@ -28,66 +28,54 @@ One instance of Splunk can include MC, LM and DS. In that case just use the same
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Installation 
+____________________________________________________________________________________________________________________________________________________
+
 #run as root
 
-#Download Splunk 
-wget -O splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/splunk/releases/8.2.2/linux/splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
+#Add user and group
+  adduser splunk
+  passwd splunk
 
-Installation
+#Download Splunk
+  wget -O splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/splunk/releases/8.2.2/linux/splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
+
+#Installation
+  yum localinstall splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm (OR rpm -i splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm)
+  
+#Change file owner and group  
+  chown -R splunk:splunk /opt/splunk/
+  
+#Enable boot-start, license and etc.  
+  /opt/splunk/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
+
+#Run as Splunk user
+  su - splunk
+  
+#Start Splunk  
+  /opt/splunk/bin/splunk start
+
+Removal 
 ____________________________________________________________________________________________________________________________________________________
 
-#Install
-yum localinstall splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
-# or rpm -i splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
+#run as root
 
-#Change user:group ownership to splunk user and group
-#if you have other user:group change below
-chown -R splunk:splunk /opt/splunk/
+#Stop service and disable boot-start
+  /opt/splunk/bin/splunk stop
+  /opt/splunk/bin/splunk disable boot-start
 
-#Enable to run Splunk at boot start and accept license
-/opt/splunk/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
-
-#Start Splunk
-/opt/splunk/bin/splunk start
-
-Splunk removal 
-____________________________________________________________________________________________________________________________________________________
-
-Uninstall with package management 
-
-#Disable boot start (if needed)
-/opt/splunk/bin/splunk disable boot-start
-
-#Delete package
-rpm -e splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64
-
-Uninstall Splunk Enterprise manually 
-____________________________________________________________________________________________________________________________________________________
-
-#Stop Splunk Enterprise
-/opt/splunk/bin/splunk stop
+#Remove package  
+  rpm -e splunk-8.2.2-87344edfcdb4.x86_64
 
 #Find and kill any lingering processes that contain "splunk" in their name
-kill -9 `ps -ef | grep splunk | grep -v grep | awk '{print $2;}'`
+  kill -9 `ps -ef | grep splunk | grep -v grep | awk '{print $2;}'`
 
 #remove Splunk directory
-rm -rf /opt/splunk
+  rm -rf /opt/splunk
 
 #Remove any Splunk Enterprise datastore or indexes outside the top-level directory, if they exist
-rm -rf /opt/splunkdata
+  rm -rf /opt/splunkdata
 
 #Delete the Splunk user and group, if they exist
-userdel splunk
-groupdel splunk
-
-Set server and host name
-____________________________________________________________________________________________________________________________________________________
-
-#In order to see names of the server/host instead of IP address
-#run on each instance
-
-#The name used to identify this Splunk instance for features such as distributed search
-/opt/splunk/bin/splunk set servername sh1
-
-#Primarily used to control the host field, which will be used for events coming in via this input stanza.
-/opt/splunk/bin/splunk set default-hostname sh1
+  userdel splunk
+  groupdel splunk
