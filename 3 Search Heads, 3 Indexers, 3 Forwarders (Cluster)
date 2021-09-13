@@ -16,13 +16,15 @@ Cluster Master (Manager, Master Node): 10.5.0.2
 Monitoring Console + Deployment Server + License Master: 10.5.0.3
 
 #Splunk Enterprise Installation
+#run as root
+adduser splunk
+passwd splunk
 wget -O splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/splunk/releases/8.2.2/linux/splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
-yum localinstall splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
+rpm -i splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm  
 chown -R splunk:splunk /opt/splunk/
 /opt/splunk/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
-/opt/splunk/bin/splunk start
-
 su - splunk
+/opt/splunk/bin/splunk start
 
 #Cluster Master Configuration (10.5.0.2)
 #Replication Factor 2, Search Factor 2
