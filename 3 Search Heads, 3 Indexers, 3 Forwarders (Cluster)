@@ -58,6 +58,8 @@ su - splunk
 /opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://10.5.0.2:8089 -secret secret -auth admin:pa$$w0rd
 /opt/splunk/bin/splunk restart OR systemctl restart Splunkd
 
+#Configure Captain (on SH1)
+/opt/splunk/bin/splunk bootstrap shcluster-captain -servers_list "https://10.0.1.1:8089, https://10.0.1.2:8089, https://10.0.1.2:8089" -auth admin:pa$$w0rd
 
 
 
