@@ -42,7 +42,7 @@ passwd splunk
 wget -O splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/splunk/releases/8.2.2/linux/splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
 
 #Installation
-yum localinstall splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm (OR rpm -i splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm)
+rpm -i splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
   
 #Change file owner and group  
 chown -R splunk:splunk /opt/splunk/
