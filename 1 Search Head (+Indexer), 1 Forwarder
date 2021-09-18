@@ -28,10 +28,12 @@ su - splunk
 
 #Configure the UF to send data to the Splunk Enterprise
 #The configuration of the outputs.conf located at: /opt/splunkforwarder/etc/system/local/outputs.conf
+
 /opt/splunkforwarder/bin/splunk add forward-server 192.168.56.50:9997 -auth admin:pa$$w0rd
 
 #Forward data to Splunk Enterprise using CLI, for example (/var/log/messages)
 #https://docs.splunk.com/Documentation/Splunk/8.2.2/Data/MonitorfilesanddirectoriesusingtheCLI
+#The configuration of the inputs.conf located at: /opt/splunkforwarder/etc/apps/search/local/inputs.conf 
 
 /opt/splunkforwarder/bin/splunk add monitor /var/log/messages -sourcetype <sourcetype name> -index <destination index> -host <host name for events>
 /opt/splunkforwarder/bin/splunk add monitor /var/log/messages -sourcetype access_combined -index main -host uf1
