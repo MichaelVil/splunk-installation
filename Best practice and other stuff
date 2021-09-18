@@ -59,3 +59,20 @@ FORMAT=nullQueue
 
 #Primarily used to control the host field, which will be used for events coming in via this input stanza.
 /opt/splunk/bin/splunk set default-hostname sh1
+
+################################## re-index input files on UF/HF ##################################
+
+#UF/HF
+/opt/splunkforwarder/bin/splunk stop
+/opt/splunkforwarder/bin/splunk cmd btprobe -d $SPLUNK_HOME/var/lib/splunk/fishbucket/splunk_private_db --file <file location> --reset
+/opt/splunkforwarder/bin/splunk start
+
+#Delete Indexed data
+#Indexer(s)
+/opt/splunk/bin/splunk stop
+/opt/splunk/bin/splunk clean eventdata -index <index_name>
+/opt/splunk/bin/splunk start
+
+#Or delete data with SH (add can_delete option to user)
+index=my_index sourcetype=my_sourcetype 
+| delete
