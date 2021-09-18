@@ -4,40 +4,25 @@ License Server: 192.168.56.17
 
 User Name: admin
 Password: pa$$w0rd
+_____________________________________________________________________________________________________________________________________________________________________
 
-#Splunk Enterprise
+Search Head (192.168.56.10)
 
-#run as root
-groupadd splunk 
-useradd -d /opt/splunk -m -g splunk splunk
-wget -O splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/splunk/releases/8.2.2/linux/splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
-rpm -i splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm  
-chown -R splunk:splunk /opt/splunk/
-/opt/splunk/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
-su - splunk
-/opt/splunk/bin/splunk start
+#Install Splunk Enterprise
 
 #Add license
 /opt/splunk/bin/splunk edit licenser-localslave -master_uri https://192.168.56.17:8089 -auth admin:pa$$w0rd
 
-#Enable listening port (usualy 9997)
+#Configure listening port (usualy 9997)
 /opt/splunk/bin/splunk enable listen 9997 -auth admin:pa$$w0rd
 
 /opt/splunkforwarder/bin/splunk restart (OR systemctl restart Splunkd)
 
-#Splunk UF
+#Universal Forwarder (192.168.56.60)
 
-#run as root
-groupadd splunk 
-useradd -d /opt/splunkforwarder -m -g splunk splunk
-wget -O splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/universalforwarder/releases/8.2.2/linux/splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
-rpm -i splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm  
-chown -R splunk:splunk /opt/splunkforwarder/
-/opt/splunkforwarder/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
-su - splunk
-/opt/splunkforwarder/bin/splunk start
+#Install UF
 
-#Configure the UF to send data to the Splunk Enterprise
+#Configure the UF to send data to the Splunk Enterprise (192.168.56.50)
 #The configuration of the outputs.conf located at: /opt/splunkforwarder/etc/system/local/outputs.conf
 
 /opt/splunkforwarder/bin/splunk add forward-server 192.168.56.50:9997 -auth admin:pa$$w0rd
