@@ -27,14 +27,12 @@ One instance of Splunk can include MC, LM and DS. In that case just use the same
 * The OS is CentOS 7
 * Splunk version 8.2.2
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+_____________________________________________________________________________________________________________________________________________________________________
 
 
-Splunk Installation 
-____________________________________________________________________________________________________________________________________________________
+#Splunk Installation 
 
 #run as root
-
 #Add user and group
 groupadd splunk useradd -d /opt/splunk -m -g splunk splunk
 
@@ -58,9 +56,9 @@ su - splunk
 
 
 Splunk UF Installation 
-____________________________________________________________________________________________________________________________________________________
 
-groupadd splunk useradd -d /opt/splunk -m -g splunk splunk
+#run as root
+groupadd splunk useradd -d /opt/splunkforwarder -m -g splunk splunk
 wget -O splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/universalforwarder/releases/8.2.2/linux/splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
 rpm -i splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm  
 chown -R splunk:splunk /opt/splunkforwarder/
@@ -69,11 +67,9 @@ su - splunk
 /opt/splunkforwarder/bin/splunk start
 
 
-Splunk Removal
-____________________________________________________________________________________________________________________________________________________
+#Splunk Removal
 
 #run as root
-
 #Stop service and disable boot-start
 /opt/splunk/bin/splunk stop
 /opt/splunk/bin/splunk disable boot-start
@@ -95,11 +91,9 @@ userdel splunk
 groupdel splunk
 
 
-Splunk UF Removal
-____________________________________________________________________________________________________________________________________________________
+#Splunk UF Removal
 
 #run as root
-
 /opt/splunkforwarder/bin/splunk stop
 /opt/splunkforwarder/bin/splunk disable boot-start
 rpm -e splunkforwarder-8.2.2-87344edfcdb4.x86_64
