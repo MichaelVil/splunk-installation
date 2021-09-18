@@ -29,14 +29,14 @@ One instance of Splunk can include MC, LM and DS. In that case just use the same
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Installation 
+
+Splunk Installation 
 ____________________________________________________________________________________________________________________________________________________
 
 #run as root
 
 #Add user and group
-adduser splunk
-passwd splunk
+groupadd splunk useradd -d /opt/splunk -m -g splunk splunk
 
 #Download Splunk
 wget -O splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/splunk/releases/8.2.2/linux/splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
@@ -56,7 +56,20 @@ su - splunk
 #Start Splunk  
 /opt/splunk/bin/splunk start
 
-Removal - Splunk
+
+Splunk UF Installation 
+____________________________________________________________________________________________________________________________________________________
+
+groupadd splunk useradd -d /opt/splunk -m -g splunk splunk
+wget -O splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/universalforwarder/releases/8.2.2/linux/splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
+rpm -i splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm  
+chown -R splunk:splunk /opt/splunkforwarder/
+/opt/splunkforwarder/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
+su - splunk
+/opt/splunkforwarder/bin/splunk start
+
+
+Splunk Removal
 ____________________________________________________________________________________________________________________________________________________
 
 #run as root
@@ -81,25 +94,16 @@ rm -rf /opt/splunkdata
 userdel splunk
 groupdel splunk
 
-Removal - Splunk Forwarder
+
+Splunk UF Removal
 ____________________________________________________________________________________________________________________________________________________
 
 #run as root
 
-#Stop service and disable boot-start
 /opt/splunkforwarder/bin/splunk stop
 /opt/splunkforwarder/bin/splunk disable boot-start
-
-#Remove package  
 rpm -e splunkforwarder-8.2.2-87344edfcdb4.x86_64
-
-#Find and kill any lingering processes that contain "splunk" in their name
 kill -9 `ps -ef | grep splunk | grep -v grep | awk '{print $2;}'`
-
-#remove Splunk directory
 rm -rf /opt/splunkforwarder
-
-#Delete the Splunk user and group, if they exist
 userdel splunk
 groupdel splunk
-
