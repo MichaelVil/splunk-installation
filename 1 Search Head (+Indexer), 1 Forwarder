@@ -1,5 +1,9 @@
 Search Head + Indexer: 192.168.56.50
 Universal Forwarder: 192.168.56.60
+License Server: 192.168.56.17
+
+User Name: admin
+Password: pa$$w0rd
 
 #Splunk Enterprise
 
@@ -13,8 +17,13 @@ chown -R splunk:splunk /opt/splunk/
 su - splunk
 /opt/splunk/bin/splunk start
 
+#Add license
+/opt/splunk/bin/splunk edit licenser-localslave -master_uri https://192.168.56.17:8089 -auth admin:pa$$w0rd
+
 #Enable listening port (usualy 9997)
 /opt/splunk/bin/splunk enable listen 9997 -auth admin:pa$$w0rd
+
+/opt/splunkforwarder/bin/splunk restart (OR systemctl restart Splunkd)
 
 #Splunk UF
 
@@ -37,7 +46,6 @@ su - splunk
 #https://docs.splunk.com/Documentation/Splunk/8.2.2/Data/MonitorfilesanddirectoriesusingtheCLI
 #The configuration of the inputs.conf located at: /opt/splunkforwarder/etc/apps/search/local/inputs.conf 
 
-/opt/splunkforwarder/bin/splunk add monitor /var/log/messages -sourcetype <sourcetype name> -index <destination index> -host <host name for events>
 /opt/splunkforwarder/bin/splunk add monitor /var/log/messages -sourcetype access_combined -index main -host uf1
 
 #Forward data to Splunk Enterprise using inputs.conf
@@ -51,5 +59,4 @@ sourcetype = access_combined
 index = main
 host = uf1
 
-#Restart Splunk
 /opt/splunkforwarder/bin/splunk restart (OR systemctl restart Splunkd)
