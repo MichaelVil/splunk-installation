@@ -4,7 +4,8 @@ Universal Forwarder: 192.168.56.60
 #Splunk Enterprise
 
 #run as root
-groupadd splunk useradd -d /opt/splunk -m -g splunk splunk
+groupadd splunk 
+useradd -d /opt/splunk -m -g splunk splunk
 wget -O splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/splunk/releases/8.2.2/linux/splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
 rpm -i splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm  
 chown -R splunk:splunk /opt/splunk/
@@ -18,7 +19,8 @@ su - splunk
 #Splunk UF
 
 #run as root
-groupadd splunk useradd -d /opt/splunkforwarder -m -g splunk splunk
+groupadd splunk 
+useradd -d /opt/splunkforwarder -m -g splunk splunk
 wget -O splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/universalforwarder/releases/8.2.2/linux/splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
 rpm -i splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm  
 chown -R splunk:splunk /opt/splunkforwarder/
