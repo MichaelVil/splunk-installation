@@ -56,7 +56,7 @@ su - splunk
 #Start Splunk  
 /opt/splunk/bin/splunk start
 
-Removal 
+Removal - Splunk
 ____________________________________________________________________________________________________________________________________________________
 
 #run as root
@@ -80,3 +80,26 @@ rm -rf /opt/splunkdata
 #Delete the Splunk user and group, if they exist
 userdel splunk
 groupdel splunk
+
+Removal - Splunk Forwarder
+____________________________________________________________________________________________________________________________________________________
+
+#run as root
+
+#Stop service and disable boot-start
+/opt/splunkforwarder/bin/splunk stop
+/opt/splunkforwarder/bin/splunk disable boot-start
+
+#Remove package  
+rpm -e splunkforwarder-8.2.2-87344edfcdb4.x86_64
+
+#Find and kill any lingering processes that contain "splunk" in their name
+kill -9 `ps -ef | grep splunk | grep -v grep | awk '{print $2;}'`
+
+#remove Splunk directory
+rm -rf /opt/splunkforwarder
+
+#Delete the Splunk user and group, if they exist
+userdel splunk
+groupdel splunk
+
