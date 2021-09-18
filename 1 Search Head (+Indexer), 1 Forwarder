@@ -1,12 +1,10 @@
 Search Head + Indexer: 192.168.56.50
 Universal Forwarder: 192.168.56.60
 
-Splunk Installation
-____________________________________________________________________________________________________________________________________________________
+#Splunk Enterprise
 
 #run as root
-adduser splunk
-passwd splunk
+groupadd splunk useradd -d /opt/splunk -m -g splunk splunk
 wget -O splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/splunk/releases/8.2.2/linux/splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
 rpm -i splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm  
 chown -R splunk:splunk /opt/splunk/
@@ -17,12 +15,10 @@ su - splunk
 #Enable listening port (usualy 9997)
 /opt/splunk/bin/splunk enable listen 9997 -auth admin:pa$$w0rd
 
-Universal Forwarder Installation
-____________________________________________________________________________________________________________________________________________________
+#Splunk UF
 
 #run as root
-adduser splunk
-passwd splunk
+groupadd splunk useradd -d /opt/splunkforwarder -m -g splunk splunk
 wget -O splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/universalforwarder/releases/8.2.2/linux/splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
 rpm -i splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm  
 chown -R splunk:splunk /opt/splunkforwarder/
@@ -30,13 +26,13 @@ chown -R splunk:splunk /opt/splunkforwarder/
 su - splunk
 /opt/splunkforwarder/bin/splunk start
 
-#Configure the universal forwarder to send data to the Splunk Enterprise indexer
+#Configure the UF to send data to the Splunk Enterprise
 #The configuration of the outputs.conf located at: /opt/splunkforwarder/etc/system/local/outputs.conf
 /opt/splunkforwarder/bin/splunk add forward-server 192.168.56.50:9997 -auth admin:pa$$w0rd
 
-#Forward data to Splunk Enterprise (/var/log/messages)
+#Forward data to Splunk Enterprise (/var/log/messages) example
 #https://docs.splunk.com/Documentation/Splunk/8.2.2/Data/MonitorfilesanddirectoriesusingtheCLI
 /opt/splunkforwarder/bin/splunk add monitor /var/log/messages -sourcetype <sourcetype name> -index <destination index> -host <host name for events>
 
 #Restart Splunk
-/opt/splunkforwarder/bin/splunk restart or systemctl restart Splunkd
+/opt/splunkforwarder/bin/splunk restart (OR systemctl restart Splunkd)
