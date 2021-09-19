@@ -35,7 +35,7 @@ Search Head (192.168.56.10)
 
 #Forward data to Splunk Enterprise using inputs.conf
 
-mkdir -p  /opt/splunkforwarder/etc/apps/uf-inputs/local
+mkdir -p /opt/splunkforwarder/etc/apps/uf-inputs/local
 nano /opt/splunkforwarder/etc/apps/uf-inputs/local/inputs.conf
 
 [monitor:///var/log/messages]
