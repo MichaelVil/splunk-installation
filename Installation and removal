@@ -29,6 +29,24 @@ One instance of Splunk can include MC, LM and DS. In that case just use the same
 
 _____________________________________________________________________________________________________________________________________________________________________
 
+#Time Zone configuration. Set the correct TZ:
+timedatectl set-timezone Asia/Jerusalem
+
+#Firewall Configuration. Ppen the  ports required for Splunk:
+firewall-cmd --permanent --add-port=8000/tcp --add-port=8089/tcp --add-port=9997/tcp
+firewall-cmd --reload (OR systemctl restart firewalld)
+
+default ports:
+
+9997 for forwarders to the Splunk indexer
+8000 for clients to the Splunk Search page
+8089 for splunkd (also used by deployment server).
+
+#disable firewall:
+
+systemctl stop firewalld
+systemctl disable firewalld
+
 
 #Splunk Installation 
 
@@ -41,19 +59,21 @@ useradd -d /opt/splunk -m -g splunk splunk
 wget -O splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/splunk/releases/8.2.2/linux/splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
 
 #Installation
-rpm -i splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
+rpm -ivh splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
   
 #Change file owner and group  
 chown -R splunk:splunk /opt/splunk/
 
 #Enable boot-start, license and etc.  
-/opt/splunk/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
+/opt/splunk/bin/splunk enable boot-start -user splunk --accept-license --answer-yes 
 
 #Run as Splunk user
 su - splunk
 
 #Start Splunk  
-/opt/splunk/bin/splunk start
+/opt/splunk/bin/splunk start (OR systemctl start splunk)
+
+#Install Splunk License through WebUI (OR su - splunk -c 'splunk add licenses /path/to/Splunk/License')
 
 
 Splunk UF Installation 
@@ -62,11 +82,11 @@ Splunk UF Installation
 groupadd splunk 
 useradd -d /opt/splunkforwarder -m -g splunk splunk
 wget -O splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/universalforwarder/releases/8.2.2/linux/splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
-rpm -i splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm  
+rpm -ivh splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm  
 chown -R splunk:splunk /opt/splunkforwarder/
 /opt/splunkforwarder/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
 su - splunk
-/opt/splunkforwarder/bin/splunk start
+/opt/splunkforwarder/bin/splunk start (OR systemctl start splunk)
 
 
 #Splunk Removal
