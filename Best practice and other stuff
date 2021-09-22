@@ -54,11 +54,15 @@ FORMAT=nullQueue
 #In order to see names of the server/host instead of IP address
 #run on each instance
 
-#The name used to identify this Splunk instance for features such as distributed search
-/opt/splunk/bin/splunk set servername sh1 -auth admin:pa$$w0rd
+#servername is used to identify the Splunk instance for features such as distributed search and defaults to <hostname>-<user running splunk>. You set this in server.conf.
+#default-hostname is used as default "host" field on all events coming from that Splunk instance. You set this in inputs.conf.
 
-#Primarily used to control the host field, which will be used for events coming in via this input stanza.
-/opt/splunk/bin/splunk set default-hostname sh1
+/opt/splunk/bin/splunk set servername <server_name> -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk set default-hostname <host_name>
+/opt/splunk/bin/splunk restart
+
+# /opt/splunk/bin/splunk show default-hostname -auth admin:pa$$w0rd
+# /opt/splunk/bin/splunk show servername
 
 ################################## re-index input files on UF/HF ##################################
 
