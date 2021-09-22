@@ -29,9 +29,9 @@ Monitoring Console + Deployment Server + License Master: 192.168.56.17
 /opt/splunk/bin/splunk restart (OR systemctl restart Splunkd)
 
 #Enable SH (192.168.56.10)
-/opt/splunk/bin/splunk add search-server https://192.168.56.11:8089 -auth admin:pop54321 -remoteUsername admin -remotePassword pop54321
-/opt/splunk/bin/splunk add search-server https://192.168.56.12:8089 -auth admin:pop54321 -remoteUsername admin -remotePassword pop54321
-/opt/splunk/bin/splunk add search-server https://192.168.56.13:8089 -auth admin:pop54321 -remoteUsername admin -remotePassword pop54321
+/opt/splunk/bin/splunk add search-server https://192.168.56.11:8089 -remoteUsername admin -remotePassword pop54321 -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk add search-server https://192.168.56.12:8089 -remoteUsername admin -remotePassword pop54321 -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk add search-server https://192.168.56.13:8089 -remoteUsername admin -remotePassword pop54321 -auth admin:pa$$w0rd
 
 #Distribute the configuration bundle (192.168.56.14)
 #https://docs.splunk.com/Documentation/Splunk/8.2.2/Indexer/Updatepeerconfigurations
@@ -50,7 +50,7 @@ maxHotBuckets = 10
 repFactor=auto
 
 #Validate the bundle and check whether a restart is necessary
-/opt/splunk/bin/splunk validate cluster-bundle --check-restart
+```/opt/splunk/bin/splunk validate cluster-bundle --check-restart```
 
 #View the status of bundle validation
 /opt/splunk/bin/splunk show cluster-bundle-status
@@ -58,6 +58,16 @@ repFactor=auto
 #If no errors are reported, deploy the bundle to the peer nodes
 /opt/splunk/bin/splunk apply cluster-bundle --answer-yes
 
+_________________________________________________________________ Config Monitoring Console (192.168.56.17) _________________________________________________________________
+
+#Add SH and Cluster Master
+/opt/splunk/bin/splunk add search-server https://192.168.56.10:8089 -remoteUsername admin -remotePassword pa$$w0rd -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk add search-server https://192.168.56.14:8089 -remoteUsername admin -remotePassword pa$$w0rd -auth admin:pa$$w0rd
+
+#Add Indexers
+/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://192.168.56.14:8089 -secret secret -auth admin:pa$$w0rd
+
+/opt/splunk/bin/splunk restart (OR systemctl restart Splunkd)
 
 
 
