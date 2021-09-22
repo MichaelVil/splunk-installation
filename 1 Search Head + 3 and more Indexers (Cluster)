@@ -58,6 +58,11 @@ repFactor=auto
 #If no errors are reported, deploy the bundle to the peer nodes
 /opt/splunk/bin/splunk apply cluster-bundle --answer-yes
 
+_________________________________________________________________ Config Deployment Server (192.168.56.17) _________________________________________________________________
+
+
+
+
 _________________________________________________________________ Config Monitoring Console (192.168.56.17) _________________________________________________________________
 
 #Add SH and Cluster Master
