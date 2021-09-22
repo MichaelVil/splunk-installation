@@ -74,7 +74,9 @@ _________________________________________________________________ Config Monitor
 
 /opt/splunk/bin/splunk restart (OR systemctl restart Splunkd)
 
-
+#The MC can be disabled on all other instances except the dedicated one
+/opt/splunk/bin/splunk disable app splunk_monitoring_console -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk restart (OR systemctl restart Splunkd)
 
 
 
