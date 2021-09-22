@@ -55,7 +55,7 @@ FORMAT=nullQueue
 #run on each instance
 
 #The name used to identify this Splunk instance for features such as distributed search
-/opt/splunk/bin/splunk set servername sh1
+/opt/splunk/bin/splunk set servername sh1 -auth admin:pa$$w0rd
 
 #Primarily used to control the host field, which will be used for events coming in via this input stanza.
 /opt/splunk/bin/splunk set default-hostname sh1
