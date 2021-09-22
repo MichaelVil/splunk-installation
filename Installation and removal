@@ -61,11 +61,11 @@ wget -O splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cl
 #Installation
 rpm -ivh splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
   
-#Change file owner and group  
-chown -R splunk:splunk /opt/splunk/
-
 #Enable boot-start, license and etc.  
 /opt/splunk/bin/splunk enable boot-start -user splunk --accept-license --answer-yes 
+
+#Change file owner and group  
+chown -R splunk:splunk /opt/splunk/
 
 #Run as Splunk user
 su - splunk
@@ -83,8 +83,8 @@ groupadd splunk
 useradd -d /opt/splunkforwarder -m -g splunk splunk
 wget -O splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/universalforwarder/releases/8.2.2/linux/splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
 rpm -ivh splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm  
-chown -R splunk:splunk /opt/splunkforwarder/
 /opt/splunkforwarder/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
+chown -R splunk:splunk /opt/splunkforwarder/
 su - splunk
 /opt/splunkforwarder/bin/splunk start (OR systemctl start splunk)
 
