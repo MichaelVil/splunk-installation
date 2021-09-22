@@ -1,0 +1,51 @@
+User Name: admin
+Password: pa$$w0rd
+Secret: secret
+
+Search Head 1: 192.168.56.10
+
+Indexer 1: 192.168.56.11
+Indexer 2: 192.168.56.12
+Indexer 3: 192.168.56.13
+Index Cluster Label: idx_label
+
+Cluster Master (Indexer) (Manager, Master Node): 192.168.56.14
+Monitoring Console + Deployment Server + License Master: 192.168.56.17
+
+#Install Splunk Enterprise
+
+#Cluster Master Configuration (192.168.56.14)
+#Replication Factor 2, Search Factor 2
+
+/opt/splunk/bin/splunk edit licenser-localslave -master_uri https://192.168.56.17:8089 -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk edit cluster-config -mode manager -replication_factor 2 -search_factor 2 -secret secret -cluster_label idx_label -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk restart (OR systemctl restart Splunkd)
+
+#Indexer Cluster Configuration (run on each of the Indexers: 192.168.56.11, 192.168.56.12, 192.168.56.13)
+/opt/splunk/bin/splunk enable listen 9997
+/opt/splunk/bin/splunk disable webserver
+/opt/splunk/bin/splunk edit licenser-localslave -master_uri https://192.168.56.17:8089 -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk edit cluster-config -mode peer -master_uri https://192.168.56.14:8089 -secret secret -replication_port 9100
+/opt/splunk/bin/splunk restart (OR systemctl restart Splunkd)
+
+#Enable SH (192.168.56.10)
+/opt/splunk/bin/splunk add search-server https://192.168.56.11:8089 -auth admin:pop54321 -remoteUsername admin -remotePassword pop54321
+/opt/splunk/bin/splunk add search-server https://192.168.56.12:8089 -auth admin:pop54321 -remoteUsername admin -remotePassword pop54321
+/opt/splunk/bin/splunk add search-server https://192.168.56.13:8089 -auth admin:pop54321 -remoteUsername admin -remotePassword pop54321
+
+#Forward search head data to the indexer layer (192.168.56.10, 192.168.56.14, 192.168.56.17)
+#https://docs.splunk.com/Documentation/Splunk/8.2.2/DistSearch/Forwardsearchheaddata
+
+/nano /opt/splunk/etc/system/local/outputs.conf
+
+# Turn off indexing on the search head
+[indexAndForward]
+index = false
+ 
+[tcpout]
+defaultGroup = my_search_peers 
+forwardedindex.filter.disable = true  
+indexAndForward = false 
+ 
+[tcpout:my_search_peers]
+server=192.168.56.11:9997,192.168.56.12:9997,192.168.56.13:9997
