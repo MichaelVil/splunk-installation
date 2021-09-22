@@ -73,7 +73,8 @@ su - splunk
 #Start Splunk  
 /opt/splunk/bin/splunk start (OR systemctl start splunk)
 
-#Install Splunk License through WebUI (OR su - splunk -c 'splunk add licenses /path/to/Splunk/License')
+#Install Splunk License (Web GUI or)
+/opt/splunk/bin/splunk add licenses <path to license> -auth admin:pa$$w0rd
 
 
 Splunk UF Installation 
