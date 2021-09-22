@@ -52,7 +52,7 @@ systemctl disable firewalld
 
 #run as root
 #Add user and group
-groupadd splunk 
+groupadd splunk
 useradd -d /opt/splunk -m -g splunk splunk
 
 #Download Splunk
@@ -62,7 +62,7 @@ wget -O splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cl
 rpm -ivh splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
   
 #Enable boot-start, license and etc.  
-/opt/splunk/bin/splunk enable boot-start -user splunk --accept-license --answer-yes 
+/opt/splunk/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
 
 #Change file owner and group  
 chown -R splunk:splunk /opt/splunk/
