@@ -33,7 +33,7 @@ Monitoring Console + Deployment Server + License Master: 192.168.56.17
 /opt/splunk/bin/splunk add search-server https://192.168.56.12:8089 -remoteUsername admin -remotePassword pop54321 -auth admin:pa$$w0rd
 /opt/splunk/bin/splunk add search-server https://192.168.56.13:8089 -remoteUsername admin -remotePassword pop54321 -auth admin:pa$$w0rd
 
-#Distribute the configuration bundle (192.168.56.14)
+__________________________________________________________ Distribute the configuration bundle (192.168.56.14) __________________________________________________________
 #https://docs.splunk.com/Documentation/Splunk/8.2.2/Indexer/Updatepeerconfigurations
 
 #Create Indexers (example) 
@@ -59,13 +59,22 @@ repFactor=auto
 /opt/splunk/bin/splunk apply cluster-bundle --answer-yes
 
 _________________________________________________________________ Config Deployment Server (192.168.56.17) _________________________________________________________________
+#https://docs.splunk.com/Documentation/Splunk/8.2.1/Indexer/indexerdiscovery
+
+#Configure the manager node to enable indexer discovery
+nano /opt/splunk/etc/system/local/server.conf
+
+[indexer_discovery]
+pass4SymmKey = secret
+
+
 
 
 
 
 _________________________________________________________________ Config Monitoring Console (192.168.56.17) _________________________________________________________________
 
-#Add SH and Cluster Master
+#Add SH and Cluster Master (Repeat this process for all instances that are required to be added)
 /opt/splunk/bin/splunk add search-server https://192.168.56.10:8089 -remoteUsername admin -remotePassword pa$$w0rd -auth admin:pa$$w0rd
 /opt/splunk/bin/splunk add search-server https://192.168.56.14:8089 -remoteUsername admin -remotePassword pa$$w0rd -auth admin:pa$$w0rd
 
@@ -77,6 +86,8 @@ _________________________________________________________________ Config Monitor
 #The MC can be disabled on all other instances except the dedicated one
 /opt/splunk/bin/splunk disable app splunk_monitoring_console -auth admin:pa$$w0rd
 /opt/splunk/bin/splunk restart (OR systemctl restart Splunkd)
+
+
 
 
 
