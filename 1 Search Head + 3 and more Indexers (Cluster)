@@ -50,7 +50,7 @@ maxHotBuckets = 10
 repFactor=auto
 
 #Validate the bundle and check whether a restart is necessary
-```/opt/splunk/bin/splunk validate cluster-bundle --check-restart```
+/opt/splunk/bin/splunk validate cluster-bundle --check-restart
 
 #View the status of bundle validation
 /opt/splunk/bin/splunk show cluster-bundle-status
