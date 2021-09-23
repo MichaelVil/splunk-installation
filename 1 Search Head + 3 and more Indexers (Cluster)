@@ -36,6 +36,12 @@ https://docs.splunk.com/Documentation/Splunk/8.2.2/DistSearch/Configuredistribut
 /opt/splunk/bin/splunk add search-server https://192.168.56.12:8089 -remoteUsername admin -remotePassword pop54321 -auth admin:pa$$w0rd
 /opt/splunk/bin/splunk add search-server https://192.168.56.13:8089 -remoteUsername admin -remotePassword pop54321 -auth admin:pa$$w0rd
 
+#Configure the search head as a cluster search head
+/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://192.168.56.14:8089 -secret secret -auth admin:pa$$w0rd
+
+
+
+
 __________________________________________________________ Distribute the configuration bundle (192.168.56.14) __________________________________________________________
 #https://docs.splunk.com/Documentation/Splunk/8.2.2/Indexer/Updatepeerconfigurations
 
