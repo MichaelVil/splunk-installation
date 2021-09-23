@@ -80,10 +80,10 @@ su - splunk
 Splunk UF Installation 
 
 #run as root
-groupadd splunk 
+groupadd splunk
 useradd -d /opt/splunkforwarder -m -g splunk splunk
 wget -O splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/universalforwarder/releases/8.2.2/linux/splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
-rpm -ivh splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm  
+rpm -ivh splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
 /opt/splunkforwarder/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
 chown -R splunk:splunk /opt/splunkforwarder/
 su - splunk
