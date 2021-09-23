@@ -111,9 +111,6 @@ _________________________________________________________________ Config Monitor
 /opt/splunk/bin/splunk add search-server https://192.168.56.10:8089 -remoteUsername admin -remotePassword pa$$w0rd -auth admin:pa$$w0rd
 /opt/splunk/bin/splunk add search-server https://192.168.56.14:8089 -remoteUsername admin -remotePassword pa$$w0rd -auth admin:pa$$w0rd
 
-#Add Indexers
-/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://192.168.56.14:8089 -secret secret -auth admin:pa$$w0rd
-
 /opt/splunk/bin/splunk restart (OR systemctl restart Splunkd)
 
 #The MC can be disabled on all other instances except the dedicated one
