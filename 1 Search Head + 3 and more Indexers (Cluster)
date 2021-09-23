@@ -127,7 +127,7 @@ _________________________________________________________________ Config Monitor
 #Forward search head data to the indexer layer (192.168.56.10, 192.168.56.14, 192.168.56.17)
 #https://docs.splunk.com/Documentation/Splunk/8.2.2/DistSearch/Forwardsearchheaddata
 
-/nano /opt/splunk/etc/system/local/outputs.conf
+nano /opt/splunk/etc/system/local/outputs.conf
 
 # Turn off indexing on the search head
 [indexAndForward]
