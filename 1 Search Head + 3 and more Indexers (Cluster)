@@ -64,12 +64,36 @@ repFactor=auto
 _________________________________________________________________ Config Deployment Server (192.168.56.17) _________________________________________________________________
 #https://docs.splunk.com/Documentation/Splunk/8.2.1/Indexer/indexerdiscovery
 
-#Configure the manager node to enable indexer discovery
+#Configure the manager node to enable indexer discovery. Simplifies the set-up and maintenance of an indexer cluster.
+
+#192.168.56.14
 nano /opt/splunk/etc/system/local/server.conf
 
 [indexer_discovery]
 pass4SymmKey = secret
 
+#192.168.56.17
+
+mkdir -p /opt/splunk/etc/deployment-apps/uf_outputs/local
+nano /opt/splunk/etc/deployment-apps/uf_outputs/local/outputs.conf
+
+
+[tcpout]
+defaultGroup = default-autolb-group
+
+[tcpout:default-autolb-group]
+indexerDiscovery = idx
+useACK = true
+autoLBVolume = 262144
+
+[indexer_discovery:idx]
+master_uri = https://192.168.56.14:8089
+pass4SymmKey = secret
+
+nano /opt/splunk/etc/deployment-apps/uf_outputs/local/props.conf
+
+[default]
+EVENT_BREAKER_ENABLE = true
 
 
 
