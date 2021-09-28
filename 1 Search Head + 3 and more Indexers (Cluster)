@@ -90,7 +90,6 @@ defaultGroup = default-autolb-group
 [tcpout:default-autolb-group]
 indexerDiscovery = idx
 useACK = true
-autoLBVolume = 262144
 
 [indexer_discovery:idx]
 master_uri = https://192.168.56.14:8089
