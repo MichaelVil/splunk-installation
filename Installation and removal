@@ -43,10 +43,11 @@ default ports:
 8089 for splunkd (also used by deployment server).
 
 #disable firewall:
-
 systemctl stop firewalld
 systemctl disable firewalld
 
+#change hostname 
+hostnamectl set-hostname <your-new-hostname>
 
 #Splunk Installation 
 
