@@ -51,31 +51,17 @@ systemctl disable firewalld
 #Splunk Installation 
 
 #run as root
-#Add user and group
 groupadd splunk
 useradd -d /opt/splunk -m -g splunk splunk
-
-#Download Splunk
 wget -O splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/splunk/releases/8.2.2/linux/splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
-
-#Installation
 rpm -ivh splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
-  
-#Enable boot-start, license and etc.  
 /opt/splunk/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
-
-#Change file owner and group  
 chown -R splunk:splunk /opt/splunk/
-
-#Run as Splunk user
 su - splunk
-
-#Start Splunk  
 /opt/splunk/bin/splunk start (OR systemctl start splunk)
 
 #Install Splunk License (Web GUI or)
 /opt/splunk/bin/splunk add licenses <path to license> -auth admin:pa$$w0rd
-
 
 Splunk UF Installation 
 
@@ -93,23 +79,12 @@ su - splunk
 #Splunk Removal
 
 #run as root
-#Stop service and disable boot-start
 /opt/splunk/bin/splunk stop
 /opt/splunk/bin/splunk disable boot-start
-
-#Remove package  
 rpm -e splunk-8.2.2-87344edfcdb4.x86_64
-
-#Find and kill any lingering processes that contain "splunk" in their name
 kill -9 `ps -ef | grep splunk | grep -v grep | awk '{print $2;}'`
-
-#remove Splunk directory
 rm -rf /opt/splunk
-
-#Remove any Splunk Enterprise datastore or indexes outside the top-level directory, if they exist
 rm -rf /opt/splunkdata
-
-#Delete the Splunk user and group, if they exist
 userdel splunk
 groupdel splunk
 
