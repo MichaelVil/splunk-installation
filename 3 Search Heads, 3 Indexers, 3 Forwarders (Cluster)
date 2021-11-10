@@ -37,18 +37,21 @@ shcluster_label = sh_label
 #Splunk license file
 /opt/splunk/etc/licenses/
 
-#Configure MC
+#Configure DS
+#On UF/HF
+/opt/splunk/bin/splunk set deploy-poll https://<DS address>:8089
+/opt/splunk/bin/splunk restart
 
 
 
 
 ######################################## Indexer Cluster (192.168.56.11, 192.168.56.12, 192.168.56.13) ########################################
 
-#run on each of the Indexers: 192.168.56.11, 192.168.56.12, 192.168.56.13)
+#run on each of the Indexers
 /opt/splunk/bin/splunk enable listen 9997
 /opt/splunk/bin/splunk disable webserver
-/opt/splunk/bin/splunk edit licenser-localslave -master_uri https://192.168.56.17:8089 -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk edit cluster-config -mode peer -master_uri https://192.168.56.14:8089 -secret secret -replication_port 9100
+/opt/splunk/bin/splunk edit licenser-localslave -master_uri https://<LM address>:8089 -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk edit cluster-config -mode peer -master_uri https://<CM address>:8089 -secret secret -replication_port 9100
 /opt/splunk/bin/splunk restart
 
 #remove member from Indexer Cluster. Run on each of the Indexers
@@ -58,26 +61,29 @@ shcluster_label = sh_label
 
 ########################################################## SH Cluster Configuration ##########################################################
 
-#SH1 (192.168.56.21)
-/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://192.168.56.21:8089 -conf_deploy_fetch_url https://192.168.56.17:8089 -replication_port 9200 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://192.168.56.14:8089 -secret secret -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk restart
-
-#SH2 (192.168.56.22)
-/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://192.168.56.22:8089 -conf_deploy_fetch_url https://192.168.56.17:8089 -replication_port 9200 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://192.168.56.14:8089 -secret secret -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk restart
-
-#SH3 (192.168.56.23)
-/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://192.168.56.23:8089 -conf_deploy_fetch_url https://192.168.56.17:8089 -replication_port 9200 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://192.168.56.14:8089 -secret secret -auth admin:pa$$w0rd
+#Run on each member of the SH cluster
+/opt/splunk/bin/splunk edit licenser-localslave -master_uri https://<LM address>:8089 -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://<SH address>:8089 -conf_deploy_fetch_url https://<DS address>:8089 -replication_port 9200 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://<CM address>:8089 -secret secret -auth admin:pa$$w0rd
 /opt/splunk/bin/splunk restart
 
 #Configure Captain (192.168.56.21)
-/opt/splunk/bin/splunk bootstrap shcluster-captain -servers_list "https://192.168.56.21:8089, https://192.168.56.22:8089, https://192.168.56.23:8089" -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk bootstrap shcluster-captain -servers_list "https://<SH1 address>:8089, https://<SH2 address>:8089, https://<SH3 address>:8089" -auth admin:pa$$w0rd
 
 #Check search head cluster status
 /opt/splunk/bin/splunk show shcluster-status -auth admin:pa$$w0rd
+
+#Remove and disable the member
+#Remove the member
+/opt/splunk/bin/splunk remove shcluster-member
+
+#Disable the member
+/opt/splunk/bin/splunk disable shcluster-config
+
+
+
+
+
 
 
 
