@@ -25,20 +25,26 @@ Deployer (SH): 10.5.0.4
 /opt/splunk/bin/splunk edit cluster-config -mode manager -replication_factor 2 -search_factor 2 -secret secret -cluster_label idx_label -auth admin:pa$$w0rd
 /opt/splunk/bin/splunk restart
 
-######################################## Indexer Cluster (192.168.56.11, 192.168.56.12, 192.168.56.13) ########################################
-#run on each of the Indexers: 192.168.56.11, 192.168.56.12, 192.168.56.13)
+##################################### Monitoring Console/Deployment Server/License Master (192.168.56.17) #####################################
+#confogure DS
 
+
+
+
+
+######################################## Indexer Cluster (192.168.56.11, 192.168.56.12, 192.168.56.13) ########################################
+
+#run on each of the Indexers: 192.168.56.11, 192.168.56.12, 192.168.56.13)
 /opt/splunk/bin/splunk enable listen 9997
 /opt/splunk/bin/splunk disable webserver
 /opt/splunk/bin/splunk edit licenser-localslave -master_uri https://192.168.56.17:8089 -auth admin:pa$$w0rd
 /opt/splunk/bin/splunk edit cluster-config -mode peer -master_uri https://192.168.56.14:8089 -secret secret -replication_port 9100
 /opt/splunk/bin/splunk restart
 
-#remove member from Indexer Cluster
-
-/opt/splunk/bin/splunk
-
-
+#remove member from Indexer Cluster. Run on each of the Indexers
+/opt/splunk/bin/splunk offline --enforce-counts
+#remove member from CM
+/opt/splunk/bin/splunk remove cluster-peers -peers <guid>,<guid>,<guid>...
 
 ########################################################## SH Cluster Configuration ##########################################################
 
