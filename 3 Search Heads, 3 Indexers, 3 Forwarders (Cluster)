@@ -2,14 +2,14 @@ User Name: admin
 Password: pa$$w0rd
 Secret: secret
 
-Search Head 1: 10.0.1.1
-Search Head 2: 10.0.1.2
-Search Head 3: 10.0.1.3
+Search Head 1: 192.168.56.21
+Search Head 2: 192.168.56.22
+Search Head 3: 192.168.56.23
 SH Cluster Label: sh_label
 
-Indexer 1: 10.0.2.1
-Indexer 2: 10.0.2.2
-Indexer 3: 10.0.2.3
+Indexer 1: 192.168.56.11
+Indexer 2: 192.168.56.12
+Indexer 3: 192.168.56.13
 Index Cluster Label: idx_label
 
 Search Head Deployer: 10.5.0.1
@@ -26,8 +26,18 @@ Deployer (SH): 10.5.0.4
 /opt/splunk/bin/splunk restart
 
 ##################################### Monitoring Console/Deployment Server/License Master (192.168.56.17) #####################################
-#confogure DS
+#Configure DS for the SH cluster
+vi /opt/splunk/etc/system/local/server.conf
 
+[shclustering]
+shcluster_label = sh_label
+
+/opt/splunk/bin/splunk restart
+
+#Splunk license file
+/opt/splunk/etc/licenses/
+
+#Configure MC
 
 
 
@@ -48,22 +58,22 @@ Deployer (SH): 10.5.0.4
 
 ########################################################## SH Cluster Configuration ##########################################################
 
-#SH1 (10.0.1.1)
-/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://10.0.1.1:8089 -conf_deploy_fetch_url https://10.5.0.4:8089 -replication_port 9200 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://10.5.0.2:8089 -secret secret -auth admin:pa$$w0rd
+#SH1 (192.168.56.21)
+/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://192.168.56.21:8089 -conf_deploy_fetch_url https://192.168.56.17:8089 -replication_port 9200 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://192.168.56.14:8089 -secret secret -auth admin:pa$$w0rd
 /opt/splunk/bin/splunk restart OR systemctl restart Splunkd
 
-#SH2 (10.0.1.2)
-/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://10.0.1.2:8089 -conf_deploy_fetch_url https://10.5.0.4:8089 -replication_port 9200 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://10.5.0.2:8089 -secret secret -auth admin:pa$$w0rd
+#SH2 (192.168.56.22)
+/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://192.168.56.22:8089 -conf_deploy_fetch_url https://192.168.56.17:8089 -replication_port 9200 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://192.168.56.14:8089 -secret secret -auth admin:pa$$w0rd
 /opt/splunk/bin/splunk restart OR systemctl restart Splunkd
 
-#SH3 (10.0.1.3)
-/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://10.0.1.3:8089 -conf_deploy_fetch_url https://10.5.0.4:8089 -replication_port 9200 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://10.5.0.2:8089 -secret secret -auth admin:pa$$w0rd
+#SH3 (192.168.56.23)
+/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://192.168.56.23:8089 -conf_deploy_fetch_url https://192.168.56.17:8089 -replication_port 9200 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://192.168.56.14:8089 -secret secret -auth admin:pa$$w0rd
 /opt/splunk/bin/splunk restart OR systemctl restart Splunkd
 
-#Configure Captain (10.0.1.1)
+#Configure Captain (192.168.56.21)
 /opt/splunk/bin/splunk bootstrap shcluster-captain -servers_list "https://10.0.1.1:8089, https://10.0.1.2:8089, https://10.0.1.2:8089" -auth admin:pa$$w0rd
 
 
