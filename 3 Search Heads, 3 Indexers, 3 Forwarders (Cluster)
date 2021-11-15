@@ -25,8 +25,8 @@ Deployer (SH): 10.5.0.4
 /opt/splunk/bin/splunk edit cluster-config -mode manager -replication_factor 2 -search_factor 2 -secret secret -cluster_label idx_label -auth admin:pa$$w0rd
 /opt/splunk/bin/splunk restart
 
-##################################### Monitoring Console/Deployment Server/License Master (192.168.56.17) #####################################
-#Configure DS for the SH cluster
+##################################### Monitoring Console/Deployment Server/Deployer/License Master (192.168.56.17) #####################################
+#Configure Deployer for the SH cluster
 vi /opt/splunk/etc/system/local/server.conf
 
 [shclustering]
@@ -34,15 +34,23 @@ shcluster_label = sh_label
 
 /opt/splunk/bin/splunk restart
 
-#Splunk license file
+#Add Splunk license file
 /opt/splunk/etc/licenses/
 
-#Configure DS
+#Configure Deployment Server
 #On UF/HF
 /opt/splunk/bin/splunk set deploy-poll https://<DS address>:8089
 /opt/splunk/bin/splunk restart
 
+#Add instances to MC
+#https://docs.splunk.com/Documentation/Splunk/8.2.3/DMC/Addinstancesassearchpeers
 
+1. Log into the instance on which you want to configure the monitoring console.
+2. In Splunk Web, click Settings > Distributed search > Search peers.
+3. Click New.
+4. Fill in the requested fields, and click Save.
+
+Repeat steps 3 and 4 for each search head, deployment server, license manager, non-clustered indexer, and clustered search head. Do not add clustered indexers. If you are monitoring an indexer cluster and you are hosting the monitoring console on an instance other than the cluster manager, you must add the cluster manager as a search peer and configure the monitoring console instance as a search-head in that cluster.
 
 
 ######################################## Indexer Cluster (192.168.56.11, 192.168.56.12, 192.168.56.13) ########################################
