@@ -42,6 +42,15 @@ shcluster_label = sh_label
 /opt/splunk/bin/splunk set deploy-poll https://<DS address>:8089
 /opt/splunk/bin/splunk restart
 
+#check deploy poll
+/opt/splunk/bin/splunk show deploy-poll
+
+#check if all the clients are up
+/opt/splunk/bin/splunk list deploy-clients
+
+
+
+
 #Add instances to MC
 #https://docs.splunk.com/Documentation/Splunk/8.2.3/DMC/Addinstancesassearchpeers
 
