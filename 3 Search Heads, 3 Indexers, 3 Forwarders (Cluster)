@@ -48,7 +48,7 @@ Monitoring Console/Deployment Server/Deployer/License Master: 192.168.56.17
 
 Repeat steps 3 and 4 for each search head, deployment server, license manager, non-clustered indexer, and clustered search head. Do not add clustered indexers. If you are monitoring an indexer cluster and you are hosting the monitoring console on an instance other than the cluster manager, you must add the cluster manager as a search peer and configure the monitoring console instance as a search-head in that cluster.
 
-######################################## Indexer Cluster (192.168.56.11, 192.168.56.12, 192.168.56.13) ########################################
+####################################################### Indexer Cluster Configuration #######################################################
 
 #run on each of the Indexers
 /opt/splunk/bin/splunk enable listen 9997
@@ -63,6 +63,8 @@ Repeat steps 3 and 4 for each search head, deployment server, license manager, n
 /opt/splunk/bin/splunk remove cluster-peers -peers <guid>,<guid>,<guid>...
 
 ########################################################## SH Cluster Configuration ##########################################################
+#https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/SHCdeploymentoverview
+#https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/Addaclustermember
 
 #Run on each member of the SH cluster
 /opt/splunk/bin/splunk edit licenser-localslave -master_uri https://<LM address>:8089 -auth admin:pa$$w0rd
@@ -91,6 +93,7 @@ Repeat steps 3 and 4 for each search head, deployment server, license manager, n
 /opt/splunk/bin/splunk disable shcluster-config
 
 ############################################# Configure Deployer for the SH cluster and push a bundle #############################################
+#https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/PropagateSHCconfigurationchanges
 
 #192.168.56.17
 vi /opt/splunk/etc/system/local/server.conf
@@ -117,22 +120,5 @@ $SPLUNK_HOME/etc/shcluster/
 /opt/splunk/bin/splunk add search-server https://192.168.56.11:8089 -auth admin:pop54321 -remoteUsername admin -remotePassword pop54321
 /opt/splunk/bin/splunk add search-server https://192.168.56.12:8089 -auth admin:pop54321 -remoteUsername admin -remotePassword pop54321
 /opt/splunk/bin/splunk add search-server https://192.168.56.13:8089 -auth admin:pop54321 -remoteUsername admin -remotePassword pop54321
-
-#Forward search head data to the indexer layer (192.168.56.10, 192.168.56.14, 192.168.56.17)
-#https://docs.splunk.com/Documentation/Splunk/8.2.2/DistSearch/Forwardsearchheaddata
-
-/nano /opt/splunk/etc/system/local/outputs.conf
-
-# Turn off indexing on the search head
-[indexAndForward]
-index = false
- 
-[tcpout]
-defaultGroup = my_search_peers 
-forwardedindex.filter.disable = true  
-indexAndForward = false 
- 
-[tcpout:my_search_peers]
-server=192.168.56.11:9997,192.168.56.12:9997,192.168.56.13:9997
 
 
