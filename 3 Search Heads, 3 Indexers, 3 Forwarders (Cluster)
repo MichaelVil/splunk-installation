@@ -14,9 +14,7 @@ Index Cluster Label: idx_label
 
 Search Head Deployer: 10.5.0.1
 Cluster Master (Indexer) (Manager, Master Node): 192.168.56.14
-Monitoring Console + Deployment Server + License Master: 192.168.56.17
-Deployer (SH): 10.5.0.4
-
+Monitoring Console/Deployment Server/Deployer/License Master: 192.168.56.17
 
 ####################################################### Cluster Master (192.168.56.14) #######################################################
 #Replication Factor 2, Search Factor 2
@@ -26,14 +24,6 @@ Deployer (SH): 10.5.0.4
 /opt/splunk/bin/splunk restart
 
 ##################################### Monitoring Console/Deployment Server/Deployer/License Master (192.168.56.17) #####################################
-#Configure Deployer for the SH cluster
-vi /opt/splunk/etc/system/local/server.conf
-
-[shclustering]
-shcluster_label = sh_label
-
-/opt/splunk/bin/splunk restart
-
 #Add Splunk license file
 /opt/splunk/etc/licenses/
 
@@ -100,8 +90,27 @@ Repeat steps 3 and 4 for each search head, deployment server, license manager, n
 #Disable the member
 /opt/splunk/bin/splunk disable shcluster-config
 
-#Push a bundle (from the Deployer)
-/opt/splunk/bin/splunk apply shcluster-bundle --answer-yes -target https://10.0.1.1:8089 -auth admin:pa$$w0rd
+############################################# Configure Deployer for the SH cluster and push a bundle #############################################
+
+#192.168.56.17
+vi /opt/splunk/etc/system/local/server.conf
+
+[shclustering]
+shcluster_label = sh_label
+
+/opt/splunk/bin/splunk restart
+
+#Location of the SH apps
+$SPLUNK_HOME/etc/shcluster/
+     apps/
+          <app-name>/
+          <app-name>/
+          ...
+
+/opt/splunk/bin/splunk show shcluster-status --verbose
+/opt/splunk/bin/splunk apply shcluster-bundle --answer-yes -target https://<any SH cluster member>:8089 -auth admin:pa$$w0rd
+
+#########################################################################################################################################
 
 
 #Enable SH (192.168.56.10)
@@ -125,23 +134,5 @@ indexAndForward = false
  
 [tcpout:my_search_peers]
 server=192.168.56.11:9997,192.168.56.12:9997,192.168.56.13:9997
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
