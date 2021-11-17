@@ -48,9 +48,6 @@ shcluster_label = sh_label
 #check if all the clients are up
 /opt/splunk/bin/splunk list deploy-clients
 
-
-
-
 #Add instances to MC
 #https://docs.splunk.com/Documentation/Splunk/8.2.3/DMC/Addinstancesassearchpeers
 
@@ -60,7 +57,6 @@ shcluster_label = sh_label
 4. Fill in the requested fields, and click Save.
 
 Repeat steps 3 and 4 for each search head, deployment server, license manager, non-clustered indexer, and clustered search head. Do not add clustered indexers. If you are monitoring an indexer cluster and you are hosting the monitoring console on an instance other than the cluster manager, you must add the cluster manager as a search peer and configure the monitoring console instance as a search-head in that cluster.
-
 
 ######################################## Indexer Cluster (192.168.56.11, 192.168.56.12, 192.168.56.13) ########################################
 
@@ -87,6 +83,13 @@ Repeat steps 3 and 4 for each search head, deployment server, license manager, n
 #Configure Captain (192.168.56.21)
 /opt/splunk/bin/splunk bootstrap shcluster-captain -servers_list "https://<SH1 address>:8089, https://<SH2 address>:8089, https://<SH3 address>:8089" -auth admin:pa$$w0rd
 
+#Add new members to SH cluster
+#From any existing SH cluster instance (SH1, SH2, SH3...)
+/opt/splunk/bin/splunk add shcluster-member -new_member_uri https://<new SH member address>:8089
+
+#From new SH cluster instance
+/opt/splunk/bin/splunk add shcluster-member -current_member_uri https://<existing SH member address>:8089
+
 #Check search head cluster status
 /opt/splunk/bin/splunk show shcluster-status -auth admin:pa$$w0rd
 
@@ -97,16 +100,8 @@ Repeat steps 3 and 4 for each search head, deployment server, license manager, n
 #Disable the member
 /opt/splunk/bin/splunk disable shcluster-config
 
-
-
-
-
-
-
-
-
-
-
+#Push a bundle (from the Deployer)
+/opt/splunk/bin/splunk apply shcluster-bundle --answer-yes -target https://10.0.1.1:8089 -auth admin:pa$$w0rd
 
 
 #Enable SH (192.168.56.10)
@@ -149,10 +144,4 @@ server=192.168.56.11:9997,192.168.56.12:9997,192.168.56.13:9997
 
 
 
-#Push a bundle (on the Deployer 10.5.0.4)
-/opt/splunk/bin/splunk apply shcluster-bundle --answer-yes -target https://10.0.1.1:8089 -auth admin:pa$$w0rd
 
-#Check SH Cluster status (from any SH member)
-/opt/splunk/bin/splunk show shcluster-status -auth admin:pa$$w0rd
-
-https://docs.splunk.com/Documentation/Splunk/8.2.2/DistSearch/ViewSHCstatus
