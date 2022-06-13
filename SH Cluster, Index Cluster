@@ -68,8 +68,16 @@ Repeat steps 3 and 4 for each search head, deployment server, license manager, n
 /opt/splunk/bin/splunk remove cluster-peers -peers <guid>,<guid>,<guid>...
 
 ########################################################## SH Cluster Configuration ##########################################################
-#https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/SHCdeploymentoverview
-#https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/Addaclustermember
+
+## Configure the Deployer (192.168.56.17)
+vi /opt/splunk/etc/system/local/server.conf
+
+[shclustering]
+pass4SymmKey = <SH Secret Key>
+
+/opt/splunk/bin/splunk restart
+
+#
 
 #Run on each member of the SH cluster
 /opt/splunk/bin/splunk edit licenser-localslave -master_uri https://<LM address>:8089 -auth admin:pa$$w0rd
@@ -97,16 +105,14 @@ Repeat steps 3 and 4 for each search head, deployment server, license manager, n
 #Disable the member
 /opt/splunk/bin/splunk disable shcluster-config
 
-############################################# Configure Deployer for the SH cluster and push a bundle #############################################
 #https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/PropagateSHCconfigurationchanges
+#https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/SHCdeploymentoverview
+#https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/Addaclustermember
 
-#192.168.56.17
-vi /opt/splunk/etc/system/local/server.conf
 
-[shclustering]
-shcluster_label = sh_label
 
-/opt/splunk/bin/splunk restart
+
+############################################# Configure Deployer for the SH cluster and push a bundle #############################################
 
 #Location of the SH apps
 $SPLUNK_HOME/etc/shcluster/
