@@ -69,36 +69,41 @@ Repeat steps 3 and 4 for each search head, deployment server, license manager, n
 
 ########################################################## SH Cluster Configuration ##########################################################
 
-##Configure the Deployer (192.168.56.17)##
+##Set up the Deployer (192.168.56.17)
+
 vi /opt/splunk/etc/system/local/server.conf
 
 [shclustering]
 pass4SymmKey = <SH Secret Key>
+shcluster_label = <SH Label>
 
 /opt/splunk/bin/splunk restart
 
-#
+##Initialize the Cluster  
 
 #Run on each member of the SH cluster
-/opt/splunk/bin/splunk edit licenser-localslave -master_uri https://<LM address>:8089 -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://<SH address>:8089 -conf_deploy_fetch_url https://<DS address>:8089 -replication_port 9200 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://<CM address>:8089 -secret secret -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://<SH address>:8089 -conf_deploy_fetch_url https://<DS address>:8089 -replication_port 9200 -replication_factor 2 -secret <SH Secret Key> -shcluster_label <SH Label> -auth admin:pa$$w0rd
 /opt/splunk/bin/splunk restart
 
 #Configure Captain (192.168.56.21)
 /opt/splunk/bin/splunk bootstrap shcluster-captain -servers_list "https://<SH1 address>:8089, https://<SH2 address>:8089, https://<SH3 address>:8089" -auth admin:pa$$w0rd
 
-#Add new members to SH cluster
+##Check search head cluster status
+/opt/splunk/bin/splunk show shcluster-status -auth admin:pa$$w0rd
+
+
+
+
+##Add new members to SH cluster
+
 #From any existing SH cluster instance (SH1, SH2, SH3...)
 /opt/splunk/bin/splunk add shcluster-member -new_member_uri https://<new SH member address>:8089
 
 #From new SH cluster instance
 /opt/splunk/bin/splunk add shcluster-member -current_member_uri https://<existing SH member address>:8089
 
-#Check search head cluster status
-/opt/splunk/bin/splunk show shcluster-status -auth admin:pa$$w0rd
+##Remove and disable the member
 
-#Remove and disable the member
 #Remove the member
 /opt/splunk/bin/splunk remove shcluster-member
 
@@ -108,6 +113,11 @@ pass4SymmKey = <SH Secret Key>
 #https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/PropagateSHCconfigurationchanges
 #https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/SHCdeploymentoverview
 #https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/Addaclustermember
+
+
+
+/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://<CM address>:8089 -secret <SH Secret Key> -auth admin:pa$$w0rd
+
 
 
 
