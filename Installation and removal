@@ -1,34 +1,3 @@
-User Name: admin
-Password: pa$$w0rd
-
-Search Head 1: 10.0.1.1
-Search Head 2: 10.0.1.2
-Search Head 3: 10.0.1.3
-
-Indexer 1: 10.0.2.1
-Indexer 2: 10.0.2.2
-Indexer 3: 10.0.2.3
-
-Universal Forwarder 1: 10.0.3.1
-Universal Forwarder 2: 10.0.3.2
-Universal Forwarder 3: 10.0.3.3
-
-Heavy Forwarder 1: 10.0.4.1
-Heavy Forwarder 2: 10.0.4.2
-
-Search Head Deployer: 10.5.0.1
-Cluster Master (Indexer) (Manager, Master Node): 10.5.0.2
-Monitoring Console + Deployment Server + License Master: 10.5.0.3
-Deployer (SH): 10.5.0.4
-
-* Some of the instances can work together, for example:
-One instance of Splunk can include MC, LM and DS. In that case just use the same ip/host
-
-* The OS is CentOS 7
-* Splunk version 8.2.2
-
-_____________________________________________________________________________________________________________________________________________________________________
-
 #Time Zone configuration. Set the correct TZ:
 timedatectl set-timezone Asia/Jerusalem
 
