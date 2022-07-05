@@ -15,6 +15,7 @@ Cluster Master (Manager, Master Node): 192.168.56.14
 Monitoring Console + Deployment Server + License Master: 192.168.56.17
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #Cluster Master Configuration (192.168.56.14)
 #Example: Replication Factor 2, Search Factor 2
@@ -26,6 +27,7 @@ Monitoring Console + Deployment Server + License Master: 192.168.56.17
 /opt/splunk/bin/splunk restart (OR systemctl restart Splunkd)
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #Configure the manager node to enable indexer discovery (192.168.56.14) 
 
@@ -34,6 +36,7 @@ vi /opt/splunk/etc/system/local/inputs.conf
 [indexer_discovery]
 pass4SymmKey = secret
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Configure the forwarders to use indexer discovery (On each forwarder, add these settings to the outputs.conf file) 
 
 vi /opt/splunkforwarder/etc/system/local/inputs.conf
@@ -49,6 +52,7 @@ useACK = true
 master_uri = https://192.168.56.14:8089
 pass4SymmKey = secret
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Indexer Cluster Configuration (run on each of the Indexers: 192.168.56.11, 192.168.56.12, 192.168.56.13)
 
 /opt/splunk/bin/splunk enable listen 9997
@@ -57,7 +61,8 @@ pass4SymmKey = secret
 /opt/splunk/bin/splunk edit cluster-config -mode peer -master_uri https://192.168.56.14:8089 -secret secret -replication_port 9100
 /opt/splunk/bin/splunk restart (OR systemctl restart Splunkd)
 
-#Push a bundle to Cluster
+AND 
+
 #Configure the peer nodes to receive data from forwarders 
 
 vi /opt/splunk/etc/system/local/inputs.conf
@@ -65,6 +70,7 @@ vi /opt/splunk/etc/system/local/inputs.conf
 [splunktcp://9997]
 disabled = 0
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Index Example
 
 mkdir -p /opt/splunk/etc/master-apps/base_indexes/local/
@@ -79,6 +85,7 @@ maxDataSize = auto_high_volume
 maxHotBuckets = 10
 repFactor=auto
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Push a bundle to Indexers (192.168.56.14)
 
 /opt/splunk/bin/splunk validate cluster-bundle --check-restart
@@ -86,14 +93,7 @@ repFactor=auto
 /opt/splunk/bin/splunk apply cluster-bundle --answer-yes
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #Search Head Cluster Configuration (192.168.56.1, 192.168.56.2)
 
