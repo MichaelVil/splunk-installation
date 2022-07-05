@@ -36,17 +36,18 @@ pass4SymmKey = secret
 
 #Configure the forwarders to use indexer discovery (On each forwarder, add these settings to the outputs.conf file) 
 
-vi /opt/splunk/etc/system/local/inputs.conf
-
-[indexer_discovery:<name>]
-pass4SymmKey = <string>
-master_uri = <uri>
-
-[tcpout:<target_group>]
-indexerDiscovery = <name>
+vi /opt/splunkforwarder/etc/system/local/inputs.conf
 
 [tcpout]
-defaultGroup = <target_group>
+defaultGroup = default-autolb-group
+
+[tcpout:default-autolb-group]
+indexerDiscovery = idx_cluster
+useACK = true
+
+[indexer_discovery:idx_cluster]
+master_uri = https://192.168.56.14:8089
+pass4SymmKey = secret
 
 #Indexer Cluster Configuration (run on each of the Indexers: 192.168.56.11, 192.168.56.12, 192.168.56.13)
 
@@ -64,16 +65,25 @@ vi /opt/splunk/etc/system/local/inputs.conf
 [splunktcp://9997]
 disabled = 0
 
-#Configure an Index
+#Index Example
 
+mkdir -p /opt/splunk/etc/master-apps/base_indexes/local/
+vi /opt/splunk/etc/master-apps/base_indexes/local/indexes.conf
 
+[my_index]
+coldPath = $SPLUNK_DB/my_index/colddb
+homePath = $SPLUNK_DB/my_index/db
+thawedPath = $SPLUNK_DB/my_index/thaweddb
+maxTotalDataSizeMB = 750000
+maxDataSize = auto_high_volume
+maxHotBuckets = 10
+repFactor=auto
 
+#Push a bundle to Indexers (192.168.56.14)
 
 /opt/splunk/bin/splunk validate cluster-bundle --check-restart
 /opt/splunk/bin/splunk show cluster-bundle-status
 /opt/splunk/bin/splunk apply cluster-bundle --answer-yes
-
-
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
