@@ -30,6 +30,20 @@ chown -R splunk:splunk /opt/splunk/
 su - splunk
 /opt/splunk/bin/splunk start (OR systemctl start splunk)
 
+#Add splunk user to root (CentOS/Redhat) or adm (Debian/Ubuntu) group to have read access to /var/log/secure:
+usermod -a -G root splunk
+
+#Disable telemetry - Add following lines 
+vi /opt/splunk/etc/apps/splunk_instrumentation/local/telemetry.conf
+
+sendLicenseUsage = false
+sendAnonymizedUsage = false
+sendSupportUsage = false
+sendAnonymizedWebAnalytics = false
+precheckSendLicenseUsage = false
+precheckSendAnonymizedUsage = false
+precheckSendSupportUsage = false
+
 #Install Splunk License (Web GUI or)
 /opt/splunk/bin/splunk add licenses <path to license> -auth admin:pa$$w0rd
 
