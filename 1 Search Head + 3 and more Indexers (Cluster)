@@ -1,35 +1,32 @@
-User Name: admin
+Splunk User Name: admin
 Password: pa$$w0rd
 
+Search Head 1                                                                       | splnk-sh1  | 192.168.56.21
+Search Head 2                                                                       | splnk-sh2  | 192.168.56.22
+Search Head 3                                                                       | splnk-sh3  | 192.168.56.23
+Indexer 1                                                                           | splnk-idx1 | 192.168.56.11
+Indexer 2                                                                           | splnk-idx2 | 192.168.56.12
+Indexer 3                                                                           | splnk-idx3 | 192.168.56.13
+Cluster Master / Monitoring Console / Deployment Server / Deployer / License Master | splnk-cmng | 192.168.56.14
 
-Search Head 1: 192.168.56.1
-Search Head 2: 192.168.56.2
-
-Indexer 1: 192.168.56.11
-Indexer 2: 192.168.56.12
-Indexer 3: 192.168.56.13
 Index Cluster Label: idx_label
+SH Cluster label: sh_label
 Secret: secret
 
-Cluster Master (Manager, Master Node): 192.168.56.14
-Monitoring Console + Deployment Server + License Master: 192.168.56.17
-
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#Cluster Master Configuration (192.168.56.14)
+#Cluster Master Configuration (Run on: splnk-cmng)
+
+#Add Splunk license file to:
+/opt/splunk/etc/licenses/
+
 #Example: Replication Factor 2, Search Factor 2
 
-#https://docs.splunk.com/Documentation/Splunk/8.2.2/Indexer/ConfiguremanagerwithCLI
-
-/opt/splunk/bin/splunk edit licenser-localslave -master_uri https://192.168.56.17:8089 -auth admin:pa$$w0rd
 /opt/splunk/bin/splunk edit cluster-config -mode manager -replication_factor 2 -search_factor 2 -secret secret -cluster_label idx_label -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk restart (OR systemctl restart Splunkd)
+/opt/splunk/bin/splunk restart
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-#Configure the manager node to enable indexer discovery (192.168.56.14) 
+#Configure the manager node to enable indexer discovery 
 
 vi /opt/splunk/etc/system/local/inputs.conf
 
@@ -37,28 +34,22 @@ vi /opt/splunk/etc/system/local/inputs.conf
 pass4SymmKey = secret
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#Configure the forwarders to use indexer discovery (On each forwarder, add these settings to the outputs.conf file) 
-
-vi /opt/splunkforwarder/etc/system/local/inputs.conf
-
-[tcpout]
-defaultGroup = default-autolb-group
-
-[tcpout:default-autolb-group]
-indexerDiscovery = idx_cluster
-useACK = true
-
-[indexer_discovery:idx_cluster]
-master_uri = https://192.168.56.14:8089
-pass4SymmKey = secret
-
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#Indexer Cluster Configuration (run on each of the Indexers: 192.168.56.11, 192.168.56.12, 192.168.56.13)
+#Indexer Cluster Configuration (Run on each of the Indexers: splnk-idx1, splnk-idx2, splnk-idx3)
 
+#Enable a receiver
 /opt/splunk/bin/splunk enable listen 9997
+
+#Disable GUI. Not needed for the Indexer
 /opt/splunk/bin/splunk disable webserver
-/opt/splunk/bin/splunk edit licenser-localslave -master_uri https://192.168.56.17:8089 -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk edit cluster-config -mode peer -master_uri https://192.168.56.14:8089 -secret secret -replication_port 9100
+
+#Configure the location of the license Server
+/opt/splunk/bin/splunk edit licenser-localslave -master_uri https://192.168.56.14:8089 -auth admin:pa$$w0rd
+
+#Enable peer node
+/opt/splunk/bin/splunk edit cluster-config -mode peer -master_uri https://192.168.56.14:8089 -secret secret -replication_port 9887
+
+#Restart Splunk
 /opt/splunk/bin/splunk restart (OR systemctl restart Splunkd)
 
 AND 
@@ -71,7 +62,7 @@ vi /opt/splunk/etc/system/local/inputs.conf
 disabled = 0
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#Index Example
+#Index Creation Example
 
 mkdir -p /opt/splunk/etc/master-apps/base_indexes/local/
 vi /opt/splunk/etc/master-apps/base_indexes/local/indexes.conf
@@ -86,49 +77,7 @@ maxHotBuckets = 10
 repFactor=auto
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#Push a bundle to Indexers (192.168.56.14)
-
-/opt/splunk/bin/splunk validate cluster-bundle --check-restart
-/opt/splunk/bin/splunk show cluster-bundle-status
-/opt/splunk/bin/splunk apply cluster-bundle --answer-yes
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-#Search Head Cluster Configuration (192.168.56.1, 192.168.56.2)
-
-
-
-
-
-#Enable SH (192.168.56.10)
-https://docs.splunk.com/Documentation/Splunk/8.2.2/DistSearch/Configuredistributedsearch
-
-/opt/splunk/bin/splunk add search-server https://192.168.56.11:8089 -remoteUsername admin -remotePassword pop54321 -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk add search-server https://192.168.56.12:8089 -remoteUsername admin -remotePassword pop54321 -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk add search-server https://192.168.56.13:8089 -remoteUsername admin -remotePassword pop54321 -auth admin:pa$$w0rd
-
-#Configure the search head as a cluster search head
-/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://192.168.56.14:8089 -secret secret -auth admin:pa$$w0rd
-
-
-
-
-__________________________________________________________ Distribute the configuration bundle (192.168.56.14) __________________________________________________________
-#https://docs.splunk.com/Documentation/Splunk/8.2.2/Indexer/Updatepeerconfigurations
-
-#Create Indexers (example) 
-mkdir -p /opt/splunk/etc/master-apps/base_indexes/local/
-nano /opt/splunk/etc/master-apps/base_indexes/local/indexes.conf
-
-[my_index]
-coldPath = $SPLUNK_DB/my_index/colddb
-homePath = $SPLUNK_DB/my_index/db
-thawedPath = $SPLUNK_DB/my_index/thaweddb
-maxTotalDataSizeMB = 750000
-maxDataSize = auto_high_volume
-maxHotBuckets = 10
-repFactor=auto
+#Push a bundle to Indexers (Run on: splnk-cmng)
 
 #Validate the bundle and check whether a restart is necessary
 /opt/splunk/bin/splunk validate cluster-bundle --check-restart
@@ -138,6 +87,150 @@ repFactor=auto
 
 #If no errors are reported, deploy the bundle to the peer nodes
 /opt/splunk/bin/splunk apply cluster-bundle --answer-yes
+
+#remove member from Indexer Cluster. Run on each of the Indexers
+/opt/splunk/bin/splunk offline --enforce-counts
+
+#remove member from Cluster Master
+/opt/splunk/bin/splunk remove cluster-peers -peers <guid>,<guid>,<guid>...
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Search Head Cluster Configuration 
+
+#Set up the Deployer (Run on: splnk-cmng)
+
+vi /opt/splunk/etc/system/local/server.conf
+
+[shclustering]
+pass4SymmKey = secret
+shcluster_label = sh_label
+
+/opt/splunk/bin/splunk restart
+
+##Initialize the Instance
+#Run on each member of the SH cluster (splnk-sh1, splnk-sh2, splnk-sh3)
+
+/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://192.168.56.21:8089 -conf_deploy_fetch_url https://192.168.56.14:8089 -replication_port 9887 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://192.168.56.22:8089 -conf_deploy_fetch_url https://192.168.56.14:8089 -replication_port 9887 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://192.168.56.23:8089 -conf_deploy_fetch_url https://192.168.56.14:8089 -replication_port 9887 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
+
+/opt/splunk/bin/splunk restart
+
+#Configure Search Head Cluster Captain (For example on splnk-sh1)
+
+/opt/splunk/bin/splunk bootstrap shcluster-captain -servers_list "https://192.168.56.21:8089, https://192.168.56.22:8089, https://192.168.56.23:8089" -auth admin:pa$$w0rd
+
+#Check search head cluster status (from any SH member)
+/opt/splunk/bin/splunk show shcluster-status -auth admin:pa$$w0rd
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Add new members to SH cluster (192.168.56.24 | splnk-sh4)
+
+#Initialize the Instance
+/opt/splunk/bin/splunk init shcluster-config -mgmt_uri https://192.168.56.24:8089 -conf_deploy_fetch_url https://192.168.56.14:8089 -replication_port 9887 -replication_factor 2 -secret secret -shcluster_label sh_label -auth admin:pa$$w0rd
+
+/opt/splunk/bin/splunk restart
+
+#Add new instance to Search Head Cluster
+
+#From any existing SH cluster instance (splnk-sh1, splnk-sh2, splnk-sh3...)
+/opt/splunk/bin/splunk add shcluster-member -new_member_uri https://192.168.56.24:8089
+
+OR
+
+#From new SH cluster instance (splnk-sh4)
+/opt/splunk/bin/splunk add shcluster-member -current_member_uri https://192.168.56.21:8089
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Remove and disable SH member
+
+#Remove the member (from the member that need to be removed)
+/opt/splunk/bin/splunk remove shcluster-member
+
+OR
+
+#Remove the member (from any other SH member)
+/opt/splunk/bin/splunk remove shcluster-member -mgmt_uri https://<SH memeber that need to be removed>:8089
+
+#Disable the member
+/opt/splunk/bin/splunk disable shcluster-config
+
+/opt/splunk/bin/splunk stop
+
+#Clean the KVStore
+/opt/splunk/bin/splunk clean kvstore --cluster
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Configure Deployer for the SH cluster and push a bundle
+#Set up the Deployer (Run on: splnk-cmng)
+
+#Location of the SH apps:
+$SPLUNK_HOME/etc/shcluster/
+     apps/
+          <app-name>/
+          <app-name>/
+          ...
+
+/opt/splunk/bin/splunk show shcluster-status --verbose
+/opt/splunk/bin/splunk apply shcluster-bundle --answer-yes -target https://<any SH cluster member>:8089 -auth admin:pa$$w0rd 
+
+
+
+
+
+
+
+
+
+
+
+#Run on each of the SH (splnk-sh1, splnk-sh2, splnk-sh3)
+
+/opt/splunk/bin/splunk add search-server https://192.168.56.21:8089 -remoteUsername admin -remotePassword pop54321 -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk add search-server https://192.168.56.22:8089 -remoteUsername admin -remotePassword pop54321 -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk add search-server https://192.168.56.23:8089 -remoteUsername admin -remotePassword pop54321 -auth admin:pa$$w0rd
+
+#Configure the search head as a cluster search head
+/opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://192.168.56.14:8089 -secret secret -auth admin:pa$$w0rd
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Forward search head data to the indexer layer (run on each of the SH: 192.168.56.1, 192.168.56.2)
+#https://docs.splunk.com/Documentation/Splunk/8.2.2/DistSearch/Forwardsearchheaddata
+
+nano /opt/splunk/etc/system/local/outputs.conf
+
+# Turn off indexing on the search head
+[indexAndForward]
+index = false
+ 
+[tcpout]
+defaultGroup = my_search_peers 
+forwardedindex.filter.disable = true  
+indexAndForward = false 
+ 
+[tcpout:my_search_peers]
+server=192.168.56.11:9997,192.168.56.12:9997,192.168.56.13:9997
+
+
+
+
 
 _________________________________________________________________ Config Deployment Server (192.168.56.17) _________________________________________________________________
 #https://docs.splunk.com/Documentation/Splunk/8.2.1/Indexer/indexerdiscovery
@@ -192,19 +285,24 @@ _________________________________________________________________ Config Monitor
 
 
 
-#Forward search head data to the indexer layer (192.168.56.10, 192.168.56.14, 192.168.56.17)
-#https://docs.splunk.com/Documentation/Splunk/8.2.2/DistSearch/Forwardsearchheaddata
 
-nano /opt/splunk/etc/system/local/outputs.conf
 
-# Turn off indexing on the search head
-[indexAndForward]
-index = false
- 
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Configure the forwarders to use indexer discovery (On each forwarder, add these settings to the outputs.conf file) 
+
+vi /opt/splunkforwarder/etc/system/local/inputs.conf
+
 [tcpout]
-defaultGroup = my_search_peers 
-forwardedindex.filter.disable = true  
-indexAndForward = false 
- 
-[tcpout:my_search_peers]
-server=192.168.56.11:9997,192.168.56.12:9997,192.168.56.13:9997
+defaultGroup = default-autolb-group
+
+[tcpout:default-autolb-group]
+indexerDiscovery = idx_cluster
+useACK = true
+
+[indexer_discovery:idx_cluster]
+master_uri = https://192.168.56.14:8089
+pass4SymmKey = secret
+
