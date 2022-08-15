@@ -179,6 +179,46 @@ $SPLUNK_HOME/etc/shcluster/
 /opt/splunk/bin/splunk show shcluster-status --verbose
 /opt/splunk/bin/splunk apply shcluster-bundle --answer-yes -target https://<any SH cluster member>:8089 -auth admin:pa$$w0rd 
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Connect the Search Head Cluster to Indexer Cluster
+
+#Enable SH Cluster replication (Run on each SH member)
+
+vi /opt/splunk/etc/system/local/server.conf
+
+[raft_statemachine]
+disabled = false
+replicate_search_peers = true
+
+/opt/splunk/bin/splunk restart
+
+#Connect each memeber to Indexer Cluster (Run on each of the SH splnk-sh1, splnk-sh2, splnk-sh3...)
+
+/opt/splunk/bin/splunk add search-server https://192.168.56.21:8089 -remoteUsername admin -remotePassword pa$$w0rd -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk add search-server https://192.168.56.22:8089 -remoteUsername admin -remotePassword pa$$w0rd -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk add search-server https://192.168.56.23:8089 -remoteUsername admin -remotePassword pa$$w0rd -auth admin:pa$$w0rd
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Forward search head data to the indexer layer (Run on each of the SH splnk-sh1, splnk-sh2, splnk-sh3...)
+
+vi /opt/splunk/etc/system/local/outputs.conf
+
+# Turn off indexing on the search head
+[indexAndForward]
+index = false
+ 
+[tcpout]
+defaultGroup = my_search_peers 
+forwardedindex.filter.disable = true  
+indexAndForward = false 
+ 
+[tcpout:my_search_peers]
+server=192.168.56.21:9997,192.168.56.22:9997,192.168.56.23:9997
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -188,12 +228,6 @@ $SPLUNK_HOME/etc/shcluster/
 
 
 
-
-#Run on each of the SH (splnk-sh1, splnk-sh2, splnk-sh3)
-
-/opt/splunk/bin/splunk add search-server https://192.168.56.21:8089 -remoteUsername admin -remotePassword pop54321 -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk add search-server https://192.168.56.22:8089 -remoteUsername admin -remotePassword pop54321 -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk add search-server https://192.168.56.23:8089 -remoteUsername admin -remotePassword pop54321 -auth admin:pa$$w0rd
 
 #Configure the search head as a cluster search head
 /opt/splunk/bin/splunk edit cluster-config -mode searchhead -master_uri https://192.168.56.14:8089 -secret secret -auth admin:pa$$w0rd
@@ -208,25 +242,6 @@ $SPLUNK_HOME/etc/shcluster/
 
 
 
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-#Forward search head data to the indexer layer (run on each of the SH: 192.168.56.1, 192.168.56.2)
-#https://docs.splunk.com/Documentation/Splunk/8.2.2/DistSearch/Forwardsearchheaddata
-
-nano /opt/splunk/etc/system/local/outputs.conf
-
-# Turn off indexing on the search head
-[indexAndForward]
-index = false
- 
-[tcpout]
-defaultGroup = my_search_peers 
-forwardedindex.filter.disable = true  
-indexAndForward = false 
- 
-[tcpout:my_search_peers]
-server=192.168.56.11:9997,192.168.56.12:9997,192.168.56.13:9997
 
 
 
