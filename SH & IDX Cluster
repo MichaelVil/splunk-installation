@@ -195,9 +195,9 @@ replicate_search_peers = true
 
 #Connect each memeber to Indexer Cluster (Run on each of the SH splnk-sh1, splnk-sh2, splnk-sh3...)
 
-/opt/splunk/bin/splunk add search-server https://192.168.56.21:8089 -remoteUsername admin -remotePassword pa$$w0rd -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk add search-server https://192.168.56.22:8089 -remoteUsername admin -remotePassword pa$$w0rd -auth admin:pa$$w0rd
-/opt/splunk/bin/splunk add search-server https://192.168.56.23:8089 -remoteUsername admin -remotePassword pa$$w0rd -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk add search-server https://192.168.56.11:8089 -remoteUsername admin -remotePassword pa$$w0rd -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk add search-server https://192.168.56.12:8089 -remoteUsername admin -remotePassword pa$$w0rd -auth admin:pa$$w0rd
+/opt/splunk/bin/splunk add search-server https://192.168.56.13:8089 -remoteUsername admin -remotePassword pa$$w0rd -auth admin:pa$$w0rd
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
