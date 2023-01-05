@@ -1,0 +1,116 @@
+-------------------------------------------- Get everything after last ] --------------------------------------------
+ 
+[2018-03-30 13:45:51,515] [[ACTIVE] ExecuteThread: '15' for queue: 'weblogic.kernel.Default (self-tuning)'] [INFO] [CustomerImpl] [6fbfb1ab-c947-49e9-964d-761390208a3b] Returning getCustomer for customer
+[2018-03-30 13:45:51,515] [[ACTIVE] ExecuteThread: '15' for queue: 'weblogic.kernel.Default (self-tuning)'] [INFO] [CometHeaderInboundRef] [] Read from inbound Header - UUID=6fbfb1ab-c947-49e9-964d-761390208a3b Username=maxuser
+ 
+<your base search> | rex field=_raw ".*\]\s+(?<field>.*)"
+ 
+-------------------------------------------- Split string --------------------------------------------
+--Split based on the . between the fields
+ 
+| rex field=FieldA "(?<FieldB>.*)\.(?<FieldC>.*)\.(?<FieldD>.*)"
+ 
+OR
+ 
+| eval temp=split(FieldA,".") 
+| eval FieldB=mvindex(temp,0)
+| eval FieldC=mvindex(temp,1)
+| eval FieldD=mvindex(temp,2) 
+| fields - temp
+ 
+--Extract fields based on "/"
+ 
+| rex field=FieldA "(?<aaa>[^\/]+)\/(?<bbb>[^\/]+)\/(?<ccc>[^\/]+)"
+ 
+-------------------------------------------- Get all values after "string:" -------------------------------------------- 
+ 
+| rex field =_raw "string:\s(?<string>.*)"
+ 
+-------------------------------------------- Get all values before first . -------------------------------------------- 
+ 
+| rex field = _raw "^(?<dot>[^\.]+)"
+ 
+-------------------------------------------- Extract from table -------------------------------------------- 
+ 
+R/S/I			Power Supply (W)		Voltage (V)		Current (A)
+0/PM0/0/*		156						12				12
+0/PM0/1/*		177						12				14.8
+0/PM0/2/*		190						12				15
+ 
+| rex field=_raw "\(A\)\v+(?<temp>(.+\v+){4})"
+ 
+0/PM0/0/* 156 12 12 0/PM0/1/* 177 12 14.8 0/PM0/2/* 190 12 15
+ 
+| rex field=temp "^0\/PM0\/0\/\*\s+\S+\s+(?<PSU1_v>\S+)"
+ 
+-------------------------------------------- Extract from table 2 -------------------------------------------- 
+0/PM0/0/*
+		host	PM	750		OK
+0/PM0/1/*
+		host	PM	750		OK
+ 
+| rex field=_raw "0\/PM0\/0\/\*\s+\S+\s+\S+\s+\S+\s+(?<PSU1_status>\S+)"
+ 
+-------------------------------------------- Identify string in a field -------------------------------------------- 
+ 
+| regex _raw = "string to identify"
+ 
+---------------------- extract from json ------------------
+ 
+"job_name":"job name to extract"," build_number":"build name to extract "
+ 
+| rex max_match=0 ".*,\"job_name\":\"(?P<job_name>.[^\"\,\"]*)"
+ 
+---------------------- From specific value @ until first appearing value : ------------------
+"@345345435:345345@435435:3@435345345:2"
+ 
+| rex field=name "^\@(?P<new_name>[^\:]+)"
+ 
+Result: 345345435
+ 
+--------------------------- replace in the string "/" to another one -------------------------------
+aaaaa/bbbbb/ccccc/ddddd
+ 
+rex mode=sed field=name "s/[\/]+/\/job\//g"
+ 
+result: aaaaa/job/bbbbb/job/ccccc/job/ddddd
+ 
+ 
+--------------------------- remove all spaces in field values--------------------------- 
+ 
+ "   aaaa bbbbb     ccccc "
+ 
+| rex mode=sed field=fieldname "s/\s+//g"
+ 
+Result: aaaabbbbbccccc
+ 
+ 
+--------------------------- Get everything after " '" ' " ---------------------------
+ 
+"ip = 192.168.35.22" "role = admin" "session_timeout = 86400" "detection_id = 102034" "target_ip = 192.168.88.89"
+"_time = 2021-02-28T17:19:14.490" "action = add" "ip = 192.168.35.22" "role = admin" "session_timeout = 86400" "detection_id = 102034" "target_ip = 192.168.88.89"
+ 
+(?<=" ).*
+ 
+Result: 
+"role = admin" "session_timeout = 86400" "detection_id = 102034" "target_ip = 192.168.88.89"
+"action = add" "ip = 192.168.35.22" "role = admin" "session_timeout = 86400" "detection_id = 102034" "target_ip = 192.168.88.89"
+ 
+ 
+--------------------------- Extract field names with props ---------------------------
+ 
+_raw:
+2021-06-13 14:19:23.333,TRXID=43212725,FROM=22B88291-BBAE-4212-846A-EDA66A5631ED,TO=BC42ED8B-D6F3-408E-9A58-80BBB486BC1A,ActionCode=OTFYGW KYCDUBFR 0117 256Y033A0093 148>5181 7254BFR 
+ 
+extract 3 feilds: origin, country, chizcode
+ 
+.+KYC(?P<origin>\D{3})(?P<country>\D{2})\s(?P<chizcode>\d{1,4})
+ 
+extract date and time
+ 
+^(?P<game_date>\d{4}-\d{2}-\d{2})\s(?P<game_time>\d{2}:\d{2}:\d{2}\.\d{3})
+ 
+[wocheese] 
+EXTRACT-action_data = ActionCode=.+KYC(?P<origin>\w{3})(?P<country>\D{2})\s(?P<chizcode>\d{1,4}) 
+EXTRACT-game_time = ^(?P<game_date>\d{4}-\d{2}-\d{2})\s(?P<game_time>\d{2}:\d{2}:\d{2}\.\d{3}) 
+ 
