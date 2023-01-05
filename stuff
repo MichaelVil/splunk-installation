@@ -1,0 +1,358 @@
+------------------------------------------------------ Add custom Date to Inputs ------------------------------------------------------
+ 
+index=something
+| eval someDate = strptime(someDate, "%Y-%m-%d %H:%M:%S")
+| eval _time = someDate 
+| addinfo
+| where _time >= info_min_time AND (_time <= info_max_time OR info_max_time="+Infinity")
+| eval someDate = strftime(someDate, "%Y-%m-%d %H:%M:%S")
+ 
+--------------------------------------------------------- All Splunk alerts ---------------------------------------------------------
+ 
+| rest/servicesNS/-/-/saved/searches 
+| search alert.track=1 
+| fields title description search disabled triggered_alert_count actions action.script.filename alert.severity cron_schedule
+ 
+--------------------------------------------------------- Split fields ---------------------------------------------------------
+ 
+URL 1: xxx/yyy/ServiceName
+URL 2: aaa/bbb/ccc/ddd/serviceName
+ 
+To split from the beginning:
+ 
+| mvindex(split(URL, "/"),0)
+| mvindex(split(URL, "/"),1)
+ 
+From the end
+ 
+| mvindex(split(URL,"/"),-1)
+ 
+------------------------------------------------ Delimiter based KV-extraction ------------------------------------------------
+ 
+| makeresults
+| eval _raw = "Jan 5 18:21:49.817: %VOIPAAA-5-VOIP_FEAT_HISTORY: FEAT_VSA=fn:TWC,ft:01/05/2012 18:21:34.254,cgn:3333,cdn:1023,frs:0,fid:1013,fcid:EDD6080E370011E18A2BC77F1C86C06D,legID:455,bguid:EDD6080E370011E18A2BC77F1C86C06D"
+| extract kvdelim=":" pairdelim=","
+ 
+| kv pairdelim="?&" kvdelim="="
+or
+| extract pairdelim="?&" kvdelim="="
+ 
+-------------------------------------------------- Add Refresh button to Dashboard ----------------------------------------------
+ 
+<html>
+	<style>
+	div.fieldset.dashboard-form-globalfieldset div.dashboard-element.html.dashboard-element-html {display: inline-block;}
+	</style>
+	<a href="mydashboard" class="btn btn-primary">Refresh Page</a>
+</html>
+ 
+------------------------------------------- Re-index files on the UF/HF -------------------------------------------------------
+ 
+# On UF or HF
+/opt/splunkforwarder/bin/splunk stop
+/opt/splunkforwarder/bin/splunk cmd btprobe -d $SPLUNK_HOME/var/lib/splunk/fishbucket/splunk_private_db --file <file location> --reset
+/opt/splunkforwarder/bin/splunk start
+ 
+#or delete file in Fishbucket 
+#rm -rf /opt/splunkforwarder/var/lib/splunk/fishbucket/*
+ 
+# On Indexer
+ 
+/opt/splunkforwarder/bin/splunk stop
+/opt/splunkforwarder/bin/splunk clean eventdata -index yourindex
+/opt/splunkforwarder/bin/splunk start
+ 
+# Or in SH 
+index=my_index sourcetype=my_sourcetype | delete
+ 
+------------------------------------------------ Add Reset input in Splunk Dashboard ---------------------------------------------
+ 
+2. Click +Add Input > Radio.
+3. Click the Edit Input icon (pencil) and add the following settings:
+General
+• Label: Delete field1 and leave blank
+• Search on Change: V
+Token Options
+• Token: reset_menus_tok
+Static Options
+• Name: Reset Menus
+• Value: now
+Token Options
+• Default: Reset Menus
+ 
+XML
+ 
+<input type="radio" token="reset_menus_tok" searchWhenChanged="true">
+	<label></label>
+	<choice value="yes">Reset Menus</choice>
+	<default>now</default>
+		<change>
+			<unset token="form.v_country_tok"></unset>
+			<unset token="form.v_state_tok"></unset>
+			<unset token="form.v_city_tok"></unset>
+			<set token="form.reset_menus_tok">no</set>
+		</change>
+</input>
+ 
+------------------------------------------------ Create new row in inputs Splunk Dashboard ---------------------------------------------
+Insert between Inputs
+ 
+<htmll><default></default></html>
+ 
+------------------------------------------------ Add Time to Lookup ---------------------------------------------
+ 
+| where _time<relative_time(now(), "-1d@d") AND _time>relative_time(now(),"-30d@d")
+ 
+------------------------------------------------ Lookup Example ------------------------------------------------
+ 
+... | lookup <lookup-table-name> <lookup-field1> AS <local-field1>, <lookup-field2> AS <local-field2> OUTPUT <lookup-destfield1> AS <local-destfield1>, <lookup-destfield2> AS <local-destfield2> 
+ 
+------------------------------------------------ wildcards in sourcetype props.conf  ---------------------------------------------
+ 
+When there are many different source types that have a common props.conf. In order to relate to all of them in the props.conf
+ 
+acme:users
+acme:logins
+acme:sessions
+acme:....
+ 
+[(?::){0}acme:*]
+ 
+------------------------------------------------ Download report as CSV ------------------------------------------------ 
+ 
+<dashboard>
+  <label>Download CSV file</label>
+  <row>
+    <panel>
+      <title>asdasd</title>
+      <table>
+        <search>
+          <query>index=_internal 
+		  | head 1000 
+		  | stats count by sourcetype, source, host 
+		  | addinfo</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+          <done>
+            <set token="export_sid">$job.sid$</set>
+          </done>
+        </search>
+        <option name="count">100</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="link.visible">0</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+      <html>
+       <a class="btn btn-primary" role="button" href="/api/search/jobs/$export_sid$/results?isDownload=true&amp;timeFormat=%25FT%25T.%25Q%25%3Az&amp;maxLines=0&amp;count=0&amp;filename=ExportReport&amp;outputMode=csv">Download CSV</a>
+      </html>
+    </panel>
+  </row>
+</dashboard>
+ 
+----------------------------------------------- Add Hebrew Support for in CSV files -----------------------------------
+ 
+#sudo vi /opt/splunk/lib/python3.7/site-packages/splunk/rest/__init__.py
+#sudo vi /opt/splunk/etc/apps/search/bin/sendemail.py
+ 
+#====================================================================
+$SPLUNK_HOME/lib/python3.7/site-packages/splunk/rest/__init__.py
+#====================================================================
+def readall(self, blocksize=32768):
+        """
+        Returns a generator reading blocks of data from the response
+        until all data has been read
+        """
+        response = self.response
+ 
+        # BOM_UTF8 info fix - part 1
+        import codecs
+        counter = 0;
+        # End of part 1
+ 
+        while True:
+            data = response.read(blocksize)
+            if not data:
+                break
+ 
+            # BOM_UTF8 info fix - part 2
+            if counter == 0:
+                data = b"".join((codecs.BOM_UTF8, data))
+                counter += 1
+            # End of part 2
+ 
+            yield data
+ 
+#====================================================================
+$SPLUNK_HOME/etc/apps/search/bin/sendemail.py
+#====================================================================
+def generateCSVResults(results, escapeCSVNewline):
+    if len(results) == 0:
+        return ''
+ 
+    header = []
+    s = BytesIO()
+ 
+    # BOM_UTF8 info fix for Excel compatibility
+    import codecs
+    s.write(codecs.BOM_UTF8)
+    # BOM_UTF8 info fix end
+ 
+    if sys.version_info >= (3, 0):
+        t = TextIOWrapper(s, write_through = True, encoding='utf-8')
+        w = csv.writer(t)
+    else:
+        w = csv.writer(s)
+ 
+    if "_time" in results[0] : header.append("_time")
+    if "_raw"  in results[0] : header.append("_raw")
+ 
+    # for backwards compatibility remove all internal fields except _raw and _time
+    for k in results[0].keys():
+       if k.startswith("_") :
+          continue
+       header.append(k)
+ 
+    w.writerow(header)
+    # output each result's values
+    for result in results:
+        row = []
+        for col in header:
+            val = result.get(col,"")
+            if isinstance(val, list):
+                val = ' '.join(map(str,val))
+            if (escapeCSVNewline):
+                row.append(esc(val))
+            else:
+                row.append(val)
+ 
+        w.writerow(row)
+    return s.getvalue()
+ 
+#Create new SHA256 checksums
+ 
+#sha256sums /opt/splunk/lib/python3.7/site-packages/splunk/rest/__init__.py
+#sha256sums /opt/splunk/etc/apps/search/bin/sendemail.py
+ 
+#Replace the checksum to Splunk manifest file
+ 
+----------------------------------------------- Different panel sizes Dashboard -----------------------------------
+ 
+<panel depends="$alwaysHideCSS$">
+  <html>
+    <style>
+      #panelid1{
+        width:25% !important;
+      }
+      #panelid2{
+        width:30% !important;
+      }
+      #panelid2{
+        width:45% !important;
+      }
+    </style>
+  </html>
+</panel>
+ 
+----------------------------------------------- Create CSV button to download panel ----------------------------------------------- 
+ 
+<form>
+  <label>Download CSV file</label>
+  <row>
+    <panel>
+      <html depends="$export_button$">
+       <a class="btn btn-primary" role="button" href="/api/search/jobs/$export_sid$/results?isDownload=true&amp;timeFormat=%25FT%25T.%25Q%25%3Az&amp;maxLines=0&amp;count=0&amp;filename=$filename_token$&amp;outputMode=csv">Download CSV</a>
+      </html>
+      <table>
+        <search>
+          <query>index=_internal | head 1000  | stats count by sourcetype, source, host</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+          <done>
+            <set token="export_sid">$job.sid$</set>
+            <set button="export_button">1</set>
+          </done>
+        </search>
+        <option name="count">100</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="link.visible">0</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+</form>
+ 
+----------------------------------------------- Refresh Button ----------------------------------------------- 
+ 
+<html>
+      <style>
+        div.fieldset.dashboard-form-globalfieldset div.dashboard-element.html.dashboard-element-html {
+        display: inline-block;
+        }
+      </style>
+      <a href="mydashboard" class="btn btn-primary">רענן דף</a>
+</html>
+ 
+----------------------------------------------- Free text in dashboard ----------------------------------------------- 
+ 
+<html>
+     <default>
+        <style>
+    .style {
+    font-size:30px;
+    padding-left:4cm;
+    text-align:right;
+    }
+        </style>
+	<p class="style">לסמן רק ☑ אחד בכל שורה (מבין 3 אפשרויות)</p>
+	<p class="style">SUBMIT לאחר מילוי כל עמוד, ללחוץ על כפתורר</p>
+     </default>
+</html>
+ 
+----------------------------------------------- Extract JSON to table ----------------------------------------------- 
+ 
+index=splchallenge earliest=-1s
+| head 1
+| append
+    [| makeresults count=1
+    | eval _raw="{\"runtime\":\"".now()."\",\"items\":[{\"user\":\"user1\",\"action\":\"open\"},{\"user\":\"user2\",\"action\":\"close\"},{\"user\":\"user4\"},{\"user\":\"user3\",\"action\":\"delete\"}]}"]
+| rex mode=sed "s/(\"user\":\"[^\"]+\")\}/\1,\"action\":\" \"}/g"
+| spath
+| eval temp = mvzip('items{}.action', 'items{}.user')
+| mvexpand temp
+| rex field=temp "(?<action>.*)\,(?<user>.*)"
+| streamstats count as rowNum
+| table rowNum runtime action user
+ 
+----------------------------------------------- Use LEAD and LAG in Splunk ----------------------------------------------- 
+ 
+| makeresults count=50
+| streamstats c as i
+| eval severity=case(i<5,"INFO",i<15,"WARN",i<23,"INFO",i<31,"ERROR",i>=31,"INFO")
+| eval system="systemA"
+| append [| makeresults count=50
+| streamstats c as i
+| eval severity=case(i<10,"INFO",i<20,"ERROR",i<37,"WARN",i<40,"INFO",i>=40,"WARN")
+| eval system="systemB"]
+| eval _time=1668981600+i
+| fields - i
+| sort system _time
+| streamstats window=1 current=f global=f values(severity) as lastSeverity by system
+| where lastSeverity != severity OR isnull(lastSeverity)
+| reverse
+| streamstats current=f last(_time) as lastSeverity by system
+| eval duration = (lastSeverity - _time)*1000
+| table _time system severity duration
+| sort system _time
+ 
