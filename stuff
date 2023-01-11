@@ -117,44 +117,7 @@ acme:sessions
 acme:....
  
 [(?::){0}acme:*]
- 
------------------------------------------------- Download report as CSV ------------------------------------------------ 
- 
-<dashboard>
-  <label>Download CSV file</label>
-  <row>
-    <panel>
-      <title>asdasd</title>
-      <table>
-        <search>
-          <query>index=_internal 
-		  | head 1000 
-		  | stats count by sourcetype, source, host 
-		  | addinfo</query>
-          <earliest>-24h@h</earliest>
-          <latest>now</latest>
-          <sampleRatio>1</sampleRatio>
-          <done>
-            <set token="export_sid">$job.sid$</set>
-          </done>
-        </search>
-        <option name="count">100</option>
-        <option name="dataOverlayMode">none</option>
-        <option name="drilldown">none</option>
-        <option name="link.visible">0</option>
-        <option name="percentagesRow">false</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="rowNumbers">false</option>
-        <option name="totalsRow">false</option>
-        <option name="wrap">true</option>
-      </table>
-      <html>
-       <a class="btn btn-primary" role="button" href="/api/search/jobs/$export_sid$/results?isDownload=true&amp;timeFormat=%25FT%25T.%25Q%25%3Az&amp;maxLines=0&amp;count=0&amp;filename=ExportReport&amp;outputMode=csv">Download CSV</a>
-      </html>
-    </panel>
-  </row>
-</dashboard>
- 
+  
 ----------------------------------------------- Add Hebrew Support for in CSV files -----------------------------------
  
 #sudo vi /opt/splunk/lib/python3.7/site-packages/splunk/rest/__init__.py
@@ -258,40 +221,6 @@ def generateCSVResults(results, escapeCSVNewline):
     </style>
   </html>
 </panel>
- 
------------------------------------------------ Create CSV button to download panel ----------------------------------------------- 
- 
-<form>
-  <label>Download CSV file</label>
-  <row>
-    <panel>
-      <html depends="$export_button$">
-       <a class="btn btn-primary" role="button" href="/api/search/jobs/$export_sid$/results?isDownload=true&amp;timeFormat=%25FT%25T.%25Q%25%3Az&amp;maxLines=0&amp;count=0&amp;filename=$filename_token$&amp;outputMode=csv">Download CSV</a>
-      </html>
-      <table>
-        <search>
-          <query>index=_internal | head 1000  | stats count by sourcetype, source, host</query>
-          <earliest>-24h@h</earliest>
-          <latest>now</latest>
-          <sampleRatio>1</sampleRatio>
-          <done>
-            <set token="export_sid">$job.sid$</set>
-            <set button="export_button">1</set>
-          </done>
-        </search>
-        <option name="count">100</option>
-        <option name="dataOverlayMode">none</option>
-        <option name="drilldown">none</option>
-        <option name="link.visible">0</option>
-        <option name="percentagesRow">false</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="rowNumbers">false</option>
-        <option name="totalsRow">false</option>
-        <option name="wrap">true</option>
-      </table>
-    </panel>
-  </row>
-</form>
  
 ----------------------------------------------- Refresh Button ----------------------------------------------- 
  
