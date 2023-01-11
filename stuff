@@ -6,6 +6,16 @@ index=something
 | addinfo
 | where _time >= info_min_time AND (_time <= info_max_time OR info_max_time="+Infinity")
 | eval someDate = strftime(someDate, "%Y-%m-%d %H:%M:%S")
+
+OR
+
+index=something
+| eval time = someDate
+| eval a = "$time.earliest$" b = "$time.latest$"
+| eval earliest = case(isnum(a), a, a="0", 631144800, 1=1, relative_time(now(), a))
+, latest = if(isnum(b), b, relative_time(now(), if(b="","-0",b)))
+| where someDate >= earliest AND someDate <= latest
+
  
 --------------------------------------------------------- All Splunk alerts ---------------------------------------------------------
  
