@@ -44,4 +44,4 @@ targetUri=<deployment server ip>:8089
 [deployment-client] 
 disabled = false
 
-
+/opt/splunkforwarder/bin/splunk restart -f
