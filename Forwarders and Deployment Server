@@ -31,7 +31,7 @@ server = <splunk indexer ip1>:9997,<splunk indexer ip2>:9997
  
 [tcpout-server://<splunk indexer ip1>:9997] 
 [tcpout-server://<splunk indexer ip2>:9997] 
-ENDOUT
+
 
 #Deployment Server
 
