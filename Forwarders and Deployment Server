@@ -1,1 +1,47 @@
 
+Splunk UF Installation 
+
+#run as root
+groupadd splunk
+useradd -d /opt/splunkforwarder -m -g splunk splunk
+wget -O splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/universalforwarder/releases/8.2.2/linux/splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
+rpm -ivh splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
+/opt/splunkforwarder/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
+chown -R splunk:splunk /opt/splunkforwarder/
+su - splunk
+/opt/splunkforwarder/bin/splunk start (OR systemctl start splunk)
+
+#Check open ports for Indexers/Deployment Server/HF/Master Node
+
+telnet <indexer/HF/Master Node IP> 9997
+telnet <Deployment Server IP> 8089
+
+-------------------------------- Sending Data to 1-2 Indexers/HF --------------------------------
+#Outputs
+
+mkdir -p /opt/splunkforwarder/etc/apps/<some app name>/local/
+vi outputs.conf
+
+[tcpout] 
+defaultGroup = default-autolb-group 
+ 
+[tcpout:default-autolb-group] 
+disabled = false 
+server = <splunk indexer ip1>:9997,<splunk indexer ip2>:9997 
+ 
+[tcpout-server://<splunk indexer ip1>:9997] 
+[tcpout-server://<splunk indexer ip2>:9997] 
+ENDOUT
+
+#Deployment Server
+
+mkdir -p /opt/splunkforwarder/etc/apps/<some app name>/local/
+vi deploymentclient.conf
+
+[target-broker:deploymentServer] 
+targetUri=<deployment server ip>:8089
+
+[deployment-client] 
+disabled = false
+
+
