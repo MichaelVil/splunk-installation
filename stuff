@@ -295,3 +295,14 @@ index=splchallenge earliest=-1s
 | table _time system severity duration
 | sort system _time
  
+----------------------------------------------- Create Date Column ----------------------------------------------- 
+
+| makeresults count=7000
+| streamstats c as i
+| eval _time = 1672524000
+| 
+
+
+
+
+
