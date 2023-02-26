@@ -59,7 +59,6 @@ chown -R splunk:splunk /opt/splunkforwarder/
 su - splunk
 /opt/splunkforwarder/bin/splunk start (OR systemctl start splunk)
 
-
 #Splunk Removal
 
 #run as root
@@ -72,7 +71,6 @@ rm -rf /opt/splunkdata
 userdel splunk
 groupdel splunk
 
-
 #Splunk UF Removal
 
 #run as root
@@ -83,3 +81,32 @@ kill -9 `ps -ef | grep splunk | grep -v grep | awk '{print $2;}'`
 rm -rf /opt/splunkforwarder
 userdel splunk
 groupdel splunk
+
+#VM Settings for Cent OS Installation (Virtual Box Example)
+
+VM Settings > Network > Adapter2
+Attached to: Host-only Adapter
+
+After OS Installation (as root)
+
+nmtui
+Adapter 1 (main):
+IPv4 Configuration: <Automatic>
+IPv6 Configuration: <Automatic>
+[X] Automatically connect
+
+Adapter 2 (Virtual):
+IPv4 Configuration: <Manual>
+Addresses: <preferred IP address that will be used to access Splunk through web>
+IPv6 Configuration: <Automatic>
+[X] Automatically connect
+
+
+
+
+
+
+
+
+
+
