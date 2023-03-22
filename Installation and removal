@@ -11,12 +11,31 @@ default ports:
 8000 for clients to the Splunk Search page
 8089 for splunkd (also used by deployment server).
 
-#disable firewall:
+#disable firewall or add open ports in the firewall
 systemctl stop firewalld
 systemctl disable firewalld
 
+OR
+
+firewall-cmd –permanent –add-port={8000/tcp,8089/tcp,9997/tcp}
+firewall-cmd –reload
+
 #change hostname 
 hostnamectl set-hostname <your-new-hostname>
+
+#Turn OFF SELInux
+vi /etc/selinux/config
+SELINUX=disabled
+
+#Give Splunk user Sudo privileges
+visudo
+
+## The COMMANDS section may have other options added to it.
+##
+## Allow root to run any commands anywhere
+
+root    ALL=(ALL)       ALL
+splunk ALL=(ALL:ALL) ALL
 
 #Splunk Installation 
 
@@ -32,6 +51,8 @@ su - splunk
 
 #Add splunk user to root (CentOS/Redhat) or adm (Debian/Ubuntu) group to have read access to /var/log/secure:
 usermod -a -G root splunk
+
+
 
 #Disable telemetry - Add following lines 
 vi /opt/splunk/etc/apps/splunk_instrumentation/local/telemetry.conf
