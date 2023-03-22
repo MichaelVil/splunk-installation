@@ -11,14 +11,9 @@ default ports:
 8000 for clients to the Splunk Search page
 8089 for splunkd (also used by deployment server).
 
-#disable firewall or add open ports in the firewall
+#OR disable firewall
 systemctl stop firewalld
 systemctl disable firewalld
-
-OR
-
-firewall-cmd –permanent –add-port={8000/tcp,8089/tcp,9997/tcp}
-firewall-cmd –reload
 
 #change hostname 
 hostnamectl set-hostname <your-new-hostname>
