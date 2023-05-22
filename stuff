@@ -47,15 +47,6 @@ From the end
 or
 | extract pairdelim="?&" kvdelim="="
  
--------------------------------------------------- Add Refresh button to Dashboard ----------------------------------------------
- 
-<html>
-	<style>
-	div.fieldset.dashboard-form-globalfieldset div.dashboard-element.html.dashboard-element-html {display: inline-block;}
-	</style>
-	<a href="mydashboard" class="btn btn-primary">Refresh Page</a>
-</html>
- 
 ------------------------------------------- Re-index files on the UF/HF -------------------------------------------------------
  
 # On UF or HF
@@ -214,51 +205,6 @@ def generateCSVResults(results, escapeCSVNewline):
  
 #Replace the checksum to Splunk manifest file
  
------------------------------------------------ Different panel sizes Dashboard -----------------------------------
- 
-<panel depends="$alwaysHideCSS$">
-  <html>
-    <style>
-      #panelid1{
-        width:25% !important;
-      }
-      #panelid2{
-        width:30% !important;
-      }
-      #panelid2{
-        width:45% !important;
-      }
-    </style>
-  </html>
-</panel>
- 
------------------------------------------------ Refresh Button ----------------------------------------------- 
- 
-<html>
-      <style>
-        div.fieldset.dashboard-form-globalfieldset div.dashboard-element.html.dashboard-element-html {
-        display: inline-block;
-        }
-      </style>
-      <a href="mydashboard" class="btn btn-primary">רענן דף</a>
-</html>
- 
------------------------------------------------ Free text in dashboard ----------------------------------------------- 
- 
-<html>
-     <default>
-        <style>
-    .style {
-    font-size:30px;
-    padding-left:4cm;
-    text-align:right;
-    }
-        </style>
-	<p class="style">לסמן רק ☑ אחד בכל שורה (מבין 3 אפשרויות)</p>
-	<p class="style">SUBMIT לאחר מילוי כל עמוד, ללחוץ על כפתורר</p>
-     </default>
-</html>
- 
 ----------------------------------------------- Extract JSON to table ----------------------------------------------- 
  
 index=splchallenge earliest=-1s
@@ -295,12 +241,15 @@ index=splchallenge earliest=-1s
 | table _time system severity duration
 | sort system _time
  
------------------------------------------------ Create Date Column ----------------------------------------------- 
+----------------------------------------------- Generate Certificates ----------------------------------------------- 
 
-| makeresults count=7000
-| streamstats c as i
-| eval _time = 1672524000
-| 
+--Generate 2 files from Splunk
+/opt/splunk/bin/splunk cmd openssl genrsa -aes256 -out myCAPrivateKey.key 2048
+/opt/splunk/bin/splunk cmd req -new -key myCAPrivateKey.key -out myCACertificate.csr
+
+
+
+
 
 
 
