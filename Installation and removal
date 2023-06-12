@@ -1,3 +1,5 @@
+###################################################### OS Level ######################################################
+
 #Time Zone configuration. Set the correct TZ:
 timedatectl set-timezone Asia/Jerusalem
 
@@ -32,7 +34,26 @@ visudo
 root    ALL=(ALL)       ALL
 splunk ALL=(ALL:ALL) ALL
 
-#Splunk Installation 
+###################################################### VM Settings for Splunk Installation  ######################################################
+
+VM Settings > Network > Adapter2
+Attached to: Host-only Adapter
+
+After OS Installation (as root)
+
+nmtui
+Adapter 1 (main):
+IPv4 Configuration: <Automatic>
+IPv6 Configuration: <Automatic>
+[X] Automatically connect
+
+Adapter 2 (Virtual):
+IPv4 Configuration: <Manual>
+Addresses: <preferred IP address that will be used to access Splunk through web>
+IPv6 Configuration: <Automatic>
+[X] Automatically connect
+
+###################################################### Splunk Installation  ######################################################
 
 #run as root
 groupadd splunk
@@ -46,8 +67,6 @@ su - splunk
 
 #Add splunk user to root (CentOS/Redhat) or adm (Debian/Ubuntu) group to have read access to /var/log/secure:
 usermod -a -G root splunk
-
-
 
 #Disable telemetry - Add following lines 
 vi /opt/splunk/etc/apps/splunk_instrumentation/local/telemetry.conf
@@ -63,7 +82,7 @@ precheckSendSupportUsage = false
 #Install Splunk License (Web GUI or)
 /opt/splunk/bin/splunk add licenses <path to license> -auth admin:pa$$w0rd
 
-Splunk UF Installation 
+###################################################### Splunk UF Installation  ######################################################
 
 #run as root
 groupadd splunk
@@ -75,7 +94,7 @@ chown -R splunk:splunk /opt/splunkforwarder/
 su - splunk
 /opt/splunkforwarder/bin/splunk start (OR systemctl start splunk)
 
-#Splunk Removal
+###################################################### Splunk Removal  ######################################################
 
 #run as root
 /opt/splunk/bin/splunk stop
@@ -98,24 +117,54 @@ rm -rf /opt/splunkforwarder
 userdel splunk
 groupdel splunk
 
-#VM Settings for Cent OS Installation (Virtual Box Example)
+###################################################### Splunk Cluster Upgrade  ######################################################
 
-VM Settings > Network > Adapter2
-Attached to: Host-only Adapter
+#Download Splunk version that need to be upgraded to, for example:
+wget -O splunk-8.2.11-e73c56f930c5.x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.11/linux/splunk-8.2.11-e73c56f930c5.x86_64.rpm"
 
-After OS Installation (as root)
+1. Upgrade Manager Node
 
-nmtui
-Adapter 1 (main):
-IPv4 Configuration: <Automatic>
-IPv6 Configuration: <Automatic>
-[X] Automatically connect
+$SPLUNK_HOME/bin/splunk stop
+$SPLUNK_HOME/bin/splunk status
+# Backup Apps & Master Apps
+tar –cvzf master-apps_backup $SPLUNK_HOME/etc/master-apps/; tar –cvzf apps_backup $SPLUNK_HOME/etc/apps/; 
+rpm -U <rpm package>.rpm
+$SPLUNK_HOME/bin/splunk start enable boot-start --accept-license --answer-yes
+$SPLUNK_HOME/bin/splunk --version
+$SPLUNK_HOME/bin/splunk status
 
-Adapter 2 (Virtual):
-IPv4 Configuration: <Manual>
-Addresses: <preferred IP address that will be used to access Splunk through web>
-IPv6 Configuration: <Automatic>
-[X] Automatically connect
+2. Upgrade SH Cluster
+
+$SPLUNK_HOME/bin/splunk stop
+$SPLUNK_HOME/bin/splunk status
+# Backup Apps
+tar –cvzf apps_backup $SPLUNK_HOME/etc/apps/; 
+rpm -U <rpm package>.rpm
+$SPLUNK_HOME/bin/splunk start enable boot-start --accept-license --answer-yes
+$SPLUNK_HOME/bin/splunk --version
+$SPLUNK_HOME/bin/splunk status
+
+3. Upgrade Indexers
+
+Enable maintenance mode on Manager Node
+$SPLUNK_HOME/bin/splunk enable maintenance-mode
+$SPLUNK_HOME/bin/splunk show maintenance-mode
+
+# On Indexers (one at a time)
+$SPLUNK_HOME/bin/splunk stop
+$SPLUNK_HOME/bin/splunk status
+# Backup Apps & Slave Apps
+tar –cvzf slave-apps_backup $SPLUNK_HOME/etc/slave-apps/; tar –cvzf apps_backup $SPLUNK_HOME/etc/apps/;
+rpm -U <rpm package>.rpm
+$SPLUNK_HOME/bin/splunk start enable boot-start --accept-license --answer-yes
+$SPLUNK_HOME/bin/splunk --version
+$SPLUNK_HOME/bin/splunk status
+
+After upgrading all the indexers disable maintenance mode on Manager Node
+$SPLUNK_HOME/bin/splunk disable maintenance-mode
+
+
+
 
 
 
