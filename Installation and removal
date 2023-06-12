@@ -128,7 +128,7 @@ $SPLUNK_HOME/bin/splunk stop
 # Backup Apps & Master Apps
 tar –cvzf master-apps_backup $SPLUNK_HOME/etc/master-apps/; tar –cvzf apps_backup $SPLUNK_HOME/etc/apps/; 
 rpm -U <rpm package>.rpm
-$SPLUNK_HOME/bin/splunk start enable boot-start --accept-license --answer-yes
+$SPLUNK_HOME/bin/splunk start --accept-license --answer-yes
 $SPLUNK_HOME/bin/splunk --version
 $SPLUNK_HOME/bin/splunk status
 
@@ -138,7 +138,7 @@ $SPLUNK_HOME/bin/splunk stop
 # Backup Apps
 tar –cvzf apps_backup $SPLUNK_HOME/etc/apps/; 
 rpm -U <rpm package>.rpm
-$SPLUNK_HOME/bin/splunk start enable boot-start --accept-license --answer-yes
+$SPLUNK_HOME/bin/splunk start --accept-license --answer-yes
 $SPLUNK_HOME/bin/splunk --version
 $SPLUNK_HOME/bin/splunk status
 
@@ -153,7 +153,7 @@ $SPLUNK_HOME/bin/splunk stop
 # Backup Apps & Slave Apps
 tar –cvzf slave-apps_backup $SPLUNK_HOME/etc/slave-apps/; tar –cvzf apps_backup $SPLUNK_HOME/etc/apps/;
 rpm -U <rpm package>.rpm
-$SPLUNK_HOME/bin/splunk start enable boot-start --accept-license --answer-yes
+$SPLUNK_HOME/bin/splunk start --accept-license --answer-yes
 $SPLUNK_HOME/bin/splunk --version
 $SPLUNK_HOME/bin/splunk status
 
