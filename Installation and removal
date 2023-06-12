@@ -125,7 +125,6 @@ wget -O splunk-8.2.11-e73c56f930c5.x86_64.rpm "https://download.splunk.com/produ
 1. Upgrade Manager Node
 
 $SPLUNK_HOME/bin/splunk stop
-$SPLUNK_HOME/bin/splunk status
 # Backup Apps & Master Apps
 tar –cvzf master-apps_backup $SPLUNK_HOME/etc/master-apps/; tar –cvzf apps_backup $SPLUNK_HOME/etc/apps/; 
 rpm -U <rpm package>.rpm
@@ -136,7 +135,6 @@ $SPLUNK_HOME/bin/splunk status
 2. Upgrade SH Cluster
 
 $SPLUNK_HOME/bin/splunk stop
-$SPLUNK_HOME/bin/splunk status
 # Backup Apps
 tar –cvzf apps_backup $SPLUNK_HOME/etc/apps/; 
 rpm -U <rpm package>.rpm
@@ -152,7 +150,6 @@ $SPLUNK_HOME/bin/splunk show maintenance-mode
 
 # On Indexers (one at a time)
 $SPLUNK_HOME/bin/splunk stop
-$SPLUNK_HOME/bin/splunk status
 # Backup Apps & Slave Apps
 tar –cvzf slave-apps_backup $SPLUNK_HOME/etc/slave-apps/; tar –cvzf apps_backup $SPLUNK_HOME/etc/apps/;
 rpm -U <rpm package>.rpm
