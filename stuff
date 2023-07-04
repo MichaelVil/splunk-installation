@@ -247,8 +247,18 @@ index=splchallenge earliest=-1s
 /opt/splunk/bin/splunk cmd openssl genrsa -aes256 -out myCAPrivateKey.key 2048
 /opt/splunk/bin/splunk cmd req -new -key myCAPrivateKey.key -out myCACertificate.csr
 
+--Send file to CSI. After recieving the file convert to PEM
 
+/opt/splunk/bin/splunk cmd openssl x509 -inform der -in <ROOT CERTIFICATE FROM CSI>.cer -out myCACertificate.pem
+/opt/splunk/bin/splunk cmd openssl x509 -req -in myCACertificate.csr -CA myCACertificate.pem -CAkey myCAPrivateKey.key -CAcreateserial -out mySplunkWebCert.pem -days 1095
+/opt/splunk/bin/splunk cmd openssl rsa -in myCAPrivateKey.key -out mySplunkWebPrivateKey.key
+cat myCACertificate.pem mySplunkWebCert.pem > mySplunkWebCertificate.pem
 
+--Deploy to SH Cluster 
+/opt/splunk/bin/splunk apply shcluster-bundle -target https://<SH Captain>:8089 -auth <admin>:<password> --answer-yes
+
+- Restart SH Cluster
+/opt/splunk/bin/splunk rolling-restart shcluster-memebers -auth <admin>:<password>
 
 
 
