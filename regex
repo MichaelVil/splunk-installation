@@ -26,10 +26,17 @@ OR
  
 | rex field =_raw "string:\s(?<string>.*)"
  
--------------------------------------------- Get all values before first . -------------------------------------------- 
- 
-| rex field = _raw "^(?<dot>[^\.]+)"
- 
+-------------------------------------------- Get all values before first value -------------------------------------------- 
+
+242423424-sfsfsfsfsf
+jghjgjsdfsf.34534535
+
+| rex field = <field> "^(?<field>[^\.]+)"
+| rex field = <field> "^(?<field>[^\-]+)"
+
+242423424
+jghjgjsdfsf
+
 -------------------------------------------- Extract from table -------------------------------------------- 
  
 R/S/I			Power Supply (W)		Voltage (V)		Current (A)
@@ -96,7 +103,38 @@ Result:
 "role = admin" "session_timeout = 86400" "detection_id = 102034" "target_ip = 192.168.88.89"
 "action = add" "ip = 192.168.35.22" "role = admin" "session_timeout = 86400" "detection_id = 102034" "target_ip = 192.168.88.89"
  
- 
+--------------------------- Split numeric string to groups ---------------------------
+
+123456789000
+
+| rex field=<field> "(?<field1>[\d]{2})(?<field2>[\d]{3})(?<field3>[\d]+)"
+
+Result:
+12 
+345
+6789000
+
+--------------------------- Remove leadong zero ---------------------------
+
+000123456
+099999
+
+| rex field=<field> mode=sed "s/^0//g"
+
+Result:
+00123456 
+99999
+
+--------------------------- Remove numeric values after first value (,) ---------------------------
+
+aaaaaaaaaaaaaa, bbbbbbbbbb, cccccccccc, 123456
+12345:12345-12345, 12345
+
+| rex field=<field> mode=sed "s/,[\d]+//"
+
+aaaaaaaaaaaaaa, bbbbbbbbbb, cccccccccc
+12345:12345-12345
+
 --------------------------- Extract field names with props ---------------------------
  
 _raw:
