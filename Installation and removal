@@ -53,6 +53,14 @@ Addresses: <preferred IP address that will be used to access Splunk through web>
 IPv6 Configuration: <Automatic>
 [X] Automatically connect
 
+If no Internet connection:
+
+vi /etc/sysconfig/network-scripts/ifcfg-enp0s3
+DNS1=8.8.8.8
+DNS2=8.8.4.4
+# Note this was set to no
+ONBOOT=yes  
+
 ###################################################### Splunk Installation  ######################################################
 
 #run as root
