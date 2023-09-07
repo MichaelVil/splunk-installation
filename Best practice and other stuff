@@ -39,6 +39,8 @@ TIME_FORMAT = %Y-%m-%dT%H:%M:%S.%6N%:z
 TRUNCATE = 999999 
 TRANSFORMS = null_queue
 
+*Timestamp in ISO8601 that has YYYY‐mm‐ddTHH:MM:SSZ format is in UTC
+
 #transforms.conf example
 
 #Remove events that have the following event codes: 4634|4688|4648|4907
