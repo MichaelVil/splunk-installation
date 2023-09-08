@@ -1,0 +1,15 @@
+makemv
+
+| makeresults
+| eval field = "1,2,3,4,5"
+| makemv delim="," field
+
+field
+-----
+1
+2
+3
+4
+5
+
+
