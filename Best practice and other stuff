@@ -1,17 +1,3 @@
-################################## Forward internal data (_internal, _audit and etc) to the indexer layer ##################################
-
-[indexAndForward]
-index = false
- 
-[tcpout]
-defaultGroup = my_peers_nodes 
-forwardedindex.filter.disable = true  
-indexAndForward = false 
- 
-[tcpout:my_peers_nodes]
-server=<peer1>:9997,<peer2>:9997,<peer3>:9997
-
-
 ################################## inputs, props and transforms examples ##################################
 
 #props.conf example
