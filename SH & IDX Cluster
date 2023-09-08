@@ -298,26 +298,3 @@ _________________________________________________________________ Config Monitor
 
 
 
-
-
-
-
-
-
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#Configure the forwarders to use indexer discovery (On each forwarder, add these settings to the outputs.conf file) 
-
-vi /opt/splunkforwarder/etc/system/local/inputs.conf
-
-[tcpout]
-defaultGroup = default-autolb-group
-
-[tcpout:default-autolb-group]
-indexerDiscovery = idx_cluster
-useACK = true
-
-[indexer_discovery:idx_cluster]
-master_uri = https://192.168.56.14:8089
-pass4SymmKey = secret
-
