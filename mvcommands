@@ -70,3 +70,18 @@ count | field1 | field2 | field3
 4     | one    | two    |
 5     | one    | two    |
 
+mvcount 
+
+| makeresults count=5
+| streamstats count
+| mvcombine delim="," count
+| eval field1 = mvcount(count)
+
+count | field1 
+--------------
+1     | 5
+2     |
+3     |
+4     |
+5     | 
+
