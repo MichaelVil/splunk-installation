@@ -27,4 +27,46 @@ count | field1 | field2
 4     |        |
 5     |        |
 
+nomv
+
+| makeresults count=5
+| streamstats count
+| eval field1 = "one", field2 = "two"
+| mvcombine delim="," count
+| nomv count
+
+count     | field1 | field2
+-----------------------
+1,2,3,4,5 | one    | two
+
+mvexpand
+
+| makeresults count=5
+| streamstats count
+| eval field1 = "one", field2 = "two"
+| mvcombine delim="," count
+| mvexpand count
+
+count | field1 | field2
+-----------------------
+1     | one    | two
+2     | one    | two
+3     | one    | two
+4     | one    | two
+5     | one    | two
+
+mvappend
+
+| makeresults count=5
+| streamstats count
+| eval field1 = "one", field2 = "two"
+| eval field3 = mvappend(field1, field2, count)
+
+count | field1 | field2 | field3
+--------------------------------
+1     | one    | two    | 
+2     | one    | two    |
+3     | one    | two    |
+4     | one    | two    |
+5     | one    | two    |
 
