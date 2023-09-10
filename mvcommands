@@ -85,3 +85,81 @@ count | field1
 4     |
 5     | 
 
+mvdedup
+
+| makeresults 
+| eval field = "Mickey Mouse,Minnie Mouse,Donald Duck,Goofy,Goofy,Pluto"
+| makemv delim="," field
+| eval field1 = mvdedup(field)
+
+field        | field1
+Mickey Mouse | Mickey Mouse
+Minnie Mouse | Minnie Mouse
+Donald Duck  | Donald Duck
+Goofy        | Goofy
+Goofy        | Pluto
+Pluto        |
+
+mvfilter
+
+| makeresults 
+| eval field = "Mickey Mouse,Minnie Mouse,Donald Duck,Goofy,Goofy,Pluto"
+| makemv delim="," field
+| eval field1 = mvfilter(field IN ("Goofy"))
+
+field        | field1
+Mickey Mouse | Goofy
+Minnie Mouse | Goofy
+Donald Duck  | 
+Goofy        | 
+Goofy        | 
+Pluto        |
+
+mvfind
+
+| makeresults 
+| eval field = "Mickey Mouse,Minnie Mouse,Donald Duck,Goofy,Goofy,Pluto"
+| makemv delim="," field
+| eval field1=mvfind(field, "Goofy")
+
+field        | field1
+Mickey Mouse | 3
+Minnie Mouse | 
+Donald Duck  | 
+Goofy        | 
+Goofy        | 
+Pluto        |
+
+mvindex
+
+| makeresults 
+| eval field = "Mickey Mouse,Minnie Mouse,Donald Duck,Goofy,Goofy,Pluto"
+| makemv delim="," field
+``` | eval field1=mvindex(field, <STARTINDEX>, <ENDINDEX>) ```
+| eval field1=mvindex(field, 0, 3)
+
+field        | field1
+Mickey Mouse | Mickey Mouse
+Minnie Mouse | Minnie Mouse
+Donald Duck  | Donald Duck
+Goofy        | Goofy
+Goofy        | 
+Pluto        |
+
+mvjoin
+
+| makeresults 
+| eval field = "Mickey Mouse,Minnie Mouse,Donald Duck,Goofy,Goofy,Pluto"
+| makemv delim="," field
+| eval field = mvdedup(field)
+| eval joinNames = mvjoin(field, " and ")
+
+field        | field1
+Mickey Mouse | Mickey Mouse and Minnie Mouse and Donald Duck and Goofy and Pluto
+Minnie Mouse | 
+Donald Duck  | 
+Goofy        | 
+Pluto        |
+
+mvrange
+
