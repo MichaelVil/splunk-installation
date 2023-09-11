@@ -93,6 +93,7 @@ mvdedup
 | eval field1 = mvdedup(field)
 
 field        | field1
+---------------------
 Mickey Mouse | Mickey Mouse
 Minnie Mouse | Minnie Mouse
 Donald Duck  | Donald Duck
@@ -108,6 +109,7 @@ mvfilter
 | eval field1 = mvfilter(field IN ("Goofy"))
 
 field        | field1
+---------------------
 Mickey Mouse | Goofy
 Minnie Mouse | Goofy
 Donald Duck  | 
@@ -123,6 +125,7 @@ mvfind
 | eval field1=mvfind(field, "Goofy")
 
 field        | field1
+---------------------
 Mickey Mouse | 3
 Minnie Mouse | 
 Donald Duck  | 
@@ -139,6 +142,7 @@ mvindex
 | eval field1=mvindex(field, 0, 3)
 
 field        | field1
+---------------------
 Mickey Mouse | Mickey Mouse
 Minnie Mouse | Minnie Mouse
 Donald Duck  | Donald Duck
@@ -155,6 +159,7 @@ mvjoin
 | eval joinNames = mvjoin(field, " and ")
 
 field        | field1
+---------------------
 Mickey Mouse | Mickey Mouse and Minnie Mouse and Donald Duck and Goofy and Pluto
 Minnie Mouse | 
 Donald Duck  | 
@@ -168,6 +173,7 @@ mvrange
 | eval field = mvrange(1,10,2)
 
 field
+-----
 1
 3
 5
@@ -181,4 +187,52 @@ field
 | eval startDateEpoch = strptime(startDate, "%d/%m/%Y"), endDateEpoch = strptime(endDate, "%d/%m/%Y")
 | eval dateRange = mvrange(startDateEpoch, endDateEpoch, "1d")
 | eval dateRange = strftime(dateRange, "%d/%m/%Y")
+
+mvsort
+
+| makeresults 
+| eval field = "Mickey Mouse,Minnie Mouse,Donald Duck,Goofy,Goofy,Pluto"
+| makemv delim="," field
+| eval field1 = mvsort(field)
+
+field        | field1
+---------------------
+Mickey Mouse | Donald Duck
+Minnie Mouse | Goofy
+Donald Duck  | Goofy
+Goofy        | Mickey Mouse
+Goofy        | Minnie Mouse
+Pluto        | Pluto
+
+mvzip
+
+| makeresults 
+| eval field = "a,b,c,d,e", field1 = "1,2,3,4,5"
+| makemv delim="," field
+| makemv delim="," field1
+| eval field2 = mvzip(field, field1, "|")
+
+field        | field1 | field2
+------------------------------
+a            | 1      | a|1
+b            | 2      | b|2
+c            | 3      | c|3
+d            | 4      | d|4
+e            | 5      | e|5
+
+split
+
+| makeresults 
+| eval field = "a,b,c,d,e"
+| eval field1 = split(field, ",")
+
+field     | field1
+------------------
+a,b,c,d,e | a
+          | b
+          | c
+          | d
+          | e
+
+
 
