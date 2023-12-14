@@ -270,3 +270,9 @@ curl -k https://127.0.0.1:8088/services/collector/event -H 'Authorization: Splun
     [ stats count 
     | where count=0 
     | eval count="No data, Please check later"]
+
+------------------------------- Use static resources from one app in another -------------------------------------
+
+<dashboard stylesheet="<app_name>:<style_filename>.css" script="<app_name>:<script_filename>.js">
+<dashboard stylesheet="search:my_custom_styles.css" script="search:my_custom_script.js">
+
