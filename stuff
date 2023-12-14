@@ -276,3 +276,8 @@ curl -k https://127.0.0.1:8088/services/collector/event -H 'Authorization: Splun
 <dashboard stylesheet="<app_name>:<style_filename>.css" script="<app_name>:<script_filename>.js">
 <dashboard stylesheet="search:my_custom_styles.css" script="search:my_custom_script.js">
 
+------------------------------------- NOT IN ---------------------------------------
+
+| search NOT field IN ("1234", "2345", "3456", "4567", "5678", "6789", "7890")
+| where NOT IN (field, "1234", "2345", "3456", "4567", "5678", "6789", "7890")
+
