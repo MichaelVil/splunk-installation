@@ -262,6 +262,6 @@ cat myCACertificate.pem mySplunkWebCert.pem > mySplunkWebCertificate.pem
 
 ----------------------------------------------- Check HEC ----------------------------------------------- 
 
-curl -k https://127.0.0.1:8088/services/collector/event -H 'Authorization: Splunk  9d952d27-5589-4ece-98b0-58faf9a1dec6' -d '{"sourcetype": "demo", "event":"Hello, world!"}' 
+curl -k https://127.0.0.1:8088/services/collector/event -H 'Authorization: Splunk <HEC token>' -d '{"sourcetype": "demo", "event":"Hello, world!"}' 
 
 
