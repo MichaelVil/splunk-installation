@@ -264,4 +264,9 @@ cat myCACertificate.pem mySplunkWebCert.pem > mySplunkWebCertificate.pem
 
 curl -k https://127.0.0.1:8088/services/collector/event -H 'Authorization: Splunk <HEC token>' -d '{"sourcetype": "demo", "event":"Hello, world!"}' 
 
+------------------------------------------------- Replace 'no results found' message with custom data -------------------------------------------------
 
+| appendpipe 
+    [ stats count 
+    | where count=0 
+    | eval count="No data, Please check later"]
