@@ -152,3 +152,25 @@ extract date and time
 EXTRACT-action_data = ActionCode=.+KYC(?P<origin>\w{3})(?P<country>\D{2})\s(?P<chizcode>\d{1,4}) 
 EXTRACT-game_time = ^(?P<game_date>\d{4}-\d{2}-\d{2})\s(?P<game_time>\d{2}:\d{2}:\d{2}\.\d{3}) 
  
+--------------------------- Extract value after N position of delimiter ---------------------------
+
+|scooby|pluto|guffy|mickey|
+
+^[^|]*(?:\|[^|]*){2}(?<guffy>\|[^|]*\|)
+
+|guffy|
+
+| makeresults
+
+--------------------------------- Extract values between delimiters within markers ---------------------------------
+
+| eval _raw = "Dec-28-2023|12:05:46,836|10.150.6.118|148:|Branch Banking|Ast_yaronn|d168a8b9-5647-421b-97ba-f2aa3bceb69a|1:Creation page stack|Success|action_portfolio_forms_c_save.action|8050:PORTFOLIO ONBOARDING - FORMS CAPTURE||04148101178|||||||aa|dd||"
+
+| rex "^([^\|]*\|){19}(?<oldAccountType>[^\~|\|]*)~|\|"
+| rex "^([^\|]*\|){19}.+~(?<newAccountType>[^\|]*)\|"
+| rex "^([^\|]*\|){20}(?<oldAccountSubType>[^\~|\|]*)~|\|"
+| rex "^([^\|]*\|){20}.+~(?<newAccountSubType>[^\|]*)\|"
+| eval oldAccountType=if(isnull(oldAccountType) OR oldAccountType = " ", "noData", oldAccountType)
+| eval newAccountType=if(isnull(newAccountType) OR newAccountType = " ", "noData", newAccountType)
+| eval oldAccountSubType=if(isnull(oldAccountSubType) OR oldAccountSubType = " ", "noData", oldAccountSubType)
+| eval newAccountSubType=if(isnull(newAccountSubType) OR newAccountSubType = " ", "noData", newAccountSubType)
