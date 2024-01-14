@@ -281,3 +281,73 @@ curl -k https://127.0.0.1:8088/services/collector/event -H 'Authorization: Splun
 | search NOT field IN ("1234", "2345", "3456", "4567", "5678", "6789", "7890")
 | where NOT IN (field, "1234", "2345", "3456", "4567", "5678", "6789", "7890")
 
+------------------------------------- Route Data to Multiple Destinations UF -------------------------------------
+
+##outputs.conf
+
+[tcpout]
+defaultGroup = splunk-target-indexers 
+
+[tcpout:splunk-target-indexers]
+server = x.x.x.x:9997 
+
+[tcpout:non-splunk-target-group]
+server = x.x.x.x:port
+sendCookedData = false
+
+[tcpout:splunk-heavy-forwarder]
+server = x.x.x.x:9997
+
+##inputs.conf
+
+# This will route to default group
+[monitor:///var/log/abc.log]
+index = os_nix
+sourcetype = abc-log
+
+# This will route to splunk-target-indexers and non-splunk-target-group
+[monitor:///var/log/def.log]
+index = os_nix
+sourcetype = def-log
+_TCP_ROUTING = splunk-target-group,non-splunk-target-group
+
+------------------------------------- Route Data to Multiple Destinations HF -------------------------------------
+
+##outputs.conf
+
+[tcpout]
+defaultGroup = splunk-target-group
+
+[tcpout:splunk-target-group]
+server = x.x.x.x:9997
+
+[tcpout:non-splunk-target-group]
+server = x.x.x.x:port
+sendCookedData = false
+
+[syslog]
+defaultGroup = syslogGroup
+
+[syslog:syslogGroup]
+server = ipddress:port OR hostname:port
+type = udp|tcp
+
+------------------------------------- Route data to Syslog -------------------------------------
+
+##props.conf
+
+#Route data from a specific host to syslog
+[host::somehost*]
+TRANSFORMS-syslog_output = send_to_syslog
+
+#Route a specific sourcetype to syslog
+[sourcetype::some-sourcetype]
+TRANSFORMS-syslog_out = send_to_syslog
+
+##transforms.conf
+
+#Create a transform to route data
+[send-to-syslog]
+REGEX = . #This will capture all events, you can write a regex to capture specific events
+DEST_KEY = _SYSLOG_ROUTING
+FORMAT = syslogGroup
