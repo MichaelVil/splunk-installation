@@ -1,3 +1,6 @@
+How to Securely Copy Files in Linux | scp Command
+https://www.geeksforgeeks.org/scp-command-in-linux-with-examples/
+
 Find largest lookup or csv file’s on search head.
 find /opt/splunk/ -iname "*.csv" -type f -exec du -Sh {} + | sort -rh | head -n 10
 
