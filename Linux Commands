@@ -6,3 +6,9 @@ find /opt/splunk/ -iname "*.csv" -type f -exec du -Sh {} + | sort -rh | head -n 
 
 # Move files between instances (On the source host)
 scp <file location> <user name>@<destination host name>:<destination>
+
+#Search for a string in all files / files with specific extension
+grep -Rnw /opt/splunk -e '<string to search>'
+grep --include=\*.conf -rnw '/opt/splunk' -e "<string to search>"
+
+
