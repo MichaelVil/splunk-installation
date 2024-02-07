@@ -27,3 +27,6 @@ https://www.somerfordassociates.com/splunk-overall-best-practice-data-onboarding
 
 Route and filter data
 https://docs.splunk.com/Documentation/Splunk/latest/Forwarding/Routeandfilterdatad
+
+How to make splunk heavy-forwarder reiterate over props.conf after changing the sourcetype with a transforms.conf
+https://www.linkedin.com/pulse/how-make-splunk-heavy-forwarder-reiterate-over-after-changing-efi/
