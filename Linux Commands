@@ -11,4 +11,5 @@ scp <file location> <user name>@<destination host name>:<destination>
 grep -Rnw /opt/splunk -e '<string to search>'
 grep --include=\*.conf -rnw '/opt/splunk' -e "<string to search>"
 
-
+# Check if port is open: source > destination. Run on source
+nc -v <destination host / ip> <port #>
