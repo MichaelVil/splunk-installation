@@ -69,6 +69,7 @@ R/S/I			Power Supply (W)		Voltage (V)		Current (A)
 | rex max_match=0 ".*,\"job_name\":\"(?P<job_name>.[^\"\,\"]*)"
  
 ---------------------- From specific value @ until first appearing value : ------------------
+
 "@345345435:345345@435435:3@435345345:2"
  
 | rex field=name "^\@(?P<new_name>[^\:]+)"
@@ -109,21 +110,16 @@ Result:
 
 | rex field=<field> "(?<field1>[\d]{2})(?<field2>[\d]{3})(?<field3>[\d]+)"
 
-Result:
 12 
 345
 6789000
 
 --------------------------- Remove leadong zero ---------------------------
-
 000123456
-099999
 
 | rex field=<field> mode=sed "s/^0//g"
 
-Result:
-00123456 
-99999
+123456 
 
 --------------------------- Remove numeric values after first value (,) ---------------------------
 
@@ -158,10 +154,6 @@ EXTRACT-game_time = ^(?P<game_date>\d{4}-\d{2}-\d{2})\s(?P<game_time>\d{2}:\d{2}
 
 ^[^|]*(?:\|[^|]*){2}(?<guffy>\|[^|]*\|)
 
-|guffy|
-
-| makeresults
-
 --------------------------------- Extract values between delimiters within markers ---------------------------------
 
 | eval _raw = "Dec-28-2023|12:05:46,836|10.150.6.118|148:|Branch Banking|Ast_yaronn|d168a8b9-5647-421b-97ba-f2aa3bceb69a|1:Creation page stack|Success|action_portfolio_forms_c_save.action|8050:PORTFOLIO ONBOARDING - FORMS CAPTURE||04148101178|||||||aa|dd||"
@@ -174,3 +166,6 @@ EXTRACT-game_time = ^(?P<game_date>\d{4}-\d{2}-\d{2})\s(?P<game_time>\d{2}:\d{2}
 | eval newAccountType=if(isnull(newAccountType) OR newAccountType = " ", "noData", newAccountType)
 | eval oldAccountSubType=if(isnull(oldAccountSubType) OR oldAccountSubType = " ", "noData", oldAccountSubType)
 | eval newAccountSubType=if(isnull(newAccountSubType) OR newAccountSubType = " ", "noData", newAccountSubType)
+
+--------------------------------- 
+
