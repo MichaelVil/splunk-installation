@@ -30,3 +30,20 @@ https://docs.splunk.com/Documentation/Splunk/latest/Forwarding/Routeandfilterdat
 
 How to make splunk heavy-forwarder reiterate over props.conf after changing the sourcetype with a transforms.conf
 https://www.linkedin.com/pulse/how-make-splunk-heavy-forwarder-reiterate-over-after-changing-efi/
+
+Clara Merriman's Blog Posts | Splunk
+https://www.splunk.com/en_us/blog/author/cmerriman.html
+
+https://github.com/TheWoodRanger
+
+Rcommended .conf presentations
+PLA1881C - Maximizing Splunk SPL™: Foreach and the Power of Iterative, Templatized Evals
+PLA1641B - Splunk® Ingest Actions and Rulesets: Advanced Pipeline Configurations
+PLA1335B - Getting Smarter About Splunk® SmartStore: Best Practices or Bust
+PLA1577B - Dashboarding Wowzas! Top Tips for Making Your Dashboards Awesome!
+PLA1261C - Regain Control of Your Config: Managing Conf Files in Splunk® Cloud Platform Using Rest API
+DEV1967B - Containerize Your Splunk App Development
+DEV1671B - Custom Dashboards to Infinity and Beyond!
+FNC2751 - Master Joining Datasets Without Using Join
+PLA1089C - TSTATS and PREFIX
+TRU1133B - Clara-Fication More Tstats for Your Buckets
