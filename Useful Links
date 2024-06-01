@@ -47,3 +47,17 @@ DEV1671B - Custom Dashboards to Infinity and Beyond!
 FNC2751 - Master Joining Datasets Without Using Join
 PLA1089C - TSTATS and PREFIX
 TRU1133B - Clara-Fication More Tstats for Your Buckets
+
+Drilldown into TSTATS, incl. PREFIX and TERM 
+https://conf.splunk.com/files/2020/slides/PLA1089C.pdf
+
+.conf21 TRU1133B-V Clara-Fication: More Tstats for Your Buckets
+https://conf.splunk.com/files/2021/slides/TRU1133B.pdf
+
+.conf21 SEC1423A-V To Data Model or Not to Data Model… Do You Have the Fields? That Is the Question... 
+https://conf.splunk.com/files/2021/slides/SEC1423A.pdf
+https://conf.splunk.com/files/2021/recordings/SEC1423A.mp4
+
+Lesser known search commands 
+https://conf.splunk.com/files/2021/slides/TRU1079B.pdf
+https://conf.splunk.com/files/2021/recordings/TRU1079B.mp4
