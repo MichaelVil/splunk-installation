@@ -62,1047 +62,350 @@ Lesser known search commands
 https://conf.splunk.com/files/2021/slides/TRU1079B.pdf
 https://conf.splunk.com/files/2021/recordings/TRU1079B.mp4
 
-
-Version	Link
-9.2.2 https://download.splunk.com/products/splunk/releases/9.2.2/windows/splunk-9.2.2-d76edf6f0a15-x64-release.msi
-9.2.1	https://download.splunk.com/products/splunk/releases/9.2.1/windows/splunk-9.2.1-78803f08aabb-x64-release.msi
-9.2.0.1	https://download.splunk.com/products/splunk/releases/9.2.0.1/windows/splunk-9.2.0.1-d8ae995bf219-x64-release.msi
-9.2.0	https://download.splunk.com/products/splunk/releases/9.2.0/windows/splunk-9.2.0-1fff88043d5f-x64-release.msi
-9.1.5	https://download.splunk.com/products/splunk/releases/9.1.5/windows/splunk-9.1.5-29befd543def-x64-release.msi
-9.1.4	https://download.splunk.com/products/splunk/releases/9.1.4/windows/splunk-9.1.4-a414fc70250e-x64-release.msi
-9.1.3	https://download.splunk.com/products/splunk/releases/9.1.3/windows/splunk-9.1.3-d95b3299fa65-x64-release.msi
-9.1.2	https://download.splunk.com/products/splunk/releases/9.1.2/windows/splunk-9.1.2-b6b9c8185839-x64-release.msi
-9.1.1	https://download.splunk.com/products/splunk/releases/9.1.1/windows/splunk-9.1.1-64e843ea36b1-x64-release.msi
-9.1.0.2	https://download.splunk.com/products/splunk/releases/9.1.0.2/windows/splunk-9.1.0.2-b6436b649711-x64-release.msi
-9.1.0.1	https://download.splunk.com/products/splunk/releases/9.1.0.1/windows/splunk-9.1.0.1-77f73c9edb85-x64-release.msi
-9.1.0	https://download.splunk.com/products/splunk/releases/9.1.0/windows/splunk-9.1.0-1c86ca0bacc3-x64-release.msi
-9.0.9	https://download.splunk.com/products/splunk/releases/9.0.9/windows/splunk-9.0.9-6315942c563f-x64-release.msi
-9.0.8	https://download.splunk.com/products/splunk/releases/9.0.8/windows/splunk-9.0.8-4fb5067d40d2-x64-release.msi
-9.0.7	https://download.splunk.com/products/splunk/releases/9.0.7/windows/splunk-9.0.7-b985591d12fd-x64-release.msi
-9.0.6	https://download.splunk.com/products/splunk/releases/9.0.6/windows/splunk-9.0.6-050c9bca8588-x64-release.msi
-9.0.5.1	https://download.splunk.com/products/splunk/releases/9.0.5.1/windows/splunk-9.0.5.1-52d49260b188-x64-release.msi
-9.0.5	https://download.splunk.com/products/splunk/releases/9.0.5/windows/splunk-9.0.5-e9494146ae5c-x64-release.msi
-9.0.4.1	https://download.splunk.com/products/splunk/releases/9.0.4.1/windows/splunk-9.0.4.1-419ad9369127-x64-release.msi
-9.0.4	https://download.splunk.com/products/splunk/releases/9.0.4/windows/splunk-9.0.4-de405f4a7979-x64-release.msi
-9.0.3	https://download.splunk.com/products/splunk/releases/9.0.3/windows/splunk-9.0.3-dd0128b1f8cd-x64-release.msi
-9.0.2	https://download.splunk.com/products/splunk/releases/9.0.2/windows/splunk-9.0.2-17e00c557dc1-x64-release.msi
-9.0.10	https://download.splunk.com/products/splunk/releases/9.0.10/windows/splunk-9.0.10-f551b9b500f8-x64-release.msi
-9.0.1	https://download.splunk.com/products/splunk/releases/9.0.1/windows/splunk-9.0.1-82c987350fde-x64-release.msi
-9.0.0.1	https://download.splunk.com/products/splunk/releases/9.0.0.1/windows/splunk-9.0.0.1-9e907cedecb1-x64-release.msi
-9.0.0	https://download.splunk.com/products/splunk/releases/9.0.0/windows/splunk-9.0.0-6818ac46f2ec-x86-release.msi
-8.2.9	https://download.splunk.com/products/splunk/releases/8.2.9/windows/splunk-8.2.9-4a20fb65aa78-x64-release.msi
-8.2.8	https://download.splunk.com/products/splunk/releases/8.2.8/windows/splunk-8.2.8-da25d08d5d3e-x64-release.msi
-8.2.7.1	https://download.splunk.com/products/splunk/releases/8.2.7.1/windows/splunk-8.2.7.1-c2b65bc24aea-x64-release.msi
-8.2.7	https://download.splunk.com/products/splunk/releases/8.2.7/windows/splunk-8.2.7-2e1fca123028-x64-release.msi
-8.2.6.1	https://download.splunk.com/products/splunk/releases/8.2.6.1/windows/splunk-8.2.6.1-5f0da8f6e22c-x64-release.msi
-8.2.6	https://download.splunk.com/products/splunk/releases/8.2.6/windows/splunk-8.2.6-a6fe1ee8894b-x64-release.msi
-8.2.5	https://download.splunk.com/products/splunk/releases/8.2.5/windows/splunk-8.2.5-77015bc7a462-x64-release.msi
-8.2.4	https://download.splunk.com/products/splunk/releases/8.2.4/windows/splunk-8.2.4-87e2dda940d1-x64-release.msi
-8.2.3.3	https://download.splunk.com/products/splunk/releases/8.2.3.3/windows/splunk-8.2.3.3-e40ea5a516d2-x64-release.msi
-8.2.3	https://download.splunk.com/products/splunk/releases/8.2.3/windows/splunk-8.2.3-cd0848707637-x64-release.msi
-8.2.2.1	https://download.splunk.com/products/splunk/releases/8.2.2.1/windows/splunk-8.2.2.1-ae6821b7c64b-x64-release.msi
-8.2.12	https://download.splunk.com/products/splunk/releases/8.2.12/windows/splunk-8.2.12-e973afd6886e-x64-release.msi
-8.2.11.2	https://download.splunk.com/products/splunk/releases/8.2.11.2/windows/splunk-8.2.11.2-84863c49dc5d-x64-release.msi
-8.2.11	https://download.splunk.com/products/splunk/releases/8.2.11/windows/splunk-8.2.11-e73c56f930c5-x64-release.msi
-8.2.10	https://download.splunk.com/products/splunk/releases/8.2.10/windows/splunk-8.2.10-417e74d5c950-x64-release.msi
-8.2.1	https://download.splunk.com/products/splunk/releases/8.2.1/windows/splunk-8.2.1-ddff1c41e5cf-x64-release.msi
-8.2.0	https://download.splunk.com/products/splunk/releases/8.2.0/windows/splunk-8.2.0-e053ef3c985f-x64-release.msi
-8.1.9	https://download.splunk.com/products/splunk/releases/8.1.9/windows/splunk-8.1.9-a16db3287b56-x64-release.msi
-8.1.9	https://download.splunk.com/products/splunk/releases/8.1.9/windows/splunk-8.1.9-a16db3287b56-windows-64.zip
-8.1.8	https://download.splunk.com/products/splunk/releases/8.1.8/windows/splunk-8.1.8-39da583cc695-x64-release.msi
-8.1.8	https://download.splunk.com/products/splunk/releases/8.1.8/windows/splunk-8.1.8-39da583cc695-windows-64.zip
-8.1.7.2	https://download.splunk.com/products/splunk/releases/8.1.7.2/windows/splunk-8.1.7.2-dc318a6952c4-x64-release.msi
-8.1.7.1	https://download.splunk.com/products/splunk/releases/8.1.7.1/windows/splunk-8.1.7.1-19e1d5d518a7-x64-release.msi
-8.1.7	https://download.splunk.com/products/splunk/releases/8.1.7/windows/splunk-8.1.7-79650d4c9dc0-windows-64.zip
-8.1.7	https://download.splunk.com/products/splunk/releases/8.1.7/windows/splunk-8.1.7-79650d4c9dc0-x64-release.msi
-8.1.6	https://download.splunk.com/products/splunk/releases/8.1.6/windows/splunk-8.1.6-c1a0dd183ee5-x64-release.msi
-8.1.14	https://download.splunk.com/products/splunk/releases/8.1.14/windows/splunk-8.1.14-7b72da4f30b8-x64-release.msi
-8.1.13	https://download.splunk.com/products/splunk/releases/8.1.13/windows/splunk-8.1.13-898c6e996343-x64-release.msi
-8.1.12	https://download.splunk.com/products/splunk/releases/8.1.12/windows/splunk-8.1.12-4eb558a8f0b7-x64-release.msi
-8.1.11	https://download.splunk.com/products/splunk/releases/8.1.11/windows/splunk-8.1.11-aa854f643d76-x64-release.msi
-8.1.10.1	https://download.splunk.com/products/splunk/releases/8.1.10.1/windows/splunk-8.1.10.1-8bfab9b850ca-x64-release.msi
-8.1.10.1	https://download.splunk.com/products/splunk/releases/8.1.10.1/windows/splunk-8.1.10.1-8bfab9b850ca-windows-64.zip
-9.2.2	https://download.splunk.com/products/splunk/releases/9.2.2/linux/splunk-9.2.2-d76edf6f0a15-Linux-x86_64.tgz
-9.2.2	https://download.splunk.com/products/splunk/releases/9.2.2/linux/splunk-9.2.2-d76edf6f0a15-linux-2.6-amd64.deb
-9.2.2	https://download.splunk.com/products/splunk/releases/9.2.2/linux/splunk-9.2.2-d76edf6f0a15.x86_64.rpm
-9.2.1	https://download.splunk.com/products/splunk/releases/9.2.1/linux/splunk-9.2.1-78803f08aabb-linux-2.6-amd64.deb
-9.2.1	https://download.splunk.com/products/splunk/releases/9.2.1/linux/splunk-9.2.1-78803f08aabb-Linux-x86_64.tgz
-9.2.1	https://download.splunk.com/products/splunk/releases/9.2.1/linux/splunk-9.2.1-78803f08aabb.x86_64.rpm
-9.2.0.1	https://download.splunk.com/products/splunk/releases/9.2.0.1/linux/splunk-9.2.0.1-d8ae995bf219-linux-2.6-amd64.deb
-9.2.0.1	https://download.splunk.com/products/splunk/releases/9.2.0.1/linux/splunk-9.2.0.1-d8ae995bf219.x86_64.rpm
-9.2.0.1	https://download.splunk.com/products/splunk/releases/9.2.0.1/linux/splunk-9.2.0.1-d8ae995bf219-Linux-x86_64.tgz
-9.2.0	https://download.splunk.com/products/splunk/releases/9.2.0/linux/splunk-9.2.0-1fff88043d5f.x86_64.rpm
-9.2.0	https://download.splunk.com/products/splunk/releases/9.2.0/linux/splunk-9.2.0-1fff88043d5f-linux-2.6-amd64.deb
-9.2.0	https://download.splunk.com/products/splunk/releases/9.2.0/linux/splunk-9.2.0-1fff88043d5f-Linux-x86_64.tgz
-9.1.5	https://download.splunk.com/products/splunk/releases/9.1.5/linux/splunk-9.1.5-29befd543def-linux-2.6-amd64.deb
-9.1.5	https://download.splunk.com/products/splunk/releases/9.1.5/linux/splunk-9.1.5-29befd543def-Linux-x86_64.tgz
-9.1.5	https://download.splunk.com/products/splunk/releases/9.1.5/linux/splunk-9.1.5-29befd543def.x86_64.rpm
-9.1.4	https://download.splunk.com/products/splunk/releases/9.1.4/linux/splunk-9.1.4-a414fc70250e-linux-2.6-amd64.deb
-9.1.4	https://download.splunk.com/products/splunk/releases/9.1.4/linux/splunk-9.1.4-a414fc70250e.x86_64.rpm
-9.1.4	https://download.splunk.com/products/splunk/releases/9.1.4/linux/splunk-9.1.4-a414fc70250e-Linux-x86_64.tgz
-9.1.3	https://download.splunk.com/products/splunk/releases/9.1.3/linux/splunk-9.1.3-d95b3299fa65-Linux-x86_64.tgz
-9.1.3	https://download.splunk.com/products/splunk/releases/9.1.3/linux/splunk-9.1.3-d95b3299fa65.x86_64.rpm
-9.1.3	https://download.splunk.com/products/splunk/releases/9.1.3/linux/splunk-9.1.3-d95b3299fa65-linux-2.6-amd64.deb
-9.1.2	https://download.splunk.com/products/splunk/releases/9.1.2/linux/splunk-9.1.2-b6b9c8185839-Linux-x86_64.tgz
-9.1.2	https://download.splunk.com/products/splunk/releases/9.1.2/linux/splunk-9.1.2-b6b9c8185839-linux-2.6-amd64.deb
-9.1.2	https://download.splunk.com/products/splunk/releases/9.1.2/linux/splunk-9.1.2-b6b9c8185839.x86_64.rpm
-9.1.1	https://download.splunk.com/products/splunk/releases/9.1.1/linux/splunk-9.1.1-64e843ea36b1-linux-2.6-amd64.deb
-9.1.1	https://download.splunk.com/products/splunk/releases/9.1.1/linux/splunk-9.1.1-64e843ea36b1-Linux-x86_64.tgz
-9.1.1	https://download.splunk.com/products/splunk/releases/9.1.1/linux/splunk-9.1.1-64e843ea36b1.x86_64.rpm
-9.1.0.2	https://download.splunk.com/products/splunk/releases/9.1.0.2/linux/splunk-9.1.0.2-b6436b649711-linux-2.6-amd64.deb
-9.1.0.2	https://download.splunk.com/products/splunk/releases/9.1.0.2/linux/splunk-9.1.0.2-b6436b649711-Linux-x86_64.tgz
-9.1.0.2	https://download.splunk.com/products/splunk/releases/9.1.0.2/linux/splunk-9.1.0.2-b6436b649711.x86_64.rpm
-9.1.0.1	https://download.splunk.com/products/splunk/releases/9.1.0.1/linux/splunk-9.1.0.1-77f73c9edb85-linux-2.6-amd64.deb
-9.1.0.1	https://download.splunk.com/products/splunk/releases/9.1.0.1/linux/splunk-9.1.0.1-77f73c9edb85.x86_64.rpm
-9.1.0.1	https://download.splunk.com/products/splunk/releases/9.1.0.1/linux/splunk-9.1.0.1-77f73c9edb85-Linux-x86_64.tgz
-9.1.0	https://download.splunk.com/products/splunk/releases/9.1.0/linux/splunk-9.1.0-1c86ca0bacc3-Linux-x86_64.tgz
-9.1.0	https://download.splunk.com/products/splunk/releases/9.1.0/linux/splunk-9.1.0-1c86ca0bacc3.x86_64.rpm
-9.1.0	https://download.splunk.com/products/splunk/releases/9.1.0/linux/splunk-9.1.0-1c86ca0bacc3-linux-2.6-amd64.deb
-9.0.9	https://download.splunk.com/products/splunk/releases/9.0.9/linux/splunk-9.0.9-6315942c563f-Linux-x86_64.tgz
-9.0.9	https://download.splunk.com/products/splunk/releases/9.0.9/linux/splunk-9.0.9-6315942c563f-linux-2.6-amd64.deb
-9.0.9	https://download.splunk.com/products/splunk/releases/9.0.9/linux/splunk-9.0.9-6315942c563f.x86_64.rpm
-9.0.8	https://download.splunk.com/products/splunk/releases/9.0.8/linux/splunk-9.0.8-4fb5067d40d2-Linux-x86_64.tgz
-9.0.8	https://download.splunk.com/products/splunk/releases/9.0.8/linux/splunk-9.0.8-4fb5067d40d2-linux-2.6-amd64.deb
-9.0.8	https://download.splunk.com/products/splunk/releases/9.0.8/linux/splunk-9.0.8-4fb5067d40d2.x86_64.rpm
-9.0.7	https://download.splunk.com/products/splunk/releases/9.0.7/linux/splunk-9.0.7-b985591d12fd.x86_64.rpm
-9.0.7	https://download.splunk.com/products/splunk/releases/9.0.7/linux/splunk-9.0.7-b985591d12fd-linux-2.6-amd64.deb
-9.0.7	https://download.splunk.com/products/splunk/releases/9.0.7/linux/splunk-9.0.7-b985591d12fd-Linux-x86_64.tgz
-9.0.6	https://download.splunk.com/products/splunk/releases/9.0.6/linux/splunk-9.0.6-050c9bca8588-linux-2.6-amd64.deb
-9.0.6	https://download.splunk.com/products/splunk/releases/9.0.6/linux/splunk-9.0.6-050c9bca8588.x86_64.rpm
-9.0.6	https://download.splunk.com/products/splunk/releases/9.0.6/linux/splunk-9.0.6-050c9bca8588-Linux-x86_64.tgz
-9.0.5.1	https://download.splunk.com/products/splunk/releases/9.0.5.1/linux/splunk-9.0.5.1-52d49260b188.x86_64.rpm
-9.0.5.1	https://download.splunk.com/products/splunk/releases/9.0.5.1/linux/splunk-9.0.5.1-52d49260b188-linux-2.6-amd64.deb
-9.0.5.1	https://download.splunk.com/products/splunk/releases/9.0.5.1/linux/splunk-9.0.5.1-52d49260b188-Linux-x86_64.tgz
-9.0.5	https://download.splunk.com/products/splunk/releases/9.0.5/linux/splunk-9.0.5-e9494146ae5c-Linux-x86_64.tgz
-9.0.5	https://download.splunk.com/products/splunk/releases/9.0.5/linux/splunk-9.0.5-e9494146ae5c-linux-2.6-amd64.deb
-9.0.5	https://download.splunk.com/products/splunk/releases/9.0.5/linux/splunk-9.0.5-e9494146ae5c.x86_64.rpm
-9.0.4.1	https://download.splunk.com/products/splunk/releases/9.0.4.1/linux/splunk-9.0.4.1-419ad9369127-linux-2.6-x86_64.rpm
-9.0.4.1	https://download.splunk.com/products/splunk/releases/9.0.4.1/linux/splunk-9.0.4.1-419ad9369127-Linux-x86_64.tgz
-9.0.4.1	https://download.splunk.com/products/splunk/releases/9.0.4.1/linux/splunk-9.0.4.1-419ad9369127-linux-2.6-amd64.deb
-9.0.4	https://download.splunk.com/products/splunk/releases/9.0.4/linux/splunk-9.0.4-de405f4a7979-Linux-x86_64.tgz
-9.0.4	https://download.splunk.com/products/splunk/releases/9.0.4/linux/splunk-9.0.4-de405f4a7979-linux-2.6-x86_64.rpm
-9.0.4	https://download.splunk.com/products/splunk/releases/9.0.4/linux/splunk-9.0.4-de405f4a7979-linux-2.6-amd64.deb
-9.0.3	https://download.splunk.com/products/splunk/releases/9.0.3/linux/splunk-9.0.3-dd0128b1f8cd-linux-2.6-x86_64.rpm
-9.0.3	https://download.splunk.com/products/splunk/releases/9.0.3/linux/splunk-9.0.3-dd0128b1f8cd-Linux-x86_64.tgz
-9.0.3	https://download.splunk.com/products/splunk/releases/9.0.3/linux/splunk-9.0.3-dd0128b1f8cd-linux-2.6-amd64.deb
-9.0.2	https://download.splunk.com/products/splunk/releases/9.0.2/linux/splunk-9.0.2-17e00c557dc1-linux-2.6-amd64.deb
-9.0.2	https://download.splunk.com/products/splunk/releases/9.0.2/linux/splunk-9.0.2-17e00c557dc1-Linux-x86_64.tgz
-9.0.2	https://download.splunk.com/products/splunk/releases/9.0.2/linux/splunk-9.0.2-17e00c557dc1-linux-2.6-x86_64.rpm
-9.0.10	https://download.splunk.com/products/splunk/releases/9.0.10/linux/splunk-9.0.10-f551b9b500f8-linux-2.6-amd64.deb
-9.0.10	https://download.splunk.com/products/splunk/releases/9.0.10/linux/splunk-9.0.10-f551b9b500f8.x86_64.rpm
-9.0.10	https://download.splunk.com/products/splunk/releases/9.0.10/linux/splunk-9.0.10-f551b9b500f8-Linux-x86_64.tgz
-9.0.1	https://download.splunk.com/products/splunk/releases/9.0.1/linux/splunk-9.0.1-82c987350fde-linux-2.6-amd64.deb
-9.0.1	https://download.splunk.com/products/splunk/releases/9.0.1/linux/splunk-9.0.1-82c987350fde-Linux-x86_64.tgz
-9.0.1	https://download.splunk.com/products/splunk/releases/9.0.1/linux/splunk-9.0.1-82c987350fde-linux-2.6-x86_64.rpm
-9.0.0.1	https://download.splunk.com/products/splunk/releases/9.0.0.1/linux/splunk-9.0.0.1-9e907cedecb1-Linux-x86_64.tgz
-9.0.0	https://download.splunk.com/products/splunk/releases/9.0.0/linux/splunk-9.0.0-6818ac46f2ec-Linux-x86_64.tgz
-9.0.0	https://download.splunk.com/products/splunk/releases/9.0.0/linux/splunk-9.0.0-6818ac46f2ec-linux-2.6-x86_64.rpm
-9.0.0	https://download.splunk.com/products/splunk/releases/9.0.0/linux/splunk-9.0.0-6818ac46f2ec-linux-2.6-amd64.deb
-8.2.9	https://download.splunk.com/products/splunk/releases/8.2.9/linux/splunk-8.2.9-4a20fb65aa78-linux-2.6-x86_64.rpm
-8.2.9	https://download.splunk.com/products/splunk/releases/8.2.9/linux/splunk-8.2.9-4a20fb65aa78-Linux-x86_64.tgz
-8.2.9	https://download.splunk.com/products/splunk/releases/8.2.9/linux/splunk-8.2.9-4a20fb65aa78-linux-2.6-amd64.deb
-8.2.8	https://download.splunk.com/products/splunk/releases/8.2.8/linux/splunk-8.2.8-da25d08d5d3e-linux-2.6-x86_64.rpm
-8.2.8	https://download.splunk.com/products/splunk/releases/8.2.8/linux/splunk-8.2.8-da25d08d5d3e-Linux-x86_64.tgz
-8.2.8	https://download.splunk.com/products/splunk/releases/8.2.8/linux/splunk-8.2.8-da25d08d5d3e-linux-2.6-amd64.deb
-8.2.7.1	https://download.splunk.com/products/splunk/releases/8.2.7.1/linux/splunk-8.2.7.1-c2b65bc24aea-Linux-x86_64.tgz
-8.2.7.1	https://download.splunk.com/products/splunk/releases/8.2.7.1/linux/splunk-8.2.7.1-c2b65bc24aea-linux-2.6-x86_64.rpm
-8.2.7	https://download.splunk.com/products/splunk/releases/8.2.7/linux/splunk-8.2.7-2e1fca123028-linux-2.6-amd64.deb
-8.2.7	https://download.splunk.com/products/splunk/releases/8.2.7/linux/splunk-8.2.7-2e1fca123028-linux-2.6-x86_64.rpm
-8.2.7	https://download.splunk.com/products/splunk/releases/8.2.7/linux/splunk-8.2.7-2e1fca123028-Linux-x86_64.tgz
-8.2.6.1	https://download.splunk.com/products/splunk/releases/8.2.6.1/linux/splunk-8.2.6.1-5f0da8f6e22c-Linux-x86_64.tgz
-8.2.6.1	https://download.splunk.com/products/splunk/releases/8.2.6.1/linux/splunk-8.2.6.1-5f0da8f6e22c-linux-2.6-x86_64.rpm
-8.2.6.1	https://download.splunk.com/products/splunk/releases/8.2.6.1/linux/splunk-8.2.6.1-5f0da8f6e22c-linux-2.6-amd64.deb
-8.2.6	https://download.splunk.com/products/splunk/releases/8.2.6/linux/splunk-8.2.6-a6fe1ee8894b-linux-2.6-amd64.deb
-8.2.6	https://download.splunk.com/products/splunk/releases/8.2.6/linux/splunk-8.2.6-a6fe1ee8894b-linux-2.6-x86_64.rpm
-8.2.6	https://download.splunk.com/products/splunk/releases/8.2.6/linux/splunk-8.2.6-a6fe1ee8894b-Linux-x86_64.tgz
-8.2.5	https://download.splunk.com/products/splunk/releases/8.2.5/linux/splunk-8.2.5-77015bc7a462-linux-2.6-x86_64.rpm
-8.2.5	https://download.splunk.com/products/splunk/releases/8.2.5/linux/splunk-8.2.5-77015bc7a462-linux-2.6-amd64.deb
-8.2.5	https://download.splunk.com/products/splunk/releases/8.2.5/linux/splunk-8.2.5-77015bc7a462-Linux-x86_64.tgz
-8.2.4.3	https://download.splunk.com/products/splunk/releases/8.2.4.3/linux/splunk-8.2.4.3-28869a19ae1b-linux-2.6-x86_64.rpm
-8.2.4.3	https://download.splunk.com/products/splunk/releases/8.2.4.3/linux/splunk-8.2.4.3-28869a19ae1b-linux-2.6-amd64.deb
-8.2.4.3	https://download.splunk.com/products/splunk/releases/8.2.4.3/linux/splunk-8.2.4.3-28869a19ae1b-Linux-x86_64.tgz
-8.2.4.2	https://download.splunk.com/products/splunk/releases/8.2.4.2/linux/splunk-8.2.4.2-bf9a3c20455b-linux-2.6-x86_64.rpm
-8.2.4.2	https://download.splunk.com/products/splunk/releases/8.2.4.2/linux/splunk-8.2.4.2-bf9a3c20455b-linux-2.6-amd64.deb
-8.2.4.1	https://download.splunk.com/products/splunk/releases/8.2.4.1/linux/splunk-8.2.4.1-a3e62cbc8550-linux-2.6-amd64.deb
-8.2.4.1	https://download.splunk.com/products/splunk/releases/8.2.4.1/linux/splunk-8.2.4.1-a3e62cbc8550-Linux-x86_64.tgz
-8.2.4.1	https://download.splunk.com/products/splunk/releases/8.2.4.1/linux/splunk-8.2.4.1-a3e62cbc8550-linux-2.6-x86_64.rpm
-8.2.4	https://download.splunk.com/products/splunk/releases/8.2.4/linux/splunk-8.2.4-87e2dda940d1-linux-2.6-x86_64.rpm
-8.2.4	https://download.splunk.com/products/splunk/releases/8.2.4/linux/splunk-8.2.4-87e2dda940d1-linux-2.6-amd64.deb
-8.2.4	https://download.splunk.com/products/splunk/releases/8.2.4/linux/splunk-8.2.4-87e2dda940d1-Linux-x86_64.tgz
-8.2.3.3	https://download.splunk.com/products/splunk/releases/8.2.3.3/linux/splunk-8.2.3.3-e40ea5a516d2-linux-2.6-amd64.deb
-8.2.3.3	https://download.splunk.com/products/splunk/releases/8.2.3.3/linux/splunk-8.2.3.3-e40ea5a516d2-linux-2.6-x86_64.rpm
-8.2.3.3	https://download.splunk.com/products/splunk/releases/8.2.3.3/linux/splunk-8.2.3.3-e40ea5a516d2-Linux-x86_64.tgz
-8.2.3.2	https://download.splunk.com/products/splunk/releases/8.2.3.2/linux/splunk-8.2.3.2-5281ae34c90c-linux-2.6-amd64.deb
-8.2.3.2	https://download.splunk.com/products/splunk/releases/8.2.3.2/linux/splunk-8.2.3.2-5281ae34c90c-Linux-x86_64.tgz
-8.2.3.2	https://download.splunk.com/products/splunk/releases/8.2.3.2/linux/splunk-8.2.3.2-5281ae34c90c-linux-2.6-x86_64.rpm
-8.2.3	https://download.splunk.com/products/splunk/releases/8.2.3/linux/splunk-8.2.3-cd0848707637-Linux-x86_64.tgz
-8.2.3	https://download.splunk.com/products/splunk/releases/8.2.3/linux/splunk-8.2.3-cd0848707637-linux-2.6-x86_64.rpm
-8.2.3	https://download.splunk.com/products/splunk/releases/8.2.3/linux/splunk-8.2.3-cd0848707637-linux-2.6-amd64.deb
-
-
-
-
-
-
-Version | OS                                     | Link                                                                                                          | Checksum (MD5)
-9.2.2   | Windows 10, Windows Server 2019, 2022  | https://download.splunk.com/products/splunk/releases/9.2.2/windows/splunk-9.2.2-d76edf6f0a15-x64-release.msi  |   
-
-
-
-
-
-9.2.1
-Windows 10, Windows Server 2019, 2022
-wget -O splunk-9.2.1-78803f08aabb-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.2.1/windows/splunk-9.2.1-78803f08aabb-x64-release.msi"
-
-9.2.0.1
-Windows 10, Windows Server 2019, 2022
-wget -O splunk-9.2.0.1-d8ae995bf219-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.2.0.1/windows/splunk-9.2.0.1-d8ae995bf219-x64-release.msi"
-
-9.2.0
-Windows 10, Windows Server 2019, 2022
-wget -O splunk-9.2.0-1fff88043d5f-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.2.0/windows/splunk-9.2.0-1fff88043d5f-x64-release.msi"
-
-9.1.5
-Windows 10, Windows Server 2019, 2022
-wget -O splunk-9.1.5-29befd543def-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.1.5/windows/splunk-9.1.5-29befd543def-x64-release.msi"
-
-9.1.4
-Windows 10, Windows Server 2019, 2022
-wget -O splunk-9.1.4-a414fc70250e-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.1.4/windows/splunk-9.1.4-a414fc70250e-x64-release.msi"
-
-9.1.3
-Windows 10, Windows Server 2019, 2022
-wget -O splunk-9.1.3-d95b3299fa65-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.1.3/windows/splunk-9.1.3-d95b3299fa65-x64-release.msi"
-
-9.1.2
-Windows 10, Windows Server 2019, 2022
-wget -O splunk-9.1.2-b6b9c8185839-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.1.2/windows/splunk-9.1.2-b6b9c8185839-x64-release.msi"
-
-9.1.1
-Windows 10, Windows Server 2019, 2022
-wget -O splunk-9.1.1-64e843ea36b1-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.1.1/windows/splunk-9.1.1-64e843ea36b1-x64-release.msi"
-
-9.1.0.2
-Windows 10, Windows Server 2019, 2022
-wget -O splunk-9.1.0.2-b6436b649711-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.1.0.2/windows/splunk-9.1.0.2-b6436b649711-x64-release.msi"
-
-9.1.0.1
-Windows 10, Windows Server 2019, 2022
-wget -O splunk-9.1.0.1-77f73c9edb85-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.1.0.1/windows/splunk-9.1.0.1-77f73c9edb85-x64-release.msi"
-
-9.1.0
-Windows 10, Windows Server 2019, 2022
-wget -O splunk-9.1.0-1c86ca0bacc3-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.1.0/windows/splunk-9.1.0-1c86ca0bacc3-x64-release.msi"
-
-9.0.9
-Windows 10, Windows Server 2019, 2022
-wget -O splunk-9.0.9-6315942c563f-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.0.9/windows/splunk-9.0.9-6315942c563f-x64-release.msi"
-
-9.0.8
-Windows 10
-Windows Server 2016, 2019, 2022
-wget -O splunk-9.0.8-4fb5067d40d2-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.0.8/windows/splunk-9.0.8-4fb5067d40d2-x64-release.msi"
-
-9.0.7
-Windows 10
-Windows Server 2016, 2019, 2022
-wget -O splunk-9.0.7-b985591d12fd-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.0.7/windows/splunk-9.0.7-b985591d12fd-x64-release.msi"
-
-9.0.6
-Windows 10
-Windows Server 2016, 2019, 2022
-wget -O splunk-9.0.6-050c9bca8588-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.0.6/windows/splunk-9.0.6-050c9bca8588-x64-release.msi"
-
-9.0.5.1
-Windows 10
-Windows Server 2016, 2019, 2022
-wget -O splunk-9.0.5.1-52d49260b188-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.0.5.1/windows/splunk-9.0.5.1-52d49260b188-x64-release.msi"
-
-9.0.5
-Windows 10
-Windows Server 2016, 2019, 2022
-wget -O splunk-9.0.5-e9494146ae5c-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.0.5/windows/splunk-9.0.5-e9494146ae5c-x64-release.msi"
-
-9.0.4.1
-Windows 10
-Windows Server 2016, 2019, 2022
-wget -O splunk-9.0.4.1-419ad9369127-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.0.4.1/windows/splunk-9.0.4.1-419ad9369127-x64-release.msi"
-
-9.0.4
-Windows 10
-Windows Server 2016, 2019, 2022
-wget -O splunk-9.0.4-de405f4a7979-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.0.4/windows/splunk-9.0.4-de405f4a7979-x64-release.msi"
-
-9.0.3
-Windows 10 Windows Server 2016,2019
-wget -O splunk-9.0.3-dd0128b1f8cd-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.0.3/windows/splunk-9.0.3-dd0128b1f8cd-x64-release.msi"
-
-9.0.2
-Windows 10 Windows Server 2016,2019
-wget -O splunk-9.0.2-17e00c557dc1-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.0.2/windows/splunk-9.0.2-17e00c557dc1-x64-release.msi"
-
-9.0.10
-Windows 10
-Windows Server 2016, 2019, 2022
-wget -O splunk-9.0.10-f551b9b500f8-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.0.10/windows/splunk-9.0.10-f551b9b500f8-x64-release.msi"
-
-9.0.1
-Windows 10 Windows Server 2016,2019
-wget -O splunk-9.0.1-82c987350fde-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.0.1/windows/splunk-9.0.1-82c987350fde-x64-release.msi"
-
-9.0.0.1
-Windows 10 Windows Server 2016,2019
-wget -O splunk-9.0.0.1-9e907cedecb1-x64-release.msi "https://download.splunk.com/products/splunk/releases/9.0.0.1/windows/splunk-9.0.0.1-9e907cedecb1-x64-release.msi"
-
-9.0.0
-Windows 10 Windows Server 2016,2019
-wget -O splunk-9.0.0-6818ac46f2ec-x86-release.msi "https://download.splunk.com/products/splunk/releases/9.0.0/windows/splunk-9.0.0-6818ac46f2ec-x86-release.msi"
-
-8.2.9
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.2.9-4a20fb65aa78-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.2.9/windows/splunk-8.2.9-4a20fb65aa78-x64-release.msi"
-
-8.2.8
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.2.8-da25d08d5d3e-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.2.8/windows/splunk-8.2.8-da25d08d5d3e-x64-release.msi"
-
-8.2.7.1
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.2.7.1-c2b65bc24aea-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.2.7.1/windows/splunk-8.2.7.1-c2b65bc24aea-x64-release.msi"
-
-8.2.7
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.2.7-2e1fca123028-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.2.7/windows/splunk-8.2.7-2e1fca123028-x64-release.msi"
-
-8.2.6.1
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.2.6.1-5f0da8f6e22c-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.2.6.1/windows/splunk-8.2.6.1-5f0da8f6e22c-x64-release.msi"
-
-8.2.6
-Windows 10
-Windows Server 2016, 2019, 2022
-wget -O splunk-8.2.6-a6fe1ee8894b-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.2.6/windows/splunk-8.2.6-a6fe1ee8894b-x64-release.msi"
-
-8.2.5
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.2.5-77015bc7a462-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.2.5/windows/splunk-8.2.5-77015bc7a462-x64-release.msi"
-
-8.2.4
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.2.4-87e2dda940d1-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.2.4/windows/splunk-8.2.4-87e2dda940d1-x64-release.msi"
-
-8.2.3.3
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.2.3.3-e40ea5a516d2-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.2.3.3/windows/splunk-8.2.3.3-e40ea5a516d2-x64-release.msi"
-
-8.2.3
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.2.3-cd0848707637-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.2.3/windows/splunk-8.2.3-cd0848707637-x64-release.msi"
-
-8.2.2.1
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.2.2.1-ae6821b7c64b-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.2.2.1/windows/splunk-8.2.2.1-ae6821b7c64b-x64-release.msi"
-
-8.2.12
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.2.12-e973afd6886e-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.2.12/windows/splunk-8.2.12-e973afd6886e-x64-release.msi"
-
-8.2.11.2
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.2.11.2-84863c49dc5d-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.2.11.2/windows/splunk-8.2.11.2-84863c49dc5d-x64-release.msi"
-
-8.2.11
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.2.11-e73c56f930c5-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.2.11/windows/splunk-8.2.11-e73c56f930c5-x64-release.msi"
-
-8.2.10
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.2.10-417e74d5c950-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.2.10/windows/splunk-8.2.10-417e74d5c950-x64-release.msi"
-
-8.2.1
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.2.1-ddff1c41e5cf-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.2.1/windows/splunk-8.2.1-ddff1c41e5cf-x64-release.msi"
-
-8.2.0
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.2.0-e053ef3c985f-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.2.0/windows/splunk-8.2.0-e053ef3c985f-x64-release.msi"
-
-8.1.9
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.1.9-a16db3287b56-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.1.9/windows/splunk-8.1.9-a16db3287b56-x64-release.msi"
-wget -O splunk-8.1.9-a16db3287b56-windows-64.zip "https://download.splunk.com/products/splunk/releases/8.1.9/windows/splunk-8.1.9-a16db3287b56-windows-64.zip"
-
-8.1.8
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.1.8-39da583cc695-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.1.8/windows/splunk-8.1.8-39da583cc695-x64-release.msi"
-wget -O splunk-8.1.8-39da583cc695-windows-64.zip "https://download.splunk.com/products/splunk/releases/8.1.8/windows/splunk-8.1.8-39da583cc695-windows-64.zip"
-
-8.1.7.2
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.1.7.2-dc318a6952c4-windows-64.zip "https://download.splunk.com/products/splunk/releases/8.1.7.2/windows/splunk-8.1.7.2-dc318a6952c4-windows-64.zip"
-wget -O splunk-8.1.7.2-dc318a6952c4-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.1.7.2/windows/splunk-8.1.7.2-dc318a6952c4-x64-release.msi"
-
-8.1.7.1
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.1.7.1-19e1d5d518a7-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.1.7.1/windows/splunk-8.1.7.1-19e1d5d518a7-x64-release.msi"
-
-8.1.7
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.1.7-79650d4c9dc0-windows-64.zip "https://download.splunk.com/products/splunk/releases/8.1.7/windows/splunk-8.1.7-79650d4c9dc0-windows-64.zip"
-wget -O splunk-8.1.7-79650d4c9dc0-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.1.7/windows/splunk-8.1.7-79650d4c9dc0-x64-release.msi"
-
-8.1.6
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.1.6-c1a0dd183ee5-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.1.6/windows/splunk-8.1.6-c1a0dd183ee5-x64-release.msi"
-
-8.1.14
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.1.14-7b72da4f30b8-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.1.14/windows/splunk-8.1.14-7b72da4f30b8-x64-release.msi"
-
-8.1.13
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.1.13-898c6e996343-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.1.13/windows/splunk-8.1.13-898c6e996343-x64-release.msi"
-
-8.1.12
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.1.12-4eb558a8f0b7-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.1.12/windows/splunk-8.1.12-4eb558a8f0b7-x64-release.msi"
-
-8.1.11
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.1.11-aa854f643d76-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.1.11/windows/splunk-8.1.11-aa854f643d76-x64-release.msi"
-
-8.1.10.1
-Windows 10 Windows Server 2016,2019
-wget -O splunk-8.1.10.1-8bfab9b850ca-x64-release.msi "https://download.splunk.com/products/splunk/releases/8.1.10.1/windows/splunk-8.1.10.1-8bfab9b850ca-x64-release.msi"
-wget -O splunk-8.1.10.1-8bfab9b850ca-windows-64.zip "https://download.splunk.com/products/splunk/releases/8.1.10.1/windows/splunk-8.1.10.1-8bfab9b850ca-windows-64.zip"
-
-9.2.2
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.2.2-d76edf6f0a15-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.2.2/linux/splunk-9.2.2-d76edf6f0a15-Linux-x86_64.tgz"
-wget -O splunk-9.2.2-d76edf6f0a15-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.2.2/linux/splunk-9.2.2-d76edf6f0a15-linux-2.6-amd64.deb"
-wget -O splunk-9.2.2-d76edf6f0a15.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.2.2/linux/splunk-9.2.2-d76edf6f0a15.x86_64.rpm"
-
-9.2.1
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.2.1-78803f08aabb-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.2.1/linux/splunk-9.2.1-78803f08aabb-linux-2.6-amd64.deb"
-wget -O splunk-9.2.1-78803f08aabb-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.2.1/linux/splunk-9.2.1-78803f08aabb-Linux-x86_64.tgz"
-wget -O splunk-9.2.1-78803f08aabb.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.2.1/linux/splunk-9.2.1-78803f08aabb.x86_64.rpm"
-
-9.2.0.1
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.2.0.1-d8ae995bf219-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.2.0.1/linux/splunk-9.2.0.1-d8ae995bf219-linux-2.6-amd64.deb"
-wget -O splunk-9.2.0.1-d8ae995bf219.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.2.0.1/linux/splunk-9.2.0.1-d8ae995bf219.x86_64.rpm"
-wget -O splunk-9.2.0.1-d8ae995bf219-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.2.0.1/linux/splunk-9.2.0.1-d8ae995bf219-Linux-x86_64.tgz"
-
-9.2.0
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.2.0-1fff88043d5f.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.2.0/linux/splunk-9.2.0-1fff88043d5f.x86_64.rpm"
-wget -O splunk-9.2.0-1fff88043d5f-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.2.0/linux/splunk-9.2.0-1fff88043d5f-linux-2.6-amd64.deb"
-wget -O splunk-9.2.0-1fff88043d5f-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.2.0/linux/splunk-9.2.0-1fff88043d5f-Linux-x86_64.tgz"
-
-9.1.5
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.1.5-29befd543def-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.1.5/linux/splunk-9.1.5-29befd543def-linux-2.6-amd64.deb"
-wget -O splunk-9.1.5-29befd543def-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.1.5/linux/splunk-9.1.5-29befd543def-Linux-x86_64.tgz"
-wget -O splunk-9.1.5-29befd543def.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.1.5/linux/splunk-9.1.5-29befd543def.x86_64.rpm"
-
-9.1.4
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.1.4-a414fc70250e-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.1.4/linux/splunk-9.1.4-a414fc70250e-linux-2.6-amd64.deb"
-wget -O splunk-9.1.4-a414fc70250e.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.1.4/linux/splunk-9.1.4-a414fc70250e.x86_64.rpm"
-wget -O splunk-9.1.4-a414fc70250e-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.1.4/linux/splunk-9.1.4-a414fc70250e-Linux-x86_64.tgz"
-
-9.1.3
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.1.3-d95b3299fa65-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.1.3/linux/splunk-9.1.3-d95b3299fa65-Linux-x86_64.tgz"
-wget -O splunk-9.1.3-d95b3299fa65.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.1.3/linux/splunk-9.1.3-d95b3299fa65.x86_64.rpm"
-wget -O splunk-9.1.3-d95b3299fa65-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.1.3/linux/splunk-9.1.3-d95b3299fa65-linux-2.6-amd64.deb"
-
-9.1.2
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.1.2-b6b9c8185839-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.1.2/linux/splunk-9.1.2-b6b9c8185839-Linux-x86_64.tgz"
-wget -O splunk-9.1.2-b6b9c8185839-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.1.2/linux/splunk-9.1.2-b6b9c8185839-linux-2.6-amd64.deb"
-wget -O splunk-9.1.2-b6b9c8185839.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.1.2/linux/splunk-9.1.2-b6b9c8185839.x86_64.rpm"
-
-9.1.1
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.1.1-64e843ea36b1-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.1.1/linux/splunk-9.1.1-64e843ea36b1-linux-2.6-amd64.deb"
-wget -O splunk-9.1.1-64e843ea36b1-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.1.1/linux/splunk-9.1.1-64e843ea36b1-Linux-x86_64.tgz"
-wget -O splunk-9.1.1-64e843ea36b1.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.1.1/linux/splunk-9.1.1-64e843ea36b1.x86_64.rpm"
-
-9.1.0.2
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.1.0.2-b6436b649711-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.1.0.2/linux/splunk-9.1.0.2-b6436b649711-linux-2.6-amd64.deb"
-wget -O splunk-9.1.0.2-b6436b649711-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.1.0.2/linux/splunk-9.1.0.2-b6436b649711-Linux-x86_64.tgz"
-wget -O splunk-9.1.0.2-b6436b649711.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.1.0.2/linux/splunk-9.1.0.2-b6436b649711.x86_64.rpm"
-
-9.1.0.1
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.1.0.1-77f73c9edb85-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.1.0.1/linux/splunk-9.1.0.1-77f73c9edb85-linux-2.6-amd64.deb"
-wget -O splunk-9.1.0.1-77f73c9edb85.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.1.0.1/linux/splunk-9.1.0.1-77f73c9edb85.x86_64.rpm"
-wget -O splunk-9.1.0.1-77f73c9edb85-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.1.0.1/linux/splunk-9.1.0.1-77f73c9edb85-Linux-x86_64.tgz"
-
-9.1.0
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.1.0-1c86ca0bacc3-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.1.0/linux/splunk-9.1.0-1c86ca0bacc3-Linux-x86_64.tgz"
-wget -O splunk-9.1.0-1c86ca0bacc3.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.1.0/linux/splunk-9.1.0-1c86ca0bacc3.x86_64.rpm"
-wget -O splunk-9.1.0-1c86ca0bacc3-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.1.0/linux/splunk-9.1.0-1c86ca0bacc3-linux-2.6-amd64.deb"
-
-9.0.9
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.0.9-6315942c563f-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.0.9/linux/splunk-9.0.9-6315942c563f-Linux-x86_64.tgz"
-wget -O splunk-9.0.9-6315942c563f-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.0.9/linux/splunk-9.0.9-6315942c563f-linux-2.6-amd64.deb"
-wget -O splunk-9.0.9-6315942c563f.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.0.9/linux/splunk-9.0.9-6315942c563f.x86_64.rpm"
-
-9.0.8
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.0.8-4fb5067d40d2-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.0.8/linux/splunk-9.0.8-4fb5067d40d2-Linux-x86_64.tgz"
-wget -O splunk-9.0.8-4fb5067d40d2-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.0.8/linux/splunk-9.0.8-4fb5067d40d2-linux-2.6-amd64.deb"
-wget -O splunk-9.0.8-4fb5067d40d2.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.0.8/linux/splunk-9.0.8-4fb5067d40d2.x86_64.rpm"
-
-9.0.7
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.0.7-b985591d12fd.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.0.7/linux/splunk-9.0.7-b985591d12fd.x86_64.rpm"
-wget -O splunk-9.0.7-b985591d12fd-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.0.7/linux/splunk-9.0.7-b985591d12fd-linux-2.6-amd64.deb"
-wget -O splunk-9.0.7-b985591d12fd-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.0.7/linux/splunk-9.0.7-b985591d12fd-Linux-x86_64.tgz"
-
-9.0.6
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.0.6-050c9bca8588-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.0.6/linux/splunk-9.0.6-050c9bca8588-linux-2.6-amd64.deb"
-wget -O splunk-9.0.6-050c9bca8588.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.0.6/linux/splunk-9.0.6-050c9bca8588.x86_64.rpm"
-wget -O splunk-9.0.6-050c9bca8588-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.0.6/linux/splunk-9.0.6-050c9bca8588-Linux-x86_64.tgz"
-
-9.0.5.1
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.0.5.1-52d49260b188.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.0.5.1/linux/splunk-9.0.5.1-52d49260b188.x86_64.rpm"
-wget -O splunk-9.0.5.1-52d49260b188-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.0.5.1/linux/splunk-9.0.5.1-52d49260b188-linux-2.6-amd64.deb"
-wget -O splunk-9.0.5.1-52d49260b188-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.0.5.1/linux/splunk-9.0.5.1-52d49260b188-Linux-x86_64.tgz"
-
-9.0.5
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.0.5-e9494146ae5c-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.0.5/linux/splunk-9.0.5-e9494146ae5c-Linux-x86_64.tgz"
-wget -O splunk-9.0.5-e9494146ae5c-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.0.5/linux/splunk-9.0.5-e9494146ae5c-linux-2.6-amd64.deb"
-wget -O splunk-9.0.5-e9494146ae5c.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.0.5/linux/splunk-9.0.5-e9494146ae5c.x86_64.rpm"
-
-9.0.4.1
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.0.4.1-419ad9369127-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.0.4.1/linux/splunk-9.0.4.1-419ad9369127-linux-2.6-x86_64.rpm"
-wget -O splunk-9.0.4.1-419ad9369127-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.0.4.1/linux/splunk-9.0.4.1-419ad9369127-Linux-x86_64.tgz"
-wget -O splunk-9.0.4.1-419ad9369127-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.0.4.1/linux/splunk-9.0.4.1-419ad9369127-linux-2.6-amd64.deb"
-
-9.0.4
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.0.4-de405f4a7979-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.0.4/linux/splunk-9.0.4-de405f4a7979-Linux-x86_64.tgz"
-wget -O splunk-9.0.4-de405f4a7979-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.0.4/linux/splunk-9.0.4-de405f4a7979-linux-2.6-x86_64.rpm"
-wget -O splunk-9.0.4-de405f4a7979-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.0.4/linux/splunk-9.0.4-de405f4a7979-linux-2.6-amd64.deb"
-
-9.0.3
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.0.3-dd0128b1f8cd-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.0.3/linux/splunk-9.0.3-dd0128b1f8cd-linux-2.6-x86_64.rpm"
-wget -O splunk-9.0.3-dd0128b1f8cd-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.0.3/linux/splunk-9.0.3-dd0128b1f8cd-Linux-x86_64.tgz"
-wget -O splunk-9.0.3-dd0128b1f8cd-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.0.3/linux/splunk-9.0.3-dd0128b1f8cd-linux-2.6-amd64.deb"
-
-9.0.2
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.0.2-17e00c557dc1-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.0.2/linux/splunk-9.0.2-17e00c557dc1-linux-2.6-amd64.deb"
-wget -O splunk-9.0.2-17e00c557dc1-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.0.2/linux/splunk-9.0.2-17e00c557dc1-Linux-x86_64.tgz"
-wget -O splunk-9.0.2-17e00c557dc1-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.0.2/linux/splunk-9.0.2-17e00c557dc1-linux-2.6-x86_64.rpm"
-
-9.0.10
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.0.10-f551b9b500f8-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.0.10/linux/splunk-9.0.10-f551b9b500f8-linux-2.6-amd64.deb"
-wget -O splunk-9.0.10-f551b9b500f8.x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.0.10/linux/splunk-9.0.10-f551b9b500f8.x86_64.rpm"
-wget -O splunk-9.0.10-f551b9b500f8-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.0.10/linux/splunk-9.0.10-f551b9b500f8-Linux-x86_64.tgz"
-
-9.0.1
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.0.1-82c987350fde-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.0.1/linux/splunk-9.0.1-82c987350fde-linux-2.6-amd64.deb"
-wget -O splunk-9.0.1-82c987350fde-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.0.1/linux/splunk-9.0.1-82c987350fde-Linux-x86_64.tgz"
-wget -O splunk-9.0.1-82c987350fde-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.0.1/linux/splunk-9.0.1-82c987350fde-linux-2.6-x86_64.rpm"
-
-9.0.0.1
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.0.0.1-9e907cedecb1-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.0.0.1/linux/splunk-9.0.0.1-9e907cedecb1-Linux-x86_64.tgz"
-
-9.0.0
-3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-9.0.0-6818ac46f2ec-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.0.0/linux/splunk-9.0.0-6818ac46f2ec-Linux-x86_64.tgz"
-wget -O splunk-9.0.0-6818ac46f2ec-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/9.0.0/linux/splunk-9.0.0-6818ac46f2ec-linux-2.6-x86_64.rpm"
-wget -O splunk-9.0.0-6818ac46f2ec-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.0.0/linux/splunk-9.0.0-6818ac46f2ec-linux-2.6-amd64.deb"
-
-8.2.9
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.9-4a20fb65aa78-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.9/linux/splunk-8.2.9-4a20fb65aa78-linux-2.6-x86_64.rpm"
-wget -O splunk-8.2.9-4a20fb65aa78-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.9/linux/splunk-8.2.9-4a20fb65aa78-Linux-x86_64.tgz"
-wget -O splunk-8.2.9-4a20fb65aa78-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.9/linux/splunk-8.2.9-4a20fb65aa78-linux-2.6-amd64.deb"
-
-8.2.8
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.8-da25d08d5d3e-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.8/linux/splunk-8.2.8-da25d08d5d3e-linux-2.6-x86_64.rpm"
-wget -O splunk-8.2.8-da25d08d5d3e-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.8/linux/splunk-8.2.8-da25d08d5d3e-Linux-x86_64.tgz"
-wget -O splunk-8.2.8-da25d08d5d3e-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.8/linux/splunk-8.2.8-da25d08d5d3e-linux-2.6-amd64.deb"
-
-8.2.7.1
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.7.1-c2b65bc24aea-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.7.1/linux/splunk-8.2.7.1-c2b65bc24aea-Linux-x86_64.tgz"
-wget -O splunk-8.2.7.1-c2b65bc24aea-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.7.1/linux/splunk-8.2.7.1-c2b65bc24aea-linux-2.6-x86_64.rpm"
-
-8.2.7
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.7-2e1fca123028-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.7/linux/splunk-8.2.7-2e1fca123028-linux-2.6-amd64.deb"
-wget -O splunk-8.2.7-2e1fca123028-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.7/linux/splunk-8.2.7-2e1fca123028-linux-2.6-x86_64.rpm"
-wget -O splunk-8.2.7-2e1fca123028-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.7/linux/splunk-8.2.7-2e1fca123028-Linux-x86_64.tgz"
-
-8.2.6.1
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.6.1-5f0da8f6e22c-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.6.1/linux/splunk-8.2.6.1-5f0da8f6e22c-Linux-x86_64.tgz"
-wget -O splunk-8.2.6.1-5f0da8f6e22c-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.6.1/linux/splunk-8.2.6.1-5f0da8f6e22c-linux-2.6-x86_64.rpm"
-wget -O splunk-8.2.6.1-5f0da8f6e22c-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.6.1/linux/splunk-8.2.6.1-5f0da8f6e22c-linux-2.6-amd64.deb"
-
-8.2.6
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.6-a6fe1ee8894b-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.6/linux/splunk-8.2.6-a6fe1ee8894b-linux-2.6-amd64.deb"
-wget -O splunk-8.2.6-a6fe1ee8894b-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.6/linux/splunk-8.2.6-a6fe1ee8894b-linux-2.6-x86_64.rpm"
-wget -O splunk-8.2.6-a6fe1ee8894b-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.6/linux/splunk-8.2.6-a6fe1ee8894b-Linux-x86_64.tgz"
-
-8.2.5
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.5-77015bc7a462-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.5/linux/splunk-8.2.5-77015bc7a462-linux-2.6-x86_64.rpm"
-wget -O splunk-8.2.5-77015bc7a462-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.5/linux/splunk-8.2.5-77015bc7a462-linux-2.6-amd64.deb"
-wget -O splunk-8.2.5-77015bc7a462-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.5/linux/splunk-8.2.5-77015bc7a462-Linux-x86_64.tgz"
-
-8.2.4.3
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.4.3-28869a19ae1b-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.4.3/linux/splunk-8.2.4.3-28869a19ae1b-linux-2.6-x86_64.rpm"
-wget -O splunk-8.2.4.3-28869a19ae1b-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.4.3/linux/splunk-8.2.4.3-28869a19ae1b-linux-2.6-amd64.deb"
-wget -O splunk-8.2.4.3-28869a19ae1b-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.4.3/linux/splunk-8.2.4.3-28869a19ae1b-Linux-x86_64.tgz"
-
-8.2.4.2
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.4.2-bf9a3c20455b-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.4.2/linux/splunk-8.2.4.2-bf9a3c20455b-linux-2.6-x86_64.rpm"
-wget -O splunk-8.2.4.2-bf9a3c20455b-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.4.2/linux/splunk-8.2.4.2-bf9a3c20455b-linux-2.6-amd64.deb"
-
-8.2.4.1
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.4.1-a3e62cbc8550-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.4.1/linux/splunk-8.2.4.1-a3e62cbc8550-linux-2.6-amd64.deb"
-wget -O splunk-8.2.4.1-a3e62cbc8550-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.4.1/linux/splunk-8.2.4.1-a3e62cbc8550-Linux-x86_64.tgz"
-wget -O splunk-8.2.4.1-a3e62cbc8550-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.4.1/linux/splunk-8.2.4.1-a3e62cbc8550-linux-2.6-x86_64.rpm"
-
-8.2.4
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.4-87e2dda940d1-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.4/linux/splunk-8.2.4-87e2dda940d1-linux-2.6-x86_64.rpm"
-wget -O splunk-8.2.4-87e2dda940d1-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.4/linux/splunk-8.2.4-87e2dda940d1-linux-2.6-amd64.deb"
-wget -O splunk-8.2.4-87e2dda940d1-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.4/linux/splunk-8.2.4-87e2dda940d1-Linux-x86_64.tgz"
-
-8.2.3.3
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.3.3-e40ea5a516d2-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.3.3/linux/splunk-8.2.3.3-e40ea5a516d2-linux-2.6-amd64.deb"
-wget -O splunk-8.2.3.3-e40ea5a516d2-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.3.3/linux/splunk-8.2.3.3-e40ea5a516d2-linux-2.6-x86_64.rpm"
-wget -O splunk-8.2.3.3-e40ea5a516d2-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.3.3/linux/splunk-8.2.3.3-e40ea5a516d2-Linux-x86_64.tgz"
-
-8.2.3.2
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.3.2-5281ae34c90c-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.3.2/linux/splunk-8.2.3.2-5281ae34c90c-linux-2.6-amd64.deb"
-wget -O splunk-8.2.3.2-5281ae34c90c-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.3.2/linux/splunk-8.2.3.2-5281ae34c90c-Linux-x86_64.tgz"
-wget -O splunk-8.2.3.2-5281ae34c90c-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.3.2/linux/splunk-8.2.3.2-5281ae34c90c-linux-2.6-x86_64.rpm"
-
-8.2.3
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.3-cd0848707637-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.3/linux/splunk-8.2.3-cd0848707637-Linux-x86_64.tgz"
-wget -O splunk-8.2.3-cd0848707637-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.3/linux/splunk-8.2.3-cd0848707637-linux-2.6-x86_64.rpm"
-wget -O splunk-8.2.3-cd0848707637-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.3/linux/splunk-8.2.3-cd0848707637-linux-2.6-amd64.deb"
-
-8.2.2.2
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.2.2-e89a7a0a7f22-linux-2.6-x86_64-fips.rpm "https://download.splunk.com/products/splunk/releases/8.2.2.2/linux/splunk-8.2.2.2-e89a7a0a7f22-linux-2.6-x86_64-fips.rpm"
-wget -O splunk-8.2.2.2-e89a7a0a7f22-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.2.2/linux/splunk-8.2.2.2-e89a7a0a7f22-Linux-x86_64.tgz"
-wget -O splunk-8.2.2.2-e89a7a0a7f22-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.2.2/linux/splunk-8.2.2.2-e89a7a0a7f22-linux-2.6-x86_64.rpm"
-wget -O splunk-8.2.2.2-e89a7a0a7f22-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.2.2/linux/splunk-8.2.2.2-e89a7a0a7f22-linux-2.6-amd64.deb"
-
-8.2.2.1
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.2.1-ae6821b7c64b-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.2.1/linux/splunk-8.2.2.1-ae6821b7c64b-linux-2.6-x86_64.rpm"
-wget -O splunk-8.2.2.1-ae6821b7c64b-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.2.1/linux/splunk-8.2.2.1-ae6821b7c64b-linux-2.6-amd64.deb"
-wget -O splunk-8.2.2.1-ae6821b7c64b-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.2.1/linux/splunk-8.2.2.1-ae6821b7c64b-Linux-x86_64.tgz"
-
-8.2.12
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.12-e973afd6886e-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.12/linux/splunk-8.2.12-e973afd6886e-linux-2.6-amd64.deb"
-wget -O splunk-8.2.12-e973afd6886e-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.12/linux/splunk-8.2.12-e973afd6886e-Linux-x86_64.tgz"
-wget -O splunk-8.2.12-e973afd6886e.x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.12/linux/splunk-8.2.12-e973afd6886e.x86_64.rpm"
-
-8.2.11.2
-Linux2.6+, 3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.11.2-84863c49dc5d.x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.11.2/linux/splunk-8.2.11.2-84863c49dc5d.x86_64.rpm"
-wget -O splunk-8.2.11.2-84863c49dc5d-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.11.2/linux/splunk-8.2.11.2-84863c49dc5d-linux-2.6-amd64.deb"
-wget -O splunk-8.2.11.2-84863c49dc5d-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.11.2/linux/splunk-8.2.11.2-84863c49dc5d-Linux-x86_64.tgz"
-
-8.2.11
-Linux2.6+, 3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.11-e73c56f930c5-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.11/linux/splunk-8.2.11-e73c56f930c5-linux-2.6-amd64.deb"
-wget -O splunk-8.2.11-e73c56f930c5-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.11/linux/splunk-8.2.11-e73c56f930c5-Linux-x86_64.tgz"
-wget -O splunk-8.2.11-e73c56f930c5.x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.11/linux/splunk-8.2.11-e73c56f930c5.x86_64.rpm"
-
-8.2.10
-Linux2.6+, 3.x+, 4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.10-417e74d5c950-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.10/linux/splunk-8.2.10-417e74d5c950-linux-2.6-amd64.deb"
-wget -O splunk-8.2.10-417e74d5c950-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.10/linux/splunk-8.2.10-417e74d5c950-linux-2.6-x86_64.rpm"
-wget -O splunk-8.2.10-417e74d5c950-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.10/linux/splunk-8.2.10-417e74d5c950-Linux-x86_64.tgz"
-
-8.2.1
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.1-ddff1c41e5cf-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.1/linux/splunk-8.2.1-ddff1c41e5cf-linux-2.6-x86_64.rpm"
-wget -O splunk-8.2.1-ddff1c41e5cf-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.1/linux/splunk-8.2.1-ddff1c41e5cf-linux-2.6-amd64.deb"
-wget -O splunk-8.2.1-ddff1c41e5cf-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.1/linux/splunk-8.2.1-ddff1c41e5cf-Linux-x86_64.tgz"
-
-8.2.0
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.2.0-e053ef3c985f-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.0/linux/splunk-8.2.0-e053ef3c985f-Linux-x86_64.tgz"
-wget -O splunk-8.2.0-e053ef3c985f-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.2.0/linux/splunk-8.2.0-e053ef3c985f-linux-2.6-x86_64.rpm"
-wget -O splunk-8.2.0-e053ef3c985f-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.2.0/linux/splunk-8.2.0-e053ef3c985f-linux-2.6-amd64.deb"
-
-8.1.9
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.1.9-a16db3287b56-linux-2.6-x86_64-fips.rpm "https://download.splunk.com/products/splunk/releases/8.1.9/linux/splunk-8.1.9-a16db3287b56-linux-2.6-x86_64-fips.rpm"
-wget -O splunk-8.1.9-a16db3287b56-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.1.9/linux/splunk-8.1.9-a16db3287b56-linux-2.6-x86_64.rpm"
-wget -O splunk-8.1.9-a16db3287b56-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.1.9/linux/splunk-8.1.9-a16db3287b56-Linux-x86_64.tgz"
-wget -O splunk-8.1.9-a16db3287b56-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.1.9/linux/splunk-8.1.9-a16db3287b56-linux-2.6-amd64.deb"
-
-8.1.8
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.1.8-39da583cc695-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.1.8/linux/splunk-8.1.8-39da583cc695-linux-2.6-amd64.deb"
-wget -O splunk-8.1.8-39da583cc695-linux-2.6-x86_64-fips.rpm "https://download.splunk.com/products/splunk/releases/8.1.8/linux/splunk-8.1.8-39da583cc695-linux-2.6-x86_64-fips.rpm"
-wget -O splunk-8.1.8-39da583cc695-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.1.8/linux/splunk-8.1.8-39da583cc695-linux-2.6-x86_64.rpm"
-wget -O splunk-8.1.8-39da583cc695-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.1.8/linux/splunk-8.1.8-39da583cc695-Linux-x86_64.tgz"
-
-8.1.7.2
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.1.7.2-dc318a6952c4-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.1.7.2/linux/splunk-8.1.7.2-dc318a6952c4-linux-2.6-x86_64.rpm"
-wget -O splunk-8.1.7.2-dc318a6952c4-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.1.7.2/linux/splunk-8.1.7.2-dc318a6952c4-linux-2.6-amd64.deb"
-wget -O splunk-8.1.7.2-dc318a6952c4-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.1.7.2/linux/splunk-8.1.7.2-dc318a6952c4-Linux-x86_64.tgz"
-
-8.1.7.1
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.1.7.1-19e1d5d518a7-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.1.7.1/linux/splunk-8.1.7.1-19e1d5d518a7-linux-2.6-x86_64.rpm"
-wget -O splunk-8.1.7.1-19e1d5d518a7-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.1.7.1/linux/splunk-8.1.7.1-19e1d5d518a7-linux-2.6-amd64.deb"
-wget -O splunk-8.1.7.1-19e1d5d518a7-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.1.7.1/linux/splunk-8.1.7.1-19e1d5d518a7-Linux-x86_64.tgz"
-
-8.1.7
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.1.7-79650d4c9dc0-linux-2.6-x86_64-fips.rpm "https://download.splunk.com/products/splunk/releases/8.1.7/linux/splunk-8.1.7-79650d4c9dc0-linux-2.6-x86_64-fips.rpm"
-wget -O splunk-8.1.7-79650d4c9dc0-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.1.7/linux/splunk-8.1.7-79650d4c9dc0-linux-2.6-x86_64.rpm"
-wget -O splunk-8.1.7-79650d4c9dc0-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.1.7/linux/splunk-8.1.7-79650d4c9dc0-Linux-x86_64.tgz"
-wget -O splunk-8.1.7-79650d4c9dc0-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.1.7/linux/splunk-8.1.7-79650d4c9dc0-linux-2.6-amd64.deb"
-
-8.1.6
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.1.6-c1a0dd183ee5-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.1.6/linux/splunk-8.1.6-c1a0dd183ee5-linux-2.6-x86_64.rpm"
-wget -O splunk-8.1.6-c1a0dd183ee5-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.1.6/linux/splunk-8.1.6-c1a0dd183ee5-Linux-x86_64.tgz"
-wget -O splunk-8.1.6-c1a0dd183ee5-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.1.6/linux/splunk-8.1.6-c1a0dd183ee5-linux-2.6-amd64.deb"
-
-8.1.14
-2.6+, 3.x+, or 4.x+ kernel Linux distributions
-wget -O splunk-8.1.14-7b72da4f30b8-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.1.14/linux/splunk-8.1.14-7b72da4f30b8-linux-2.6-amd64.deb"
-wget -O splunk-8.1.14-7b72da4f30b8-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.1.14/linux/splunk-8.1.14-7b72da4f30b8-Linux-x86_64.tgz"
-wget -O splunk-8.1.14-7b72da4f30b8.x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.1.14/linux/splunk-8.1.14-7b72da4f30b8.x86_64.rpm"
-
-8.1.13
-2.6+, 3.x+, or 4.x+ kernel Linux distributions
-wget -O splunk-8.1.13-898c6e996343-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.1.13/linux/splunk-8.1.13-898c6e996343-linux-2.6-x86_64.rpm"
-wget -O splunk-8.1.13-898c6e996343-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.1.13/linux/splunk-8.1.13-898c6e996343-linux-2.6-amd64.deb"
-wget -O splunk-8.1.13-898c6e996343-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.1.13/linux/splunk-8.1.13-898c6e996343-Linux-x86_64.tgz"
-
-8.1.12
-2.6+, 3.x+, or 4.x+ kernel Linux distributions
-wget -O splunk-8.1.12-4eb558a8f0b7-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.1.12/linux/splunk-8.1.12-4eb558a8f0b7-linux-2.6-x86_64.rpm"
-wget -O splunk-8.1.12-4eb558a8f0b7-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.1.12/linux/splunk-8.1.12-4eb558a8f0b7-Linux-x86_64.tgz"
-wget -O splunk-8.1.12-4eb558a8f0b7-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.1.12/linux/splunk-8.1.12-4eb558a8f0b7-linux-2.6-amd64.deb"
-
-8.1.11
-2.6+, 3.x+, or 4.x+ kernel Linux distributions
-wget -O splunk-8.1.11-aa854f643d76-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.1.11/linux/splunk-8.1.11-aa854f643d76-linux-2.6-x86_64.rpm"
-wget -O splunk-8.1.11-aa854f643d76-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.1.11/linux/splunk-8.1.11-aa854f643d76-linux-2.6-amd64.deb"
-wget -O splunk-8.1.11-aa854f643d76-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.1.11/linux/splunk-8.1.11-aa854f643d76-Linux-x86_64.tgz"
-
-8.1.10.1
-2.6+,3.x+,4.x+, or 5.4.x kernel Linux distributions
-wget -O splunk-8.1.10.1-8bfab9b850ca-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/8.1.10.1/linux/splunk-8.1.10.1-8bfab9b850ca-linux-2.6-amd64.deb"
-wget -O splunk-8.1.10.1-8bfab9b850ca-linux-2.6-x86_64.rpm "https://download.splunk.com/products/splunk/releases/8.1.10.1/linux/splunk-8.1.10.1-8bfab9b850ca-linux-2.6-x86_64.rpm"
-wget -O splunk-8.1.10.1-8bfab9b850ca-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.1.10.1/linux/splunk-8.1.10.1-8bfab9b850ca-Linux-x86_64.tgz"
-
-9.2.2
-OSX 10.14, 10.15
-wget -O splunk-9.2.2-d76edf6f0a15-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.2.2/osx/splunk-9.2.2-d76edf6f0a15-darwin-64.tgz"
-wget -O splunk-9.2.2-d76edf6f0a15-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.2.2/osx/splunk-9.2.2-d76edf6f0a15-macosx-10.11-.dmg"
-
-9.2.1
-OSX 10.14, 10.15
-wget -O splunk-9.2.1-78803f08aabb-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.2.1/osx/splunk-9.2.1-78803f08aabb-macosx-10.11-.dmg"
-wget -O splunk-9.2.1-78803f08aabb-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.2.1/osx/splunk-9.2.1-78803f08aabb-darwin-64.tgz"
-
-9.2.0.1
-OSX 10.14, 10.15
-wget -O splunk-9.2.0.1-d8ae995bf219-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.2.0.1/osx/splunk-9.2.0.1-d8ae995bf219-macosx-10.11-.dmg"
-wget -O splunk-9.2.0.1-d8ae995bf219-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.2.0.1/osx/splunk-9.2.0.1-d8ae995bf219-darwin-64.tgz"
-
-9.2.0
-OSX 10.14, 10.15
-wget -O splunk-9.2.0-1fff88043d5f-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.2.0/osx/splunk-9.2.0-1fff88043d5f-darwin-64.tgz"
-wget -O splunk-9.2.0-1fff88043d5f-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.2.0/osx/splunk-9.2.0-1fff88043d5f-macosx-10.11-.dmg"
-
-9.1.5
-OSX 10.14, 10.15
-wget -O splunk-9.1.5-29befd543def-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.1.5/osx/splunk-9.1.5-29befd543def-macosx-10.11-.dmg"
-wget -O splunk-9.1.5-29befd543def-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.1.5/osx/splunk-9.1.5-29befd543def-darwin-64.tgz"
-
-9.1.4
-OSX 10.14, 10.15
-wget -O splunk-9.1.4-a414fc70250e-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.1.4/osx/splunk-9.1.4-a414fc70250e-macosx-10.11-.dmg"
-wget -O splunk-9.1.4-a414fc70250e-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.1.4/osx/splunk-9.1.4-a414fc70250e-darwin-64.tgz"
-
-9.1.3
-OSX 10.14, 10.15
-wget -O splunk-9.1.3-d95b3299fa65-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.1.3/osx/splunk-9.1.3-d95b3299fa65-darwin-64.tgz"
-wget -O splunk-9.1.3-d95b3299fa65-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.1.3/osx/splunk-9.1.3-d95b3299fa65-macosx-10.11-.dmg"
-
-9.1.2
-OSX 10.14, 10.15
-wget -O splunk-9.1.2-b6b9c8185839-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.1.2/osx/splunk-9.1.2-b6b9c8185839-darwin-64.tgz"
-wget -O splunk-9.1.2-b6b9c8185839-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.1.2/osx/splunk-9.1.2-b6b9c8185839-macosx-10.11-.dmg"
-
-9.1.1
-OSX 10.14, 10.15
-wget -O splunk-9.1.1-64e843ea36b1-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.1.1/osx/splunk-9.1.1-64e843ea36b1-macosx-10.11-.dmg"
-wget -O splunk-9.1.1-64e843ea36b1-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.1.1/osx/splunk-9.1.1-64e843ea36b1-darwin-64.tgz"
-
-9.1.0.2
-OSX 10.14, 10.15
-wget -O splunk-9.1.0.2-b6436b649711-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.1.0.2/osx/splunk-9.1.0.2-b6436b649711-darwin-64.tgz"
-wget -O splunk-9.1.0.2-b6436b649711-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.1.0.2/osx/splunk-9.1.0.2-b6436b649711-macosx-10.11-.dmg"
-
-9.1.0.1
-OSX 10.14, 10.15
-wget -O splunk-9.1.0.1-77f73c9edb85-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.1.0.1/osx/splunk-9.1.0.1-77f73c9edb85-darwin-64.tgz"
-wget -O splunk-9.1.0.1-77f73c9edb85-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.1.0.1/osx/splunk-9.1.0.1-77f73c9edb85-macosx-10.11-.dmg"
-
-9.1.0
-OSX 10.14, 10.15
-wget -O splunk-9.1.0-1c86ca0bacc3-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.1.0/osx/splunk-9.1.0-1c86ca0bacc3-macosx-10.11-.dmg"
-wget -O splunk-9.1.0-1c86ca0bacc3-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.1.0/osx/splunk-9.1.0-1c86ca0bacc3-darwin-64.tgz"
-
-9.0.9
-OSX 10.14, 10.15
-wget -O splunk-9.0.9-6315942c563f-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.0.9/osx/splunk-9.0.9-6315942c563f-darwin-64.tgz"
-wget -O splunk-9.0.9-6315942c563f-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.0.9/osx/splunk-9.0.9-6315942c563f-macosx-10.11-.dmg"
-
-9.0.8
-OSX 10.14, 10.15
-wget -O splunk-9.0.8-4fb5067d40d2-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.0.8/osx/splunk-9.0.8-4fb5067d40d2-darwin-64.tgz"
-wget -O splunk-9.0.8-4fb5067d40d2-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.0.8/osx/splunk-9.0.8-4fb5067d40d2-macosx-10.11-.dmg"
-
-9.0.7
-OSX 10.14, 10.15
-wget -O splunk-9.0.7-b985591d12fd-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.0.7/osx/splunk-9.0.7-b985591d12fd-darwin-64.tgz"
-wget -O splunk-9.0.7-b985591d12fd-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.0.7/osx/splunk-9.0.7-b985591d12fd-macosx-10.11-.dmg"
-
-9.0.6
-OSX 10.14, 10.15
-wget -O splunk-9.0.6-050c9bca8588-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.0.6/osx/splunk-9.0.6-050c9bca8588-darwin-64.tgz"
-wget -O splunk-9.0.6-050c9bca8588-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.0.6/osx/splunk-9.0.6-050c9bca8588-macosx-10.11-.dmg"
-
-9.0.5.1
-OSX 10.14, 10.15
-wget -O splunk-9.0.5.1-52d49260b188-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.0.5.1/osx/splunk-9.0.5.1-52d49260b188-darwin-64.tgz"
-wget -O splunk-9.0.5.1-52d49260b188-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.0.5.1/osx/splunk-9.0.5.1-52d49260b188-macosx-10.11-.dmg"
-
-9.0.5
-OSX 10.14, 10.15
-wget -O splunk-9.0.5-e9494146ae5c-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.0.5/osx/splunk-9.0.5-e9494146ae5c-macosx-10.11-.dmg"
-wget -O splunk-9.0.5-e9494146ae5c-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.0.5/osx/splunk-9.0.5-e9494146ae5c-darwin-64.tgz"
-
-9.0.4.1
-OSX 10.14, 10.15
-wget -O splunk-9.0.4.1-419ad9369127-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.0.4.1/osx/splunk-9.0.4.1-419ad9369127-darwin-64.tgz"
-wget -O splunk-9.0.4.1-419ad9369127-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.0.4.1/osx/splunk-9.0.4.1-419ad9369127-macosx-10.11-.dmg"
-
-9.0.4
-OSX 10.14, 10.15
-wget -O splunk-9.0.4-de405f4a7979-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.0.4/osx/splunk-9.0.4-de405f4a7979-macosx-10.11-.dmg"
-wget -O splunk-9.0.4-de405f4a7979-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.0.4/osx/splunk-9.0.4-de405f4a7979-darwin-64.tgz"
-
-9.0.3
-OSX 10.14, 10.15
-wget -O splunk-9.0.3-dd0128b1f8cd-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.0.3/osx/splunk-9.0.3-dd0128b1f8cd-darwin-64.tgz"
-
-9.0.2
-OSX 10.14, 10.15
-wget -O splunk-9.0.2-17e00c557dc1-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.0.2/osx/splunk-9.0.2-17e00c557dc1-darwin-64.tgz"
-wget -O splunk-9.0.2-17e00c557dc1-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.0.2/osx/splunk-9.0.2-17e00c557dc1-macosx-10.11-.dmg"
-
-9.0.10
-OSX 10.14, 10.15
-wget -O splunk-9.0.10-f551b9b500f8-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.0.10/osx/splunk-9.0.10-f551b9b500f8-macosx-10.11-.dmg"
-wget -O splunk-9.0.10-f551b9b500f8-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.0.10/osx/splunk-9.0.10-f551b9b500f8-darwin-64.tgz"
-
-9.0.1
-OSX 10.14, 10.15
-wget -O splunk-9.0.1-82c987350fde-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.0.1/osx/splunk-9.0.1-82c987350fde-darwin-64.tgz"
-wget -O splunk-9.0.1-82c987350fde-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.0.1/osx/splunk-9.0.1-82c987350fde-macosx-10.11-.dmg"
-
-9.0.0.1
-OSX 10.14, 10.15
-wget -O splunk-9.0.0.1-9e907cedecb1-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.0.0.1/osx/splunk-9.0.0.1-9e907cedecb1-macosx-10.11-.dmg"
-wget -O splunk-9.0.0.1-9e907cedecb1-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.0.0.1/osx/splunk-9.0.0.1-9e907cedecb1-darwin-64.tgz"
-
-9.0.0
-OSX 10.14, 10.15
-wget -O splunk-9.0.0-6818ac46f2ec-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/9.0.0/osx/splunk-9.0.0-6818ac46f2ec-darwin-64.tgz"
-wget -O splunk-9.0.0-6818ac46f2ec-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/9.0.0/osx/splunk-9.0.0-6818ac46f2ec-macosx-10.11-.dmg"
-
-8.2.9
-OSX 10.14, 10.15
-wget -O splunk-8.2.9-4a20fb65aa78-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.2.9/osx/splunk-8.2.9-4a20fb65aa78-macosx-10.11-.dmg"
-wget -O splunk-8.2.9-4a20fb65aa78-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.2.9/osx/splunk-8.2.9-4a20fb65aa78-darwin-64.tgz"
-
-8.2.8
-OSX 10.14, 10.15
-wget -O splunk-8.2.8-da25d08d5d3e-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.2.8/osx/splunk-8.2.8-da25d08d5d3e-macosx-10.11-.dmg"
-wget -O splunk-8.2.8-da25d08d5d3e-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.2.8/osx/splunk-8.2.8-da25d08d5d3e-darwin-64.tgz"
-
-8.2.7.1
-OSX 10.14, 10.15
-wget -O splunk-8.2.7.1-c2b65bc24aea-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.2.7.1/osx/splunk-8.2.7.1-c2b65bc24aea-macosx-10.11-.dmg"
-wget -O splunk-8.2.7.1-c2b65bc24aea-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.2.7.1/osx/splunk-8.2.7.1-c2b65bc24aea-darwin-64.tgz"
-
-8.2.7
-OSX 10.14, 10.15
-wget -O splunk-8.2.7-2e1fca123028-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.2.7/osx/splunk-8.2.7-2e1fca123028-macosx-10.11-.dmg"
-wget -O splunk-8.2.7-2e1fca123028-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.2.7/osx/splunk-8.2.7-2e1fca123028-darwin-64.tgz"
-
-8.2.6.1
-OSX 10.14, 10.15
-wget -O splunk-8.2.6.1-5f0da8f6e22c-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.2.6.1/osx/splunk-8.2.6.1-5f0da8f6e22c-darwin-64.tgz"
-wget -O splunk-8.2.6.1-5f0da8f6e22c-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.2.6.1/osx/splunk-8.2.6.1-5f0da8f6e22c-macosx-10.11-.dmg"
-
-8.2.6
-OSX 10.9, OSX 10.10
-wget -O splunk-8.2.6-a6fe1ee8894b-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.2.6/osx/splunk-8.2.6-a6fe1ee8894b-darwin-64.tgz"
-wget -O splunk-8.2.6-a6fe1ee8894b-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.2.6/osx/splunk-8.2.6-a6fe1ee8894b-macosx-10.11-.dmg"
-
-8.2.5
-OSX 10.14, 10.15
-wget -O splunk-8.2.5-77015bc7a462-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.2.5/osx/splunk-8.2.5-77015bc7a462-macosx-10.11-.dmg"
-wget -O splunk-8.2.5-77015bc7a462-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.2.5/osx/splunk-8.2.5-77015bc7a462-darwin-64.tgz"
-
-8.2.4
-OSX 10.14, 10.15
-wget -O splunk-8.2.4-87e2dda940d1-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.2.4/osx/splunk-8.2.4-87e2dda940d1-darwin-64.tgz"
-wget -O splunk-8.2.4-87e2dda940d1-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.2.4/osx/splunk-8.2.4-87e2dda940d1-macosx-10.11-.dmg"
-
-8.2.3.3
-OSX 10.14, 10.15
-wget -O splunk-8.2.3.3-e40ea5a516d2-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.2.3.3/osx/splunk-8.2.3.3-e40ea5a516d2-macosx-10.11-.dmg"
-wget -O splunk-8.2.3.3-e40ea5a516d2-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.2.3.3/osx/splunk-8.2.3.3-e40ea5a516d2-darwin-64.tgz"
-
-8.2.3.2
-OSX 10.14, 10.15
-wget -O splunk-8.2.3.2-5281ae34c90c-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.2.3.2/osx/splunk-8.2.3.2-5281ae34c90c-darwin-64.tgz"
-wget -O splunk-8.2.3.2-5281ae34c90c-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.2.3.2/osx/splunk-8.2.3.2-5281ae34c90c-macosx-10.11-.dmg"
-
-8.2.3
-OSX 10.14, 10.15
-wget -O splunk-8.2.3-cd0848707637-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.2.3/osx/splunk-8.2.3-cd0848707637-darwin-64.tgz"
-wget -O splunk-8.2.3-cd0848707637-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.2.3/osx/splunk-8.2.3-cd0848707637-macosx-10.11-.dmg"
-
-8.2.2.1
-OSX 10.14, 10.15
-wget -O splunk-8.2.2.1-ae6821b7c64b-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.2.2.1/osx/splunk-8.2.2.1-ae6821b7c64b-macosx-10.11-.dmg"
-wget -O splunk-8.2.2.1-ae6821b7c64b-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.2.2.1/osx/splunk-8.2.2.1-ae6821b7c64b-darwin-64.tgz"
-
-8.2.12
-OSX 10.14, 10.15
-wget -O splunk-8.2.12-e973afd6886e-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.2.12/osx/splunk-8.2.12-e973afd6886e-darwin-64.tgz"
-wget -O splunk-8.2.12-e973afd6886e-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.2.12/osx/splunk-8.2.12-e973afd6886e-macosx-10.11-.dmg"
-
-8.2.11.2
-OSX 10.14, 10.15
-wget -O splunk-8.2.11.2-84863c49dc5d-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.2.11.2/osx/splunk-8.2.11.2-84863c49dc5d-macosx-10.11-.dmg"
-wget -O splunk-8.2.11.2-84863c49dc5d-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.2.11.2/osx/splunk-8.2.11.2-84863c49dc5d-darwin-64.tgz"
-
-8.2.11
-OSX 10.14, 10.15
-wget -O splunk-8.2.11-e73c56f930c5-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.2.11/osx/splunk-8.2.11-e73c56f930c5-darwin-64.tgz"
-wget -O splunk-8.2.11-e73c56f930c5-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.2.11/osx/splunk-8.2.11-e73c56f930c5-macosx-10.11-.dmg"
-
-8.2.10
-OSX 10.14, 10.15
-wget -O splunk-8.2.10-417e74d5c950-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.2.10/osx/splunk-8.2.10-417e74d5c950-darwin-64.tgz"
-wget -O splunk-8.2.10-417e74d5c950-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.2.10/osx/splunk-8.2.10-417e74d5c950-macosx-10.11-.dmg"
-
-8.2.1
-OSX 10.14, 10.15
-wget -O splunk-8.2.1-ddff1c41e5cf-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.2.1/osx/splunk-8.2.1-ddff1c41e5cf-macosx-10.11-.dmg"
-wget -O splunk-8.2.1-ddff1c41e5cf-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.2.1/osx/splunk-8.2.1-ddff1c41e5cf-darwin-64.tgz"
-
-8.2.0
-OSX 10.14, 10.15
-wget -O splunk-8.2.0-e053ef3c985f-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.2.0/osx/splunk-8.2.0-e053ef3c985f-darwin-64.tgz"
-wget -O splunk-8.2.0-e053ef3c985f-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.2.0/osx/splunk-8.2.0-e053ef3c985f-macosx-10.11-.dmg"
-
-8.1.9
-OSX 10.14, 10.15
-wget -O splunk-8.1.9-a16db3287b56-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.1.9/osx/splunk-8.1.9-a16db3287b56-macosx-10.11-.dmg"
-wget -O splunk-8.1.9-a16db3287b56-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.1.9/osx/splunk-8.1.9-a16db3287b56-darwin-64.tgz"
-
-8.1.8
-OSX 10.14, 10.15
-wget -O splunk-8.1.8-39da583cc695-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.1.8/osx/splunk-8.1.8-39da583cc695-darwin-64.tgz"
-wget -O splunk-8.1.8-39da583cc695-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.1.8/osx/splunk-8.1.8-39da583cc695-macosx-10.11-.dmg"
-
-8.1.7.2
-OSX 10.14, 10.15
-wget -O splunk-8.1.7.2-dc318a6952c4-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.1.7.2/osx/splunk-8.1.7.2-dc318a6952c4-darwin-64.tgz"
-wget -O splunk-8.1.7.2-dc318a6952c4-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.1.7.2/osx/splunk-8.1.7.2-dc318a6952c4-macosx-10.11-.dmg"
-
-8.1.7.1
-OSX 10.14, 10.15
-wget -O splunk-8.1.7.1-19e1d5d518a7-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.1.7.1/osx/splunk-8.1.7.1-19e1d5d518a7-darwin-64.tgz"
-
-8.1.7
-OSX 10.14, 10.15
-wget -O splunk-8.1.7-79650d4c9dc0-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.1.7/osx/splunk-8.1.7-79650d4c9dc0-macosx-10.11-.dmg"
-wget -O splunk-8.1.7-79650d4c9dc0-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.1.7/osx/splunk-8.1.7-79650d4c9dc0-darwin-64.tgz"
-
-8.1.6
-OSX 10.14, 10.15
-wget -O splunk-8.1.6-c1a0dd183ee5-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.1.6/osx/splunk-8.1.6-c1a0dd183ee5-darwin-64.tgz"
-wget -O splunk-8.1.6-c1a0dd183ee5-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.1.6/osx/splunk-8.1.6-c1a0dd183ee5-macosx-10.11-.dmg"
-
-8.1.14
-OSX 10.14, 10.15
-wget -O splunk-8.1.14-7b72da4f30b8-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.1.14/osx/splunk-8.1.14-7b72da4f30b8-darwin-64.tgz"
-wget -O splunk-8.1.14-7b72da4f30b8-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.1.14/osx/splunk-8.1.14-7b72da4f30b8-macosx-10.11-.dmg"
-
-8.1.13
-OSX 10.14, 10.15
-wget -O splunk-8.1.13-898c6e996343-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.1.13/osx/splunk-8.1.13-898c6e996343-darwin-64.tgz"
-wget -O splunk-8.1.13-898c6e996343-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.1.13/osx/splunk-8.1.13-898c6e996343-macosx-10.11-.dmg"
-
-8.1.12
-OSX 10.14, 10.15
-wget -O splunk-8.1.12-4eb558a8f0b7-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.1.12/osx/splunk-8.1.12-4eb558a8f0b7-macosx-10.11-.dmg"
-wget -O splunk-8.1.12-4eb558a8f0b7-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.1.12/osx/splunk-8.1.12-4eb558a8f0b7-darwin-64.tgz"
-
-8.1.11
-OSX 10.14, 10.15
-wget -O splunk-8.1.11-aa854f643d76-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.1.11/osx/splunk-8.1.11-aa854f643d76-macosx-10.11-.dmg"
-wget -O splunk-8.1.11-aa854f643d76-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.1.11/osx/splunk-8.1.11-aa854f643d76-darwin-64.tgz"
-
-8.1.10.1
-OSX 10.14, 10.15
-wget -O splunk-8.1.10.1-8bfab9b850ca-macosx-10.11-.dmg "https://download.splunk.com/products/splunk/releases/8.1.10.1/osx/splunk-8.1.10.1-8bfab9b850ca-macosx-10.11-.dmg"
-wget -O splunk-8.1.10.1-8bfab9b850ca-darwin-64.tgz "https://download.splunk.com/products/splunk/releases/8.1.10.1/osx/splunk-8.1.10.1-8bfab9b850ca-darwin-64.tgz"
+Version	Link	Checksum
+9.2.2 	https://download.splunk.com/products/splunk/releases/9.2.2/windows/splunk-9.2.2-d76edf6f0a15-x64-release.msi	
+9.2.1	https://download.splunk.com/products/splunk/releases/9.2.1/windows/splunk-9.2.1-78803f08aabb-x64-release.msi	
+9.2.0.1	https://download.splunk.com/products/splunk/releases/9.2.0.1/windows/splunk-9.2.0.1-d8ae995bf219-x64-release.msi	
+9.2.0	https://download.splunk.com/products/splunk/releases/9.2.0/windows/splunk-9.2.0-1fff88043d5f-x64-release.msi	
+9.1.5	https://download.splunk.com/products/splunk/releases/9.1.5/windows/splunk-9.1.5-29befd543def-x64-release.msi	
+9.1.4	https://download.splunk.com/products/splunk/releases/9.1.4/windows/splunk-9.1.4-a414fc70250e-x64-release.msi	
+9.1.3	https://download.splunk.com/products/splunk/releases/9.1.3/windows/splunk-9.1.3-d95b3299fa65-x64-release.msi	
+9.1.2	https://download.splunk.com/products/splunk/releases/9.1.2/windows/splunk-9.1.2-b6b9c8185839-x64-release.msi	
+9.1.1	https://download.splunk.com/products/splunk/releases/9.1.1/windows/splunk-9.1.1-64e843ea36b1-x64-release.msi	
+9.1.0.2	https://download.splunk.com/products/splunk/releases/9.1.0.2/windows/splunk-9.1.0.2-b6436b649711-x64-release.msi	
+9.1.0.1	https://download.splunk.com/products/splunk/releases/9.1.0.1/windows/splunk-9.1.0.1-77f73c9edb85-x64-release.msi	
+9.1.0	https://download.splunk.com/products/splunk/releases/9.1.0/windows/splunk-9.1.0-1c86ca0bacc3-x64-release.msi	
+9.0.9	https://download.splunk.com/products/splunk/releases/9.0.9/windows/splunk-9.0.9-6315942c563f-x64-release.msi	
+9.0.8	https://download.splunk.com/products/splunk/releases/9.0.8/windows/splunk-9.0.8-4fb5067d40d2-x64-release.msi	
+9.0.7	https://download.splunk.com/products/splunk/releases/9.0.7/windows/splunk-9.0.7-b985591d12fd-x64-release.msi	
+9.0.6	https://download.splunk.com/products/splunk/releases/9.0.6/windows/splunk-9.0.6-050c9bca8588-x64-release.msi	
+9.0.5.1	https://download.splunk.com/products/splunk/releases/9.0.5.1/windows/splunk-9.0.5.1-52d49260b188-x64-release.msi	
+9.0.5	https://download.splunk.com/products/splunk/releases/9.0.5/windows/splunk-9.0.5-e9494146ae5c-x64-release.msi	
+9.0.4.1	https://download.splunk.com/products/splunk/releases/9.0.4.1/windows/splunk-9.0.4.1-419ad9369127-x64-release.msi	
+9.0.4	https://download.splunk.com/products/splunk/releases/9.0.4/windows/splunk-9.0.4-de405f4a7979-x64-release.msi	
+9.0.3	https://download.splunk.com/products/splunk/releases/9.0.3/windows/splunk-9.0.3-dd0128b1f8cd-x64-release.msi	
+9.0.2	https://download.splunk.com/products/splunk/releases/9.0.2/windows/splunk-9.0.2-17e00c557dc1-x64-release.msi	
+9.0.10	https://download.splunk.com/products/splunk/releases/9.0.10/windows/splunk-9.0.10-f551b9b500f8-x64-release.msi	
+9.0.1	https://download.splunk.com/products/splunk/releases/9.0.1/windows/splunk-9.0.1-82c987350fde-x64-release.msi	
+9.0.0.1	https://download.splunk.com/products/splunk/releases/9.0.0.1/windows/splunk-9.0.0.1-9e907cedecb1-x64-release.msi	
+9.0.0	https://download.splunk.com/products/splunk/releases/9.0.0/windows/splunk-9.0.0-6818ac46f2ec-x86-release.msi	
+8.2.9	https://download.splunk.com/products/splunk/releases/8.2.9/windows/splunk-8.2.9-4a20fb65aa78-x64-release.msi	
+8.2.8	https://download.splunk.com/products/splunk/releases/8.2.8/windows/splunk-8.2.8-da25d08d5d3e-x64-release.msi	
+8.2.7.1	https://download.splunk.com/products/splunk/releases/8.2.7.1/windows/splunk-8.2.7.1-c2b65bc24aea-x64-release.msi	
+8.2.7	https://download.splunk.com/products/splunk/releases/8.2.7/windows/splunk-8.2.7-2e1fca123028-x64-release.msi	
+8.2.6.1	https://download.splunk.com/products/splunk/releases/8.2.6.1/windows/splunk-8.2.6.1-5f0da8f6e22c-x64-release.msi	
+8.2.6	https://download.splunk.com/products/splunk/releases/8.2.6/windows/splunk-8.2.6-a6fe1ee8894b-x64-release.msi	
+8.2.5	https://download.splunk.com/products/splunk/releases/8.2.5/windows/splunk-8.2.5-77015bc7a462-x64-release.msi	
+8.2.4	https://download.splunk.com/products/splunk/releases/8.2.4/windows/splunk-8.2.4-87e2dda940d1-x64-release.msi	
+8.2.3.3	https://download.splunk.com/products/splunk/releases/8.2.3.3/windows/splunk-8.2.3.3-e40ea5a516d2-x64-release.msi	
+8.2.3	https://download.splunk.com/products/splunk/releases/8.2.3/windows/splunk-8.2.3-cd0848707637-x64-release.msi	
+8.2.2.1	https://download.splunk.com/products/splunk/releases/8.2.2.1/windows/splunk-8.2.2.1-ae6821b7c64b-x64-release.msi	
+8.2.12	https://download.splunk.com/products/splunk/releases/8.2.12/windows/splunk-8.2.12-e973afd6886e-x64-release.msi	
+8.2.11.2	https://download.splunk.com/products/splunk/releases/8.2.11.2/windows/splunk-8.2.11.2-84863c49dc5d-x64-release.msi	
+8.2.11	https://download.splunk.com/products/splunk/releases/8.2.11/windows/splunk-8.2.11-e73c56f930c5-x64-release.msi	
+8.2.10	https://download.splunk.com/products/splunk/releases/8.2.10/windows/splunk-8.2.10-417e74d5c950-x64-release.msi	
+8.2.1	https://download.splunk.com/products/splunk/releases/8.2.1/windows/splunk-8.2.1-ddff1c41e5cf-x64-release.msi	
+8.2.0	https://download.splunk.com/products/splunk/releases/8.2.0/windows/splunk-8.2.0-e053ef3c985f-x64-release.msi	
+8.1.9	https://download.splunk.com/products/splunk/releases/8.1.9/windows/splunk-8.1.9-a16db3287b56-x64-release.msi	
+8.1.9	https://download.splunk.com/products/splunk/releases/8.1.9/windows/splunk-8.1.9-a16db3287b56-windows-64.zip	
+8.1.8	https://download.splunk.com/products/splunk/releases/8.1.8/windows/splunk-8.1.8-39da583cc695-x64-release.msi	
+8.1.8	https://download.splunk.com/products/splunk/releases/8.1.8/windows/splunk-8.1.8-39da583cc695-windows-64.zip	
+8.1.7.2	https://download.splunk.com/products/splunk/releases/8.1.7.2/windows/splunk-8.1.7.2-dc318a6952c4-x64-release.msi	
+8.1.7.1	https://download.splunk.com/products/splunk/releases/8.1.7.1/windows/splunk-8.1.7.1-19e1d5d518a7-x64-release.msi	
+8.1.7	https://download.splunk.com/products/splunk/releases/8.1.7/windows/splunk-8.1.7-79650d4c9dc0-windows-64.zip	
+8.1.7	https://download.splunk.com/products/splunk/releases/8.1.7/windows/splunk-8.1.7-79650d4c9dc0-x64-release.msi	
+8.1.6	https://download.splunk.com/products/splunk/releases/8.1.6/windows/splunk-8.1.6-c1a0dd183ee5-x64-release.msi	
+8.1.14	https://download.splunk.com/products/splunk/releases/8.1.14/windows/splunk-8.1.14-7b72da4f30b8-x64-release.msi	
+8.1.13	https://download.splunk.com/products/splunk/releases/8.1.13/windows/splunk-8.1.13-898c6e996343-x64-release.msi	
+8.1.12	https://download.splunk.com/products/splunk/releases/8.1.12/windows/splunk-8.1.12-4eb558a8f0b7-x64-release.msi	
+8.1.11	https://download.splunk.com/products/splunk/releases/8.1.11/windows/splunk-8.1.11-aa854f643d76-x64-release.msi	
+8.1.10.1	https://download.splunk.com/products/splunk/releases/8.1.10.1/windows/splunk-8.1.10.1-8bfab9b850ca-x64-release.msi	
+8.1.10.1	https://download.splunk.com/products/splunk/releases/8.1.10.1/windows/splunk-8.1.10.1-8bfab9b850ca-windows-64.zip	
+9.2.2	https://download.splunk.com/products/splunk/releases/9.2.2/linux/splunk-9.2.2-d76edf6f0a15-Linux-x86_64.tgz	
+9.2.2	https://download.splunk.com/products/splunk/releases/9.2.2/linux/splunk-9.2.2-d76edf6f0a15-linux-2.6-amd64.deb	
+9.2.2	https://download.splunk.com/products/splunk/releases/9.2.2/linux/splunk-9.2.2-d76edf6f0a15.x86_64.rpm	
+9.2.1	https://download.splunk.com/products/splunk/releases/9.2.1/linux/splunk-9.2.1-78803f08aabb-linux-2.6-amd64.deb	
+9.2.1	https://download.splunk.com/products/splunk/releases/9.2.1/linux/splunk-9.2.1-78803f08aabb-Linux-x86_64.tgz	
+9.2.1	https://download.splunk.com/products/splunk/releases/9.2.1/linux/splunk-9.2.1-78803f08aabb.x86_64.rpm	
+9.2.0.1	https://download.splunk.com/products/splunk/releases/9.2.0.1/linux/splunk-9.2.0.1-d8ae995bf219-linux-2.6-amd64.deb	
+9.2.0.1	https://download.splunk.com/products/splunk/releases/9.2.0.1/linux/splunk-9.2.0.1-d8ae995bf219.x86_64.rpm	
+9.2.0.1	https://download.splunk.com/products/splunk/releases/9.2.0.1/linux/splunk-9.2.0.1-d8ae995bf219-Linux-x86_64.tgz	
+9.2.0	https://download.splunk.com/products/splunk/releases/9.2.0/linux/splunk-9.2.0-1fff88043d5f.x86_64.rpm	
+9.2.0	https://download.splunk.com/products/splunk/releases/9.2.0/linux/splunk-9.2.0-1fff88043d5f-linux-2.6-amd64.deb	
+9.2.0	https://download.splunk.com/products/splunk/releases/9.2.0/linux/splunk-9.2.0-1fff88043d5f-Linux-x86_64.tgz	
+9.1.5	https://download.splunk.com/products/splunk/releases/9.1.5/linux/splunk-9.1.5-29befd543def-linux-2.6-amd64.deb	
+9.1.5	https://download.splunk.com/products/splunk/releases/9.1.5/linux/splunk-9.1.5-29befd543def-Linux-x86_64.tgz	
+9.1.5	https://download.splunk.com/products/splunk/releases/9.1.5/linux/splunk-9.1.5-29befd543def.x86_64.rpm	
+9.1.4	https://download.splunk.com/products/splunk/releases/9.1.4/linux/splunk-9.1.4-a414fc70250e-linux-2.6-amd64.deb	
+9.1.4	https://download.splunk.com/products/splunk/releases/9.1.4/linux/splunk-9.1.4-a414fc70250e.x86_64.rpm	
+9.1.4	https://download.splunk.com/products/splunk/releases/9.1.4/linux/splunk-9.1.4-a414fc70250e-Linux-x86_64.tgz	
+9.1.3	https://download.splunk.com/products/splunk/releases/9.1.3/linux/splunk-9.1.3-d95b3299fa65-Linux-x86_64.tgz	
+9.1.3	https://download.splunk.com/products/splunk/releases/9.1.3/linux/splunk-9.1.3-d95b3299fa65.x86_64.rpm	
+9.1.3	https://download.splunk.com/products/splunk/releases/9.1.3/linux/splunk-9.1.3-d95b3299fa65-linux-2.6-amd64.deb	
+9.1.2	https://download.splunk.com/products/splunk/releases/9.1.2/linux/splunk-9.1.2-b6b9c8185839-Linux-x86_64.tgz	
+9.1.2	https://download.splunk.com/products/splunk/releases/9.1.2/linux/splunk-9.1.2-b6b9c8185839-linux-2.6-amd64.deb	
+9.1.2	https://download.splunk.com/products/splunk/releases/9.1.2/linux/splunk-9.1.2-b6b9c8185839.x86_64.rpm	
+9.1.1	https://download.splunk.com/products/splunk/releases/9.1.1/linux/splunk-9.1.1-64e843ea36b1-linux-2.6-amd64.deb	
+9.1.1	https://download.splunk.com/products/splunk/releases/9.1.1/linux/splunk-9.1.1-64e843ea36b1-Linux-x86_64.tgz	
+9.1.1	https://download.splunk.com/products/splunk/releases/9.1.1/linux/splunk-9.1.1-64e843ea36b1.x86_64.rpm	
+9.1.0.2	https://download.splunk.com/products/splunk/releases/9.1.0.2/linux/splunk-9.1.0.2-b6436b649711-linux-2.6-amd64.deb	
+9.1.0.2	https://download.splunk.com/products/splunk/releases/9.1.0.2/linux/splunk-9.1.0.2-b6436b649711-Linux-x86_64.tgz	
+9.1.0.2	https://download.splunk.com/products/splunk/releases/9.1.0.2/linux/splunk-9.1.0.2-b6436b649711.x86_64.rpm	
+9.1.0.1	https://download.splunk.com/products/splunk/releases/9.1.0.1/linux/splunk-9.1.0.1-77f73c9edb85-linux-2.6-amd64.deb	
+9.1.0.1	https://download.splunk.com/products/splunk/releases/9.1.0.1/linux/splunk-9.1.0.1-77f73c9edb85.x86_64.rpm	
+9.1.0.1	https://download.splunk.com/products/splunk/releases/9.1.0.1/linux/splunk-9.1.0.1-77f73c9edb85-Linux-x86_64.tgz	
+9.1.0	https://download.splunk.com/products/splunk/releases/9.1.0/linux/splunk-9.1.0-1c86ca0bacc3-Linux-x86_64.tgz	
+9.1.0	https://download.splunk.com/products/splunk/releases/9.1.0/linux/splunk-9.1.0-1c86ca0bacc3.x86_64.rpm	
+9.1.0	https://download.splunk.com/products/splunk/releases/9.1.0/linux/splunk-9.1.0-1c86ca0bacc3-linux-2.6-amd64.deb	
+9.0.9	https://download.splunk.com/products/splunk/releases/9.0.9/linux/splunk-9.0.9-6315942c563f-Linux-x86_64.tgz	
+9.0.9	https://download.splunk.com/products/splunk/releases/9.0.9/linux/splunk-9.0.9-6315942c563f-linux-2.6-amd64.deb	
+9.0.9	https://download.splunk.com/products/splunk/releases/9.0.9/linux/splunk-9.0.9-6315942c563f.x86_64.rpm	
+9.0.8	https://download.splunk.com/products/splunk/releases/9.0.8/linux/splunk-9.0.8-4fb5067d40d2-Linux-x86_64.tgz	
+9.0.8	https://download.splunk.com/products/splunk/releases/9.0.8/linux/splunk-9.0.8-4fb5067d40d2-linux-2.6-amd64.deb	
+9.0.8	https://download.splunk.com/products/splunk/releases/9.0.8/linux/splunk-9.0.8-4fb5067d40d2.x86_64.rpm	
+9.0.7	https://download.splunk.com/products/splunk/releases/9.0.7/linux/splunk-9.0.7-b985591d12fd.x86_64.rpm	
+9.0.7	https://download.splunk.com/products/splunk/releases/9.0.7/linux/splunk-9.0.7-b985591d12fd-linux-2.6-amd64.deb	
+9.0.7	https://download.splunk.com/products/splunk/releases/9.0.7/linux/splunk-9.0.7-b985591d12fd-Linux-x86_64.tgz	
+9.0.6	https://download.splunk.com/products/splunk/releases/9.0.6/linux/splunk-9.0.6-050c9bca8588-linux-2.6-amd64.deb	
+9.0.6	https://download.splunk.com/products/splunk/releases/9.0.6/linux/splunk-9.0.6-050c9bca8588.x86_64.rpm	
+9.0.6	https://download.splunk.com/products/splunk/releases/9.0.6/linux/splunk-9.0.6-050c9bca8588-Linux-x86_64.tgz	
+9.0.5.1	https://download.splunk.com/products/splunk/releases/9.0.5.1/linux/splunk-9.0.5.1-52d49260b188.x86_64.rpm	
+9.0.5.1	https://download.splunk.com/products/splunk/releases/9.0.5.1/linux/splunk-9.0.5.1-52d49260b188-linux-2.6-amd64.deb	
+9.0.5.1	https://download.splunk.com/products/splunk/releases/9.0.5.1/linux/splunk-9.0.5.1-52d49260b188-Linux-x86_64.tgz	
+9.0.5	https://download.splunk.com/products/splunk/releases/9.0.5/linux/splunk-9.0.5-e9494146ae5c-Linux-x86_64.tgz	
+9.0.5	https://download.splunk.com/products/splunk/releases/9.0.5/linux/splunk-9.0.5-e9494146ae5c-linux-2.6-amd64.deb	
+9.0.5	https://download.splunk.com/products/splunk/releases/9.0.5/linux/splunk-9.0.5-e9494146ae5c.x86_64.rpm	
+9.0.4.1	https://download.splunk.com/products/splunk/releases/9.0.4.1/linux/splunk-9.0.4.1-419ad9369127-linux-2.6-x86_64.rpm	
+9.0.4.1	https://download.splunk.com/products/splunk/releases/9.0.4.1/linux/splunk-9.0.4.1-419ad9369127-Linux-x86_64.tgz	
+9.0.4.1	https://download.splunk.com/products/splunk/releases/9.0.4.1/linux/splunk-9.0.4.1-419ad9369127-linux-2.6-amd64.deb	
+9.0.4	https://download.splunk.com/products/splunk/releases/9.0.4/linux/splunk-9.0.4-de405f4a7979-Linux-x86_64.tgz	
+9.0.4	https://download.splunk.com/products/splunk/releases/9.0.4/linux/splunk-9.0.4-de405f4a7979-linux-2.6-x86_64.rpm	
+9.0.4	https://download.splunk.com/products/splunk/releases/9.0.4/linux/splunk-9.0.4-de405f4a7979-linux-2.6-amd64.deb	
+9.0.3	https://download.splunk.com/products/splunk/releases/9.0.3/linux/splunk-9.0.3-dd0128b1f8cd-linux-2.6-x86_64.rpm	
+9.0.3	https://download.splunk.com/products/splunk/releases/9.0.3/linux/splunk-9.0.3-dd0128b1f8cd-Linux-x86_64.tgz	
+9.0.3	https://download.splunk.com/products/splunk/releases/9.0.3/linux/splunk-9.0.3-dd0128b1f8cd-linux-2.6-amd64.deb	
+9.0.2	https://download.splunk.com/products/splunk/releases/9.0.2/linux/splunk-9.0.2-17e00c557dc1-linux-2.6-amd64.deb	
+9.0.2	https://download.splunk.com/products/splunk/releases/9.0.2/linux/splunk-9.0.2-17e00c557dc1-Linux-x86_64.tgz	
+9.0.2	https://download.splunk.com/products/splunk/releases/9.0.2/linux/splunk-9.0.2-17e00c557dc1-linux-2.6-x86_64.rpm	
+9.0.10	https://download.splunk.com/products/splunk/releases/9.0.10/linux/splunk-9.0.10-f551b9b500f8-linux-2.6-amd64.deb	
+9.0.10	https://download.splunk.com/products/splunk/releases/9.0.10/linux/splunk-9.0.10-f551b9b500f8.x86_64.rpm	
+9.0.10	https://download.splunk.com/products/splunk/releases/9.0.10/linux/splunk-9.0.10-f551b9b500f8-Linux-x86_64.tgz	
+9.0.1	https://download.splunk.com/products/splunk/releases/9.0.1/linux/splunk-9.0.1-82c987350fde-linux-2.6-amd64.deb	
+9.0.1	https://download.splunk.com/products/splunk/releases/9.0.1/linux/splunk-9.0.1-82c987350fde-Linux-x86_64.tgz	
+9.0.1	https://download.splunk.com/products/splunk/releases/9.0.1/linux/splunk-9.0.1-82c987350fde-linux-2.6-x86_64.rpm	
+9.0.0.1	https://download.splunk.com/products/splunk/releases/9.0.0.1/linux/splunk-9.0.0.1-9e907cedecb1-Linux-x86_64.tgz	
+9.0.0	https://download.splunk.com/products/splunk/releases/9.0.0/linux/splunk-9.0.0-6818ac46f2ec-Linux-x86_64.tgz	
+9.0.0	https://download.splunk.com/products/splunk/releases/9.0.0/linux/splunk-9.0.0-6818ac46f2ec-linux-2.6-x86_64.rpm	
+9.0.0	https://download.splunk.com/products/splunk/releases/9.0.0/linux/splunk-9.0.0-6818ac46f2ec-linux-2.6-amd64.deb	
+8.2.9	https://download.splunk.com/products/splunk/releases/8.2.9/linux/splunk-8.2.9-4a20fb65aa78-linux-2.6-x86_64.rpm	
+8.2.9	https://download.splunk.com/products/splunk/releases/8.2.9/linux/splunk-8.2.9-4a20fb65aa78-Linux-x86_64.tgz	
+8.2.9	https://download.splunk.com/products/splunk/releases/8.2.9/linux/splunk-8.2.9-4a20fb65aa78-linux-2.6-amd64.deb	
+8.2.8	https://download.splunk.com/products/splunk/releases/8.2.8/linux/splunk-8.2.8-da25d08d5d3e-linux-2.6-x86_64.rpm	
+8.2.8	https://download.splunk.com/products/splunk/releases/8.2.8/linux/splunk-8.2.8-da25d08d5d3e-Linux-x86_64.tgz	
+8.2.8	https://download.splunk.com/products/splunk/releases/8.2.8/linux/splunk-8.2.8-da25d08d5d3e-linux-2.6-amd64.deb	
+8.2.7.1	https://download.splunk.com/products/splunk/releases/8.2.7.1/linux/splunk-8.2.7.1-c2b65bc24aea-Linux-x86_64.tgz	
+8.2.7.1	https://download.splunk.com/products/splunk/releases/8.2.7.1/linux/splunk-8.2.7.1-c2b65bc24aea-linux-2.6-x86_64.rpm	
+8.2.7	https://download.splunk.com/products/splunk/releases/8.2.7/linux/splunk-8.2.7-2e1fca123028-linux-2.6-amd64.deb	
+8.2.7	https://download.splunk.com/products/splunk/releases/8.2.7/linux/splunk-8.2.7-2e1fca123028-linux-2.6-x86_64.rpm	
+8.2.7	https://download.splunk.com/products/splunk/releases/8.2.7/linux/splunk-8.2.7-2e1fca123028-Linux-x86_64.tgz	
+8.2.6.1	https://download.splunk.com/products/splunk/releases/8.2.6.1/linux/splunk-8.2.6.1-5f0da8f6e22c-Linux-x86_64.tgz	
+8.2.6.1	https://download.splunk.com/products/splunk/releases/8.2.6.1/linux/splunk-8.2.6.1-5f0da8f6e22c-linux-2.6-x86_64.rpm	
+8.2.6.1	https://download.splunk.com/products/splunk/releases/8.2.6.1/linux/splunk-8.2.6.1-5f0da8f6e22c-linux-2.6-amd64.deb	
+8.2.6	https://download.splunk.com/products/splunk/releases/8.2.6/linux/splunk-8.2.6-a6fe1ee8894b-linux-2.6-amd64.deb	
+8.2.6	https://download.splunk.com/products/splunk/releases/8.2.6/linux/splunk-8.2.6-a6fe1ee8894b-linux-2.6-x86_64.rpm	
+8.2.6	https://download.splunk.com/products/splunk/releases/8.2.6/linux/splunk-8.2.6-a6fe1ee8894b-Linux-x86_64.tgz	
+8.2.5	https://download.splunk.com/products/splunk/releases/8.2.5/linux/splunk-8.2.5-77015bc7a462-linux-2.6-x86_64.rpm	
+8.2.5	https://download.splunk.com/products/splunk/releases/8.2.5/linux/splunk-8.2.5-77015bc7a462-linux-2.6-amd64.deb	
+8.2.5	https://download.splunk.com/products/splunk/releases/8.2.5/linux/splunk-8.2.5-77015bc7a462-Linux-x86_64.tgz	
+8.2.4.3	https://download.splunk.com/products/splunk/releases/8.2.4.3/linux/splunk-8.2.4.3-28869a19ae1b-linux-2.6-x86_64.rpm	
+8.2.4.3	https://download.splunk.com/products/splunk/releases/8.2.4.3/linux/splunk-8.2.4.3-28869a19ae1b-linux-2.6-amd64.deb	
+8.2.4.3	https://download.splunk.com/products/splunk/releases/8.2.4.3/linux/splunk-8.2.4.3-28869a19ae1b-Linux-x86_64.tgz	
+8.2.4.2	https://download.splunk.com/products/splunk/releases/8.2.4.2/linux/splunk-8.2.4.2-bf9a3c20455b-linux-2.6-x86_64.rpm	
+8.2.4.2	https://download.splunk.com/products/splunk/releases/8.2.4.2/linux/splunk-8.2.4.2-bf9a3c20455b-linux-2.6-amd64.deb	
+8.2.4.1	https://download.splunk.com/products/splunk/releases/8.2.4.1/linux/splunk-8.2.4.1-a3e62cbc8550-linux-2.6-amd64.deb	
+8.2.4.1	https://download.splunk.com/products/splunk/releases/8.2.4.1/linux/splunk-8.2.4.1-a3e62cbc8550-Linux-x86_64.tgz	
+8.2.4.1	https://download.splunk.com/products/splunk/releases/8.2.4.1/linux/splunk-8.2.4.1-a3e62cbc8550-linux-2.6-x86_64.rpm	
+8.2.4	https://download.splunk.com/products/splunk/releases/8.2.4/linux/splunk-8.2.4-87e2dda940d1-linux-2.6-x86_64.rpm	
+8.2.4	https://download.splunk.com/products/splunk/releases/8.2.4/linux/splunk-8.2.4-87e2dda940d1-linux-2.6-amd64.deb	
+8.2.4	https://download.splunk.com/products/splunk/releases/8.2.4/linux/splunk-8.2.4-87e2dda940d1-Linux-x86_64.tgz	
+8.2.3.3	https://download.splunk.com/products/splunk/releases/8.2.3.3/linux/splunk-8.2.3.3-e40ea5a516d2-linux-2.6-amd64.deb	
+8.2.3.3	https://download.splunk.com/products/splunk/releases/8.2.3.3/linux/splunk-8.2.3.3-e40ea5a516d2-linux-2.6-x86_64.rpm	
+8.2.3.3	https://download.splunk.com/products/splunk/releases/8.2.3.3/linux/splunk-8.2.3.3-e40ea5a516d2-Linux-x86_64.tgz	
+8.2.3.2	https://download.splunk.com/products/splunk/releases/8.2.3.2/linux/splunk-8.2.3.2-5281ae34c90c-linux-2.6-amd64.deb	
+8.2.3.2	https://download.splunk.com/products/splunk/releases/8.2.3.2/linux/splunk-8.2.3.2-5281ae34c90c-Linux-x86_64.tgz	
+8.2.3.2	https://download.splunk.com/products/splunk/releases/8.2.3.2/linux/splunk-8.2.3.2-5281ae34c90c-linux-2.6-x86_64.rpm	
+8.2.3	https://download.splunk.com/products/splunk/releases/8.2.3/linux/splunk-8.2.3-cd0848707637-Linux-x86_64.tgz	
+8.2.3	https://download.splunk.com/products/splunk/releases/8.2.3/linux/splunk-8.2.3-cd0848707637-linux-2.6-x86_64.rpm	
+8.2.3	https://download.splunk.com/products/splunk/releases/8.2.3/linux/splunk-8.2.3-cd0848707637-linux-2.6-amd64.deb	
+8.2.2.2	https://download.splunk.com/products/splunk/releases/8.2.2.2/linux/splunk-8.2.2.2-e89a7a0a7f22-linux-2.6-x86_64-fips.rpm	
+8.2.2.2	https://download.splunk.com/products/splunk/releases/8.2.2.2/linux/splunk-8.2.2.2-e89a7a0a7f22-Linux-x86_64.tgz	
+8.2.2.2	https://download.splunk.com/products/splunk/releases/8.2.2.2/linux/splunk-8.2.2.2-e89a7a0a7f22-linux-2.6-x86_64.rpm	
+8.2.2.2	https://download.splunk.com/products/splunk/releases/8.2.2.2/linux/splunk-8.2.2.2-e89a7a0a7f22-linux-2.6-amd64.deb	
+8.2.2.1	https://download.splunk.com/products/splunk/releases/8.2.2.1/linux/splunk-8.2.2.1-ae6821b7c64b-linux-2.6-x86_64.rpm	
+8.2.2.1	https://download.splunk.com/products/splunk/releases/8.2.2.1/linux/splunk-8.2.2.1-ae6821b7c64b-linux-2.6-amd64.deb	
+8.2.2.1	https://download.splunk.com/products/splunk/releases/8.2.2.1/linux/splunk-8.2.2.1-ae6821b7c64b-Linux-x86_64.tgz	
+8.2.12	https://download.splunk.com/products/splunk/releases/8.2.12/linux/splunk-8.2.12-e973afd6886e-linux-2.6-amd64.deb	
+8.2.12	https://download.splunk.com/products/splunk/releases/8.2.12/linux/splunk-8.2.12-e973afd6886e-Linux-x86_64.tgz	
+8.2.12	https://download.splunk.com/products/splunk/releases/8.2.12/linux/splunk-8.2.12-e973afd6886e.x86_64.rpm	
+8.2.11.2	https://download.splunk.com/products/splunk/releases/8.2.11.2/linux/splunk-8.2.11.2-84863c49dc5d.x86_64.rpm	
+8.2.11.2	https://download.splunk.com/products/splunk/releases/8.2.11.2/linux/splunk-8.2.11.2-84863c49dc5d-linux-2.6-amd64.deb	
+8.2.11.2	https://download.splunk.com/products/splunk/releases/8.2.11.2/linux/splunk-8.2.11.2-84863c49dc5d-Linux-x86_64.tgz	
+8.2.11	https://download.splunk.com/products/splunk/releases/8.2.11/linux/splunk-8.2.11-e73c56f930c5-linux-2.6-amd64.deb	
+8.2.11	https://download.splunk.com/products/splunk/releases/8.2.11/linux/splunk-8.2.11-e73c56f930c5-Linux-x86_64.tgz	
+8.2.11	https://download.splunk.com/products/splunk/releases/8.2.11/linux/splunk-8.2.11-e73c56f930c5.x86_64.rpm	
+8.2.10	https://download.splunk.com/products/splunk/releases/8.2.10/linux/splunk-8.2.10-417e74d5c950-linux-2.6-amd64.deb	
+8.2.10	https://download.splunk.com/products/splunk/releases/8.2.10/linux/splunk-8.2.10-417e74d5c950-linux-2.6-x86_64.rpm	
+8.2.10	https://download.splunk.com/products/splunk/releases/8.2.10/linux/splunk-8.2.10-417e74d5c950-Linux-x86_64.tgz	
+8.2.1	https://download.splunk.com/products/splunk/releases/8.2.1/linux/splunk-8.2.1-ddff1c41e5cf-linux-2.6-x86_64.rpm	
+8.2.1	https://download.splunk.com/products/splunk/releases/8.2.1/linux/splunk-8.2.1-ddff1c41e5cf-linux-2.6-amd64.deb	
+8.2.1	https://download.splunk.com/products/splunk/releases/8.2.1/linux/splunk-8.2.1-ddff1c41e5cf-Linux-x86_64.tgz	
+8.2.0	https://download.splunk.com/products/splunk/releases/8.2.0/linux/splunk-8.2.0-e053ef3c985f-Linux-x86_64.tgz	
+8.2.0	https://download.splunk.com/products/splunk/releases/8.2.0/linux/splunk-8.2.0-e053ef3c985f-linux-2.6-x86_64.rpm	
+8.2.0	https://download.splunk.com/products/splunk/releases/8.2.0/linux/splunk-8.2.0-e053ef3c985f-linux-2.6-amd64.deb	
+8.1.9	https://download.splunk.com/products/splunk/releases/8.1.9/linux/splunk-8.1.9-a16db3287b56-linux-2.6-x86_64-fips.rpm	
+8.1.9	https://download.splunk.com/products/splunk/releases/8.1.9/linux/splunk-8.1.9-a16db3287b56-linux-2.6-x86_64.rpm	
+8.1.9	https://download.splunk.com/products/splunk/releases/8.1.9/linux/splunk-8.1.9-a16db3287b56-Linux-x86_64.tgz	
+8.1.9	https://download.splunk.com/products/splunk/releases/8.1.9/linux/splunk-8.1.9-a16db3287b56-linux-2.6-amd64.deb	
+8.1.8	https://download.splunk.com/products/splunk/releases/8.1.8/linux/splunk-8.1.8-39da583cc695-linux-2.6-amd64.deb	
+8.1.8	https://download.splunk.com/products/splunk/releases/8.1.8/linux/splunk-8.1.8-39da583cc695-linux-2.6-x86_64-fips.rpm	
+8.1.8	https://download.splunk.com/products/splunk/releases/8.1.8/linux/splunk-8.1.8-39da583cc695-linux-2.6-x86_64.rpm	
+8.1.8	https://download.splunk.com/products/splunk/releases/8.1.8/linux/splunk-8.1.8-39da583cc695-Linux-x86_64.tgz	
+8.1.7.2	https://download.splunk.com/products/splunk/releases/8.1.7.2/linux/splunk-8.1.7.2-dc318a6952c4-linux-2.6-x86_64.rpm	
+8.1.7.2	https://download.splunk.com/products/splunk/releases/8.1.7.2/linux/splunk-8.1.7.2-dc318a6952c4-linux-2.6-amd64.deb	
+8.1.7.2	https://download.splunk.com/products/splunk/releases/8.1.7.2/linux/splunk-8.1.7.2-dc318a6952c4-Linux-x86_64.tgz	
+8.1.7.1	https://download.splunk.com/products/splunk/releases/8.1.7.1/linux/splunk-8.1.7.1-19e1d5d518a7-linux-2.6-x86_64.rpm	
+8.1.7.1	https://download.splunk.com/products/splunk/releases/8.1.7.1/linux/splunk-8.1.7.1-19e1d5d518a7-linux-2.6-amd64.deb	
+8.1.7.1	https://download.splunk.com/products/splunk/releases/8.1.7.1/linux/splunk-8.1.7.1-19e1d5d518a7-Linux-x86_64.tgz	
+8.1.7	https://download.splunk.com/products/splunk/releases/8.1.7/linux/splunk-8.1.7-79650d4c9dc0-linux-2.6-x86_64-fips.rpm	
+8.1.7	https://download.splunk.com/products/splunk/releases/8.1.7/linux/splunk-8.1.7-79650d4c9dc0-linux-2.6-x86_64.rpm	
+8.1.7	https://download.splunk.com/products/splunk/releases/8.1.7/linux/splunk-8.1.7-79650d4c9dc0-Linux-x86_64.tgz	
+8.1.7	https://download.splunk.com/products/splunk/releases/8.1.7/linux/splunk-8.1.7-79650d4c9dc0-linux-2.6-amd64.deb	
+8.1.6	https://download.splunk.com/products/splunk/releases/8.1.6/linux/splunk-8.1.6-c1a0dd183ee5-linux-2.6-x86_64.rpm	
+8.1.6	https://download.splunk.com/products/splunk/releases/8.1.6/linux/splunk-8.1.6-c1a0dd183ee5-Linux-x86_64.tgz	
+8.1.6	https://download.splunk.com/products/splunk/releases/8.1.6/linux/splunk-8.1.6-c1a0dd183ee5-linux-2.6-amd64.deb	
+8.1.14	https://download.splunk.com/products/splunk/releases/8.1.14/linux/splunk-8.1.14-7b72da4f30b8-linux-2.6-amd64.deb	
+8.1.14	https://download.splunk.com/products/splunk/releases/8.1.14/linux/splunk-8.1.14-7b72da4f30b8-Linux-x86_64.tgz	
+8.1.14	https://download.splunk.com/products/splunk/releases/8.1.14/linux/splunk-8.1.14-7b72da4f30b8.x86_64.rpm	
+8.1.13	https://download.splunk.com/products/splunk/releases/8.1.13/linux/splunk-8.1.13-898c6e996343-linux-2.6-x86_64.rpm	
+8.1.13	https://download.splunk.com/products/splunk/releases/8.1.13/linux/splunk-8.1.13-898c6e996343-linux-2.6-amd64.deb	
+8.1.13	https://download.splunk.com/products/splunk/releases/8.1.13/linux/splunk-8.1.13-898c6e996343-Linux-x86_64.tgz	
+8.1.12	https://download.splunk.com/products/splunk/releases/8.1.12/linux/splunk-8.1.12-4eb558a8f0b7-linux-2.6-x86_64.rpm	
+8.1.12	https://download.splunk.com/products/splunk/releases/8.1.12/linux/splunk-8.1.12-4eb558a8f0b7-Linux-x86_64.tgz	
+8.1.12	https://download.splunk.com/products/splunk/releases/8.1.12/linux/splunk-8.1.12-4eb558a8f0b7-linux-2.6-amd64.deb	
+8.1.11	https://download.splunk.com/products/splunk/releases/8.1.11/linux/splunk-8.1.11-aa854f643d76-linux-2.6-x86_64.rpm	
+8.1.11	https://download.splunk.com/products/splunk/releases/8.1.11/linux/splunk-8.1.11-aa854f643d76-linux-2.6-amd64.deb	
+8.1.11	https://download.splunk.com/products/splunk/releases/8.1.11/linux/splunk-8.1.11-aa854f643d76-Linux-x86_64.tgz	
+8.1.10.1	https://download.splunk.com/products/splunk/releases/8.1.10.1/linux/splunk-8.1.10.1-8bfab9b850ca-linux-2.6-amd64.deb	
+8.1.10.1	https://download.splunk.com/products/splunk/releases/8.1.10.1/linux/splunk-8.1.10.1-8bfab9b850ca-linux-2.6-x86_64.rpm	
+8.1.10.1	https://download.splunk.com/products/splunk/releases/8.1.10.1/linux/splunk-8.1.10.1-8bfab9b850ca-Linux-x86_64.tgz	
+9.2.2	https://download.splunk.com/products/splunk/releases/9.2.2/osx/splunk-9.2.2-d76edf6f0a15-darwin-64.tgz	
+9.2.2	https://download.splunk.com/products/splunk/releases/9.2.2/osx/splunk-9.2.2-d76edf6f0a15-macosx-10.11-.dmg	
+9.2.1	https://download.splunk.com/products/splunk/releases/9.2.1/osx/splunk-9.2.1-78803f08aabb-macosx-10.11-.dmg	
+9.2.1	https://download.splunk.com/products/splunk/releases/9.2.1/osx/splunk-9.2.1-78803f08aabb-darwin-64.tgz	
+9.2.0.1	https://download.splunk.com/products/splunk/releases/9.2.0.1/osx/splunk-9.2.0.1-d8ae995bf219-macosx-10.11-.dmg	
+9.2.0.1	https://download.splunk.com/products/splunk/releases/9.2.0.1/osx/splunk-9.2.0.1-d8ae995bf219-darwin-64.tgz	
+9.2.0	https://download.splunk.com/products/splunk/releases/9.2.0/osx/splunk-9.2.0-1fff88043d5f-darwin-64.tgz	
+9.2.0	https://download.splunk.com/products/splunk/releases/9.2.0/osx/splunk-9.2.0-1fff88043d5f-macosx-10.11-.dmg	
+9.1.5	https://download.splunk.com/products/splunk/releases/9.1.5/osx/splunk-9.1.5-29befd543def-macosx-10.11-.dmg	
+9.1.5	https://download.splunk.com/products/splunk/releases/9.1.5/osx/splunk-9.1.5-29befd543def-darwin-64.tgz	
+9.1.4	https://download.splunk.com/products/splunk/releases/9.1.4/osx/splunk-9.1.4-a414fc70250e-macosx-10.11-.dmg	
+9.1.4	https://download.splunk.com/products/splunk/releases/9.1.4/osx/splunk-9.1.4-a414fc70250e-darwin-64.tgz	
+9.1.3	https://download.splunk.com/products/splunk/releases/9.1.3/osx/splunk-9.1.3-d95b3299fa65-darwin-64.tgz	
+9.1.3	https://download.splunk.com/products/splunk/releases/9.1.3/osx/splunk-9.1.3-d95b3299fa65-macosx-10.11-.dmg	
+9.1.2	https://download.splunk.com/products/splunk/releases/9.1.2/osx/splunk-9.1.2-b6b9c8185839-darwin-64.tgz	
+9.1.2	https://download.splunk.com/products/splunk/releases/9.1.2/osx/splunk-9.1.2-b6b9c8185839-macosx-10.11-.dmg	
+9.1.1	https://download.splunk.com/products/splunk/releases/9.1.1/osx/splunk-9.1.1-64e843ea36b1-macosx-10.11-.dmg	
+9.1.1	https://download.splunk.com/products/splunk/releases/9.1.1/osx/splunk-9.1.1-64e843ea36b1-darwin-64.tgz	
+9.1.0.2	https://download.splunk.com/products/splunk/releases/9.1.0.2/osx/splunk-9.1.0.2-b6436b649711-darwin-64.tgz	
+9.1.0.2	https://download.splunk.com/products/splunk/releases/9.1.0.2/osx/splunk-9.1.0.2-b6436b649711-macosx-10.11-.dmg	
+9.1.0.1	https://download.splunk.com/products/splunk/releases/9.1.0.1/osx/splunk-9.1.0.1-77f73c9edb85-darwin-64.tgz	
+9.1.0.1	https://download.splunk.com/products/splunk/releases/9.1.0.1/osx/splunk-9.1.0.1-77f73c9edb85-macosx-10.11-.dmg	
+9.1.0	https://download.splunk.com/products/splunk/releases/9.1.0/osx/splunk-9.1.0-1c86ca0bacc3-macosx-10.11-.dmg	
+9.1.0	https://download.splunk.com/products/splunk/releases/9.1.0/osx/splunk-9.1.0-1c86ca0bacc3-darwin-64.tgz	
+9.0.9	https://download.splunk.com/products/splunk/releases/9.0.9/osx/splunk-9.0.9-6315942c563f-darwin-64.tgz	
+9.0.9	https://download.splunk.com/products/splunk/releases/9.0.9/osx/splunk-9.0.9-6315942c563f-macosx-10.11-.dmg	
+9.0.8	https://download.splunk.com/products/splunk/releases/9.0.8/osx/splunk-9.0.8-4fb5067d40d2-darwin-64.tgz	
+9.0.8	https://download.splunk.com/products/splunk/releases/9.0.8/osx/splunk-9.0.8-4fb5067d40d2-macosx-10.11-.dmg	
+9.0.7	https://download.splunk.com/products/splunk/releases/9.0.7/osx/splunk-9.0.7-b985591d12fd-darwin-64.tgz	
+9.0.7	https://download.splunk.com/products/splunk/releases/9.0.7/osx/splunk-9.0.7-b985591d12fd-macosx-10.11-.dmg	
+9.0.6	https://download.splunk.com/products/splunk/releases/9.0.6/osx/splunk-9.0.6-050c9bca8588-darwin-64.tgz	
+9.0.6	https://download.splunk.com/products/splunk/releases/9.0.6/osx/splunk-9.0.6-050c9bca8588-macosx-10.11-.dmg	
+9.0.5.1	https://download.splunk.com/products/splunk/releases/9.0.5.1/osx/splunk-9.0.5.1-52d49260b188-darwin-64.tgz	
+9.0.5.1	https://download.splunk.com/products/splunk/releases/9.0.5.1/osx/splunk-9.0.5.1-52d49260b188-macosx-10.11-.dmg	
+9.0.5	https://download.splunk.com/products/splunk/releases/9.0.5/osx/splunk-9.0.5-e9494146ae5c-macosx-10.11-.dmg	
+9.0.5	https://download.splunk.com/products/splunk/releases/9.0.5/osx/splunk-9.0.5-e9494146ae5c-darwin-64.tgz	
+9.0.4.1	https://download.splunk.com/products/splunk/releases/9.0.4.1/osx/splunk-9.0.4.1-419ad9369127-darwin-64.tgz	
+9.0.4.1	https://download.splunk.com/products/splunk/releases/9.0.4.1/osx/splunk-9.0.4.1-419ad9369127-macosx-10.11-.dmg	
+9.0.4	https://download.splunk.com/products/splunk/releases/9.0.4/osx/splunk-9.0.4-de405f4a7979-macosx-10.11-.dmg	
+9.0.4	https://download.splunk.com/products/splunk/releases/9.0.4/osx/splunk-9.0.4-de405f4a7979-darwin-64.tgz	
+9.0.3	https://download.splunk.com/products/splunk/releases/9.0.3/osx/splunk-9.0.3-dd0128b1f8cd-darwin-64.tgz	
+9.0.2	https://download.splunk.com/products/splunk/releases/9.0.2/osx/splunk-9.0.2-17e00c557dc1-darwin-64.tgz	
+9.0.2	https://download.splunk.com/products/splunk/releases/9.0.2/osx/splunk-9.0.2-17e00c557dc1-macosx-10.11-.dmg	
+9.0.10	https://download.splunk.com/products/splunk/releases/9.0.10/osx/splunk-9.0.10-f551b9b500f8-macosx-10.11-.dmg	
+9.0.10	https://download.splunk.com/products/splunk/releases/9.0.10/osx/splunk-9.0.10-f551b9b500f8-darwin-64.tgz	
+9.0.1	https://download.splunk.com/products/splunk/releases/9.0.1/osx/splunk-9.0.1-82c987350fde-darwin-64.tgz	
+9.0.1	https://download.splunk.com/products/splunk/releases/9.0.1/osx/splunk-9.0.1-82c987350fde-macosx-10.11-.dmg	
+9.0.0.1	https://download.splunk.com/products/splunk/releases/9.0.0.1/osx/splunk-9.0.0.1-9e907cedecb1-macosx-10.11-.dmg	
+9.0.0.1	https://download.splunk.com/products/splunk/releases/9.0.0.1/osx/splunk-9.0.0.1-9e907cedecb1-darwin-64.tgz	
+9.0.0	https://download.splunk.com/products/splunk/releases/9.0.0/osx/splunk-9.0.0-6818ac46f2ec-darwin-64.tgz	
+9.0.0	https://download.splunk.com/products/splunk/releases/9.0.0/osx/splunk-9.0.0-6818ac46f2ec-macosx-10.11-.dmg	
+8.2.9	https://download.splunk.com/products/splunk/releases/8.2.9/osx/splunk-8.2.9-4a20fb65aa78-macosx-10.11-.dmg	
+8.2.9	https://download.splunk.com/products/splunk/releases/8.2.9/osx/splunk-8.2.9-4a20fb65aa78-darwin-64.tgz	
+8.2.8	https://download.splunk.com/products/splunk/releases/8.2.8/osx/splunk-8.2.8-da25d08d5d3e-macosx-10.11-.dmg	
+8.2.8	https://download.splunk.com/products/splunk/releases/8.2.8/osx/splunk-8.2.8-da25d08d5d3e-darwin-64.tgz	
+8.2.7.1	https://download.splunk.com/products/splunk/releases/8.2.7.1/osx/splunk-8.2.7.1-c2b65bc24aea-macosx-10.11-.dmg	
+8.2.7.1	https://download.splunk.com/products/splunk/releases/8.2.7.1/osx/splunk-8.2.7.1-c2b65bc24aea-darwin-64.tgz	
+8.2.7	https://download.splunk.com/products/splunk/releases/8.2.7/osx/splunk-8.2.7-2e1fca123028-macosx-10.11-.dmg	
+8.2.7	https://download.splunk.com/products/splunk/releases/8.2.7/osx/splunk-8.2.7-2e1fca123028-darwin-64.tgz	
+8.2.6.1	https://download.splunk.com/products/splunk/releases/8.2.6.1/osx/splunk-8.2.6.1-5f0da8f6e22c-darwin-64.tgz	
+8.2.6.1	https://download.splunk.com/products/splunk/releases/8.2.6.1/osx/splunk-8.2.6.1-5f0da8f6e22c-macosx-10.11-.dmg	
+8.2.6	https://download.splunk.com/products/splunk/releases/8.2.6/osx/splunk-8.2.6-a6fe1ee8894b-darwin-64.tgz	
+8.2.6	https://download.splunk.com/products/splunk/releases/8.2.6/osx/splunk-8.2.6-a6fe1ee8894b-macosx-10.11-.dmg	
+8.2.5	https://download.splunk.com/products/splunk/releases/8.2.5/osx/splunk-8.2.5-77015bc7a462-macosx-10.11-.dmg	
+8.2.5	https://download.splunk.com/products/splunk/releases/8.2.5/osx/splunk-8.2.5-77015bc7a462-darwin-64.tgz	
+8.2.4	https://download.splunk.com/products/splunk/releases/8.2.4/osx/splunk-8.2.4-87e2dda940d1-darwin-64.tgz	
+8.2.4	https://download.splunk.com/products/splunk/releases/8.2.4/osx/splunk-8.2.4-87e2dda940d1-macosx-10.11-.dmg	
+8.2.3.3	https://download.splunk.com/products/splunk/releases/8.2.3.3/osx/splunk-8.2.3.3-e40ea5a516d2-macosx-10.11-.dmg	
+8.2.3.3	https://download.splunk.com/products/splunk/releases/8.2.3.3/osx/splunk-8.2.3.3-e40ea5a516d2-darwin-64.tgz	
+8.2.3.2	https://download.splunk.com/products/splunk/releases/8.2.3.2/osx/splunk-8.2.3.2-5281ae34c90c-darwin-64.tgz	
+8.2.3.2	https://download.splunk.com/products/splunk/releases/8.2.3.2/osx/splunk-8.2.3.2-5281ae34c90c-macosx-10.11-.dmg	
+8.2.3	https://download.splunk.com/products/splunk/releases/8.2.3/osx/splunk-8.2.3-cd0848707637-darwin-64.tgz	
+8.2.3	https://download.splunk.com/products/splunk/releases/8.2.3/osx/splunk-8.2.3-cd0848707637-macosx-10.11-.dmg	
+8.2.2.1	https://download.splunk.com/products/splunk/releases/8.2.2.1/osx/splunk-8.2.2.1-ae6821b7c64b-macosx-10.11-.dmg	
+8.2.2.1	https://download.splunk.com/products/splunk/releases/8.2.2.1/osx/splunk-8.2.2.1-ae6821b7c64b-darwin-64.tgz	
+8.2.12	https://download.splunk.com/products/splunk/releases/8.2.12/osx/splunk-8.2.12-e973afd6886e-darwin-64.tgz	
+8.2.12	https://download.splunk.com/products/splunk/releases/8.2.12/osx/splunk-8.2.12-e973afd6886e-macosx-10.11-.dmg	
+8.2.11.2	https://download.splunk.com/products/splunk/releases/8.2.11.2/osx/splunk-8.2.11.2-84863c49dc5d-macosx-10.11-.dmg	
+8.2.11.2	https://download.splunk.com/products/splunk/releases/8.2.11.2/osx/splunk-8.2.11.2-84863c49dc5d-darwin-64.tgz	
+8.2.11	https://download.splunk.com/products/splunk/releases/8.2.11/osx/splunk-8.2.11-e73c56f930c5-darwin-64.tgz	
+8.2.11	https://download.splunk.com/products/splunk/releases/8.2.11/osx/splunk-8.2.11-e73c56f930c5-macosx-10.11-.dmg	
+8.2.10	https://download.splunk.com/products/splunk/releases/8.2.10/osx/splunk-8.2.10-417e74d5c950-darwin-64.tgz	
+8.2.10	https://download.splunk.com/products/splunk/releases/8.2.10/osx/splunk-8.2.10-417e74d5c950-macosx-10.11-.dmg	
+8.2.1	https://download.splunk.com/products/splunk/releases/8.2.1/osx/splunk-8.2.1-ddff1c41e5cf-macosx-10.11-.dmg	
+8.2.1	https://download.splunk.com/products/splunk/releases/8.2.1/osx/splunk-8.2.1-ddff1c41e5cf-darwin-64.tgz	
+8.2.0	https://download.splunk.com/products/splunk/releases/8.2.0/osx/splunk-8.2.0-e053ef3c985f-darwin-64.tgz	
+8.2.0	https://download.splunk.com/products/splunk/releases/8.2.0/osx/splunk-8.2.0-e053ef3c985f-macosx-10.11-.dmg	
+8.1.9	https://download.splunk.com/products/splunk/releases/8.1.9/osx/splunk-8.1.9-a16db3287b56-macosx-10.11-.dmg	
+8.1.9	https://download.splunk.com/products/splunk/releases/8.1.9/osx/splunk-8.1.9-a16db3287b56-darwin-64.tgz	
+8.1.8	https://download.splunk.com/products/splunk/releases/8.1.8/osx/splunk-8.1.8-39da583cc695-darwin-64.tgz	
+8.1.8	https://download.splunk.com/products/splunk/releases/8.1.8/osx/splunk-8.1.8-39da583cc695-macosx-10.11-.dmg	
+8.1.7.2	https://download.splunk.com/products/splunk/releases/8.1.7.2/osx/splunk-8.1.7.2-dc318a6952c4-darwin-64.tgz	
+8.1.7.2	https://download.splunk.com/products/splunk/releases/8.1.7.2/osx/splunk-8.1.7.2-dc318a6952c4-macosx-10.11-.dmg	
+8.1.7.1	https://download.splunk.com/products/splunk/releases/8.1.7.1/osx/splunk-8.1.7.1-19e1d5d518a7-darwin-64.tgz	
+8.1.7	https://download.splunk.com/products/splunk/releases/8.1.7/osx/splunk-8.1.7-79650d4c9dc0-macosx-10.11-.dmg	
+8.1.7	https://download.splunk.com/products/splunk/releases/8.1.7/osx/splunk-8.1.7-79650d4c9dc0-darwin-64.tgz	
+8.1.6	https://download.splunk.com/products/splunk/releases/8.1.6/osx/splunk-8.1.6-c1a0dd183ee5-darwin-64.tgz	
+8.1.6	https://download.splunk.com/products/splunk/releases/8.1.6/osx/splunk-8.1.6-c1a0dd183ee5-macosx-10.11-.dmg	
+8.1.14	https://download.splunk.com/products/splunk/releases/8.1.14/osx/splunk-8.1.14-7b72da4f30b8-darwin-64.tgz	
+8.1.14	https://download.splunk.com/products/splunk/releases/8.1.14/osx/splunk-8.1.14-7b72da4f30b8-macosx-10.11-.dmg	
+8.1.13	https://download.splunk.com/products/splunk/releases/8.1.13/osx/splunk-8.1.13-898c6e996343-darwin-64.tgz	
+8.1.13	https://download.splunk.com/products/splunk/releases/8.1.13/osx/splunk-8.1.13-898c6e996343-macosx-10.11-.dmg	
+8.1.12	https://download.splunk.com/products/splunk/releases/8.1.12/osx/splunk-8.1.12-4eb558a8f0b7-macosx-10.11-.dmg	
+8.1.12	https://download.splunk.com/products/splunk/releases/8.1.12/osx/splunk-8.1.12-4eb558a8f0b7-darwin-64.tgz	
+8.1.11	https://download.splunk.com/products/splunk/releases/8.1.11/osx/splunk-8.1.11-aa854f643d76-macosx-10.11-.dmg	
+8.1.11	https://download.splunk.com/products/splunk/releases/8.1.11/osx/splunk-8.1.11-aa854f643d76-darwin-64.tgz	
+8.1.10.1	https://download.splunk.com/products/splunk/releases/8.1.10.1/osx/splunk-8.1.10.1-8bfab9b850ca-macosx-10.11-.dmg	
+8.1.10.1	https://download.splunk.com/products/splunk/releases/8.1.10.1/osx/splunk-8.1.10.1-8bfab9b850ca-darwin-64.tgz	
 
 
 MD5(splunk-8.1.10.1-8bfab9b850ca-darwin-64.tgz)= 09d449dd82ad3018bde6488999c4079f
