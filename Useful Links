@@ -63,7 +63,7 @@ https://conf.splunk.com/files/2021/slides/TRU1079B.pdf
 https://conf.splunk.com/files/2021/recordings/TRU1079B.mp4
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Version		| Link																														                                                    | Checksum
+Version		| Link  | Checksum
 9.2.2 		| https://download.splunk.com/products/splunk/releases/9.2.2/windows/splunk-9.2.2-d76edf6f0a15-x64-release.msi				| c3055d857a246a3229cb563f7811feef
 9.2.1		| https://download.splunk.com/products/splunk/releases/9.2.1/windows/splunk-9.2.1-78803f08aabb-x64-release.msi			  	| 35302246a1750fa7235049c0e2432652
 9.2.0.1		| https://download.splunk.com/products/splunk/releases/9.2.0.1/windows/splunk-9.2.0.1-d8ae995bf219-x64-release.msi		| 79417e65f0657d298081d7fa8e5985e0
