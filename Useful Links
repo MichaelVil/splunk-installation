@@ -63,10 +63,10 @@ https://conf.splunk.com/files/2021/slides/TRU1079B.pdf
 https://conf.splunk.com/files/2021/recordings/TRU1079B.mp4
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Version		| Link																														| Checksum
+Version		| Link																														                                                    | Checksum
 9.2.2 		| https://download.splunk.com/products/splunk/releases/9.2.2/windows/splunk-9.2.2-d76edf6f0a15-x64-release.msi				| c3055d857a246a3229cb563f7811feef
-9.2.1		| https://download.splunk.com/products/splunk/releases/9.2.1/windows/splunk-9.2.1-78803f08aabb-x64-release.msi				| 35302246a1750fa7235049c0e2432652
-9.2.0.1		| https://download.splunk.com/products/splunk/releases/9.2.0.1/windows/splunk-9.2.0.1-d8ae995bf219-x64-release.msi			| 79417e65f0657d298081d7fa8e5985e0
+9.2.1		| https://download.splunk.com/products/splunk/releases/9.2.1/windows/splunk-9.2.1-78803f08aabb-x64-release.msi			  	| 35302246a1750fa7235049c0e2432652
+9.2.0.1		| https://download.splunk.com/products/splunk/releases/9.2.0.1/windows/splunk-9.2.0.1-d8ae995bf219-x64-release.msi		| 79417e65f0657d298081d7fa8e5985e0
 9.2.0		| https://download.splunk.com/products/splunk/releases/9.2.0/windows/splunk-9.2.0-1fff88043d5f-x64-release.msi				| f1729091734ca45b208c9207bf7e78a8
 9.1.5		| https://download.splunk.com/products/splunk/releases/9.1.5/windows/splunk-9.1.5-29befd543def-x64-release.msi				| 8257eac7a1b6bb4fe0ce607b301f5780
 9.1.4		| https://download.splunk.com/products/splunk/releases/9.1.4/windows/splunk-9.1.4-a414fc70250e-x64-release.msi				| 738b6782b5c356aa6ccdd5b47965befb
