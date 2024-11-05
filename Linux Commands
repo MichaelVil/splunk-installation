@@ -13,3 +13,7 @@ grep --include=\*.conf -rnw '/opt/splunk' -e "<string to search>"
 
 # Check if port is open: source > destination. Run on source
 nc -v <destination host / ip> <port #>
+
+# find and execute after
+find <location> -maxdepth 1 -mindepth 2 -type <f or d> -exec <command> {} \;
+find /home/location -maxdepth 1 -mindepth 2 -type d -exec rm -rf {} \;
