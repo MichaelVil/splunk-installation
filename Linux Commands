@@ -17,3 +17,11 @@ nc -v <destination host / ip> <port #>
 # find and execute after
 find <location> -maxdepth 1 -mindepth 2 -type <f or d> -exec <command> {} \;
 find /home/location -maxdepth 1 -mindepth 2 -type d -exec rm -rf {} \;
+
+# Execute commands in a batch
+pattern=( field1 field2 field3.. )
+
+for (( i=0; i<${#pattern[@]}; i++ ))
+do
+        grep --include=\*.conf -rnw '/opt/splunk/etc/deployment-apps/' -e "${pattern[i]}"
+done
