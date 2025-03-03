@@ -167,5 +167,17 @@ EXTRACT-game_time = ^(?P<game_date>\d{4}-\d{2}-\d{2})\s(?P<game_time>\d{2}:\d{2}
 | eval oldAccountSubType=if(isnull(oldAccountSubType) OR oldAccountSubType = " ", "noData", oldAccountSubType)
 | eval newAccountSubType=if(isnull(newAccountSubType) OR newAccountSubType = " ", "noData", newAccountSubType)
 
---------------------------------- 
+--------------------------------- Extract text between ---------------------------
+
+Beginning text to remove end
+
+(?<=Beginning)(.*)(?=end)
+
+ text to remove 
+
+---------------------------
+
+remove values before and including txt: ^(.*?)\.txt
+remove values before and excluding txt: ^.*(?=(\.txt))
+Get value between []: ^\[[A-Z]+\]\s+
 
