@@ -1,3 +1,6 @@
 #Download web pages via CMD
 For example:
 brave --headless --dump-dom --virtual-time-budget=10000 --timeout=10000 --run-all-compositor-stages-before-draw --disable-gpu --user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36" "https://www.israelbar.biz/lawyer-search-results/?chunckStart=1" > c:\file1.htm
+
+Add pause between downloads (10 sec)
+PING -n 6 127.0.0.1>nul
