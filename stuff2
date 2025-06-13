@@ -7,3 +7,14 @@ PING -n 6 127.0.0.1>nul
 
 # Get hashes
 Get-FileHash -Algorithm MD5 -Path (Get-ChildItem "\\Path\to\files\*.*" -Recurse) | Export-Csv C:\Temp\hashes.csv
+
+### CRIBL ###
+
+# Run as root
+yum -y install git
+adduser cribl
+cd /opt
+curl -Lso - $(curl https://cdn.cribl.io/dl/latest-x64) | tar zxv
+chown -R cribl:cribl /opt/cribl/
+/opt/cribl/bin/cribl boot-start enable -u cribl
+systemctl start cribl
