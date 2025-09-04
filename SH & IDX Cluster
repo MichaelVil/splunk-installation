@@ -297,5 +297,37 @@ _________________________________________________________________ Config Monitor
 /opt/splunk/bin/splunk disable app splunk_monitoring_console -auth admin:pa$$w0rd
 /opt/splunk/bin/splunk restart (OR systemctl restart Splunkd)
 
+_________________________________________________________________ Upgrade Cluster _________________________________________________________________
 
+Upgrade the manager node
+* Manager node + Deployer + Deployment Server + License Server on the same instance
+1. Stop the manager node
+2. Upgrade the manager node
+3. Start the manager node
+
+Upgrade the search head tier
+1. Stop one of the SH
+2. Upgrade the SH
+3. Start the SH and wait while it joins the cluster.
+4. Transfer captaincy to the upgraded member (run from the SH member)
+     splunk transfer shcluster-captain -mgmt_uri <URI>:<management_port> -auth <username>:<password>
+     splunk show shcluster-status -auth <username>:<password>
+5. For each additional member:
+     Stop the SH
+     Upgrade the SH
+     Start the SH
+
+Upgrade the peer node tier
+1. Enable maintenance mode on the Manager node
+     splunk enable maintenance-mode
+     splunk show maintenance-mode
+2. Stop one of the peer node
+3. Upgrade
+4. Start
+5. For each additional member:
+     Stop the peer node
+     Upgrade the peer node
+     Start the peer node
+6. Disable maintenance mode on the Manager node
+     splunk disable maintenance-mode
 
