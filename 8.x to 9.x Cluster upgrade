@@ -1,0 +1,80 @@
+Splunk Cluster upgrade from 8.x to 9.x
+
+#Add splunk to path (if splunk command not working / full path is used)
+. /opt/splunk/bin/setSplunkEnv
+
+#Use "magik" to install Splunk as root
+sudo vi
+:!/bin/bash
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+CM/DS/LM
+
+splunk stop
+rpm -Uvh <splunk rpm>
+#if needed remove/rename old certificate file:
+mv /opt/splunk/etc/auth/server.pem /opt/splunk/etc/auth/old_server.pem
+
+#if error persist during migration to wiredTiger: start and stop splunk
+splunk --accept-license --answer-yes
+splunk stop
+splunk migrate kvstore-storage-engine --target-engine wiredTiger
+splunk restart
+
+#remove the following apps: splunk_secure_gateway and splunk_assist
+splunk disable app splunk_secure_gateway
+mkdir -p /opt/splunk/etc/apps/splunk_assist/local
+cp /opt/splunk/etc/apps/splunk_secure_gateway/local/app.conf /opt/splunk/etc/apps/splunk_assist/local/
+
+#upgrade wiredTiger version 
+splunk show kvstore-status --verbose
+splunk stop
+splunk migrate migrate-kvstore
+splunk start
+splunk show kvstore-status --verbose
+#the server version should be 4.2.x
+
+SH
+Same procedure as before on each of the instances
+
+Indexers
+#on CM enable maintenance mode
+splunk enable maintenance-mode
+
+#on each of the IDXs instances
+splunk stop
+rpm -Uvh <splunk rpm>
+
+mv /opt/splunk/etc/auth/server.pem /opt/splunk/etc/auth/old_server.pem
+
+splunk --accept-license --answer-yes
+splunk stop
+splunk migrate kvstore-storage-engine --target-engine wiredTiger
+splunk restart
+
+splunk disable app splunk_secure_gateway
+mkdir -p /opt/splunk/etc/apps/splunk_assist/local
+cp /opt/splunk/etc/apps/splunk_secure_gateway/local/app.conf /opt/splunk/etc/apps/splunk_assist/local/
+
+splunk show kvstore-status --verbose
+splunk stop
+splunk migrate migrate-kvstore
+splunk start
+splunk show kvstore-status --verbose
+
+#on CM disable maintenance mode
+splunk disable maintenance-mode
+
+#disable KV store on IDXs instances (server.conf)
+vi /opt/splunk/etc/master-apps/<server.conf location>
+[kvstore_disabled]
+disabled=true
+
+#validate and push bundle on CM
+splunk validate cluster-bundle
+splunk apply cluster-bundle --answer-yes
+
+HFs
+Same procedure as on SH and CM
+
