@@ -68,12 +68,11 @@ ONBOOT=yes
 ###################################################### Splunk Installation  ######################################################
 
 #run as root
-groupadd splunk
-useradd -d /opt/splunk -m -g splunk splunk
-wget -O splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/splunk/releases/8.2.2/linux/splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
-rpm -ivh splunk-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
+wget -O <splunk installation>.rpm '<splunk URL>'
+rpm -ivh <splunk installation>.rpm
 /opt/splunk/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
-chown -R splunk:splunk /opt/splunk/
+# If the following error occurs "Can't create RC file "/etc/init.d/splunk": No such file or directory"
+# Install chkconfig: 'yum install chkconfig' and enable boot-start '/opt/splunk/bin/splunk enable boot-start'
 su - splunk
 /opt/splunk/bin/splunk start (OR systemctl start splunk)
 
