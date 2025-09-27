@@ -1,43 +1,3 @@
-###################################################### OS Level ######################################################
-
-#Time Zone configuration. Set the correct TZ:
-timedatectl set-timezone Asia/Jerusalem
-
-#Firewall Configuration. Open the ports required for Splunk:
-firewall-cmd --permanent --add-port=8000/tcp --add-port=8089/tcp --add-port=9997/tcp
-firewall-cmd --reload (OR systemctl restart firewalld)
-
-default ports:
-
-9997 for forwarders to the Splunk indexer
-8000 for clients to the Splunk Search page
-8089 for splunkd (also used by deployment server).
-
-#OR disable firewall
-systemctl stop firewalld
-systemctl disable firewalld
-
-#change hostname 
-hostnamectl set-hostname <your-new-hostname>
-
-#Turn OFF SELInux
-vi /etc/selinux/config
-SELINUX=disabled
-
-#Give Splunk user Sudo privileges
-visudo
-
-## The COMMANDS section may have other options added to it.
-##
-## Allow root to run any commands anywhere
-
-root    ALL=(ALL)       ALL
-splunk ALL=(ALL:ALL) ALL
-
-#Add Splunk to PATH
-vi .bashrc
-PATH=/opt/splunk/bin:${PATH}
-
 ###################################################### VM Settings for Splunk Installation  ######################################################
 
 VM Settings > Network > Adapter2
@@ -65,7 +25,25 @@ DNS2=8.8.4.4
 # Note this was set to no
 ONBOOT=yes  
 
-###################################################### Splunk Installation  ######################################################
+###################################################### OS Level ######################################################
+
+#Time Zone configuration. Set the correct TZ:
+timedatectl set-timezone Asia/Jerusalem
+
+#Firewall Configuration. Open the ports required for Splunk (9997, 8000, 8089 and etc.):
+# https://kinneygroup.com/blog/splunk-default-ports/
+firewall-cmd --permanent --add-port=8000/tcp --add-port=8089/tcp --add-port=9997/tcp
+firewall-cmd --reload (OR systemctl restart firewalld)
+
+#OR disable firewall
+systemctl stop firewalld
+systemctl disable firewalld
+
+#Turn OFF SELInux
+vi /etc/selinux/config
+SELINUX=disabled
+
+###################################################### Splunk / Splunk Forwarder Installation  ######################################################
 
 #run as root
 wget -O <splunk installation>.rpm '<splunk URL>'
@@ -78,6 +56,15 @@ su - splunk
 
 #Add splunk user to root (CentOS/Redhat) or adm (Debian/Ubuntu) group to have read access to /var/log/secure:
 usermod -a -G root splunk
+
+#Run Splunk Enterprise as a systemd service
+/opt/splunk/bin/splunk stop
+#under root
+/opt/splunk/bin/splunk disable boot-start
+/opt/splunk/bin/splunk enable boot-start -systemd-managed 1 -user <username> -group <groupname>
+#Verify that splunkd is running as a systemd service.
+su - splunk
+/opt/splunk/bin/splunk status
 
 #Disable telemetry - Add following lines 
 vi /opt/splunk/etc/apps/splunk_instrumentation/local/telemetry.conf
@@ -93,38 +80,16 @@ precheckSendSupportUsage = false
 #Install Splunk License (Web GUI or)
 /opt/splunk/bin/splunk add licenses <path to license> -auth admin:pa$$w0rd
 
-###################################################### Splunk UF Installation  ######################################################
-
-#run as root
-groupadd splunk
-useradd -d /opt/splunkforwarder -m -g splunk splunk
-wget -O splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm 'https://d7wz6hmoaavd0.cloudfront.net/products/universalforwarder/releases/8.2.2/linux/splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm'
-rpm -ivh splunkforwarder-8.2.2-87344edfcdb4-linux-2.6-x86_64.rpm
-/opt/splunkforwarder/bin/splunk enable boot-start -user splunk --accept-license --answer-yes
-chown -R splunk:splunk /opt/splunkforwarder/
-su - splunk
-/opt/splunkforwarder/bin/splunk start (OR systemctl start splunk)
-
-###################################################### Splunk Removal  ######################################################
+###################################################### Splunk / Splunk Forwarder Removal  ######################################################
 
 #run as root
 /opt/splunk/bin/splunk stop
 /opt/splunk/bin/splunk disable boot-start
-rpm -e splunk-8.2.2-87344edfcdb4.x86_64
+rpm -qa | grep splunk
+rpm -e <splunk installation>
 kill -9 `ps -ef | grep splunk | grep -v grep | awk '{print $2;}'`
 rm -rf /opt/splunk
 rm -rf /opt/splunkdata
-userdel splunk
-groupdel splunk
-
-#Splunk UF Removal
-
-#run as root
-/opt/splunkforwarder/bin/splunk stop
-/opt/splunkforwarder/bin/splunk disable boot-start
-rpm -e splunkforwarder-8.2.2-87344edfcdb4.x86_64
-kill -9 `ps -ef | grep splunk | grep -v grep | awk '{print $2;}'`
-rm -rf /opt/splunkforwarder
 userdel splunk
 groupdel splunk
 
@@ -170,16 +135,4 @@ $SPLUNK_HOME/bin/splunk status
 
 After upgrading all the indexers disable maintenance mode on Manager Node
 $SPLUNK_HOME/bin/splunk disable maintenance-mode
-
-
-
-
-
-
-
-
-
-
-
-
 
