@@ -61,7 +61,15 @@ usermod -a -G root splunk
 /opt/splunk/bin/splunk stop
 #under root
 /opt/splunk/bin/splunk disable boot-start
-/opt/splunk/bin/splunk enable boot-start -systemd-managed 1 -user <username> -group <groupname>
+/opt/splunk/bin/splunk enable boot-start -systemd-managed 1 -create-polkit-rules 1 -user splunk
+
+#Add the following lines to visudo:
+visudo
+splunk ALL=(root) NOPASSWD: /usr/bin/systemctl restart Splunkd.service
+splunk ALL=(root) NOPASSWD: /usr/bin/systemctl stop Splunkd.service
+splunk ALL=(root) NOPASSWD: /usr/bin/systemctl start Splunkd.service 
+splunk ALL=(root) NOPASSWD: /usr/bin/systemctl status Splunkd.service
+
 #Verify that splunkd is running as a systemd service.
 su - splunk
 /opt/splunk/bin/splunk status
