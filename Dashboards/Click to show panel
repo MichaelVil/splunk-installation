@@ -1,0 +1,65 @@
+XML
+
+<dashboard script="button_click.js">
+  <label>Button Switcher Example</label>
+  <row>
+    <panel>
+      <title>Example to Show or Hide Details Panel based on respective Button Clicks</title>
+      <html>
+        show_details : $show_details$
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html rejects="$show_details$">
+        <button id="showButton" class="btn">Show</button>
+      </html>
+      <chart>
+        <search>
+          <query>index=_internal sourcetype=splunkd log_level!=INFO
+| timechart count by log_level</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">column</option>
+        <option name="charting.drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+    <panel depends="$show_details$">
+      <html>
+        <button id="hideButton" class="btn">Hide</button>        
+      </html>
+      <table>
+        <search>
+          <query>index=_internal sourcetype=splunkd log_level!=INFO
+| timechart count by log_level</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="count">5</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>
+
+JS
+
+require([
+    "splunkjs/mvc",
+    "splunkjs/mvc/simplexml/ready!"
+], function(
+            mvc
+            ) {
+        var defaultTokenModel = mvc.Components.get("default");
+        var submittedTokenModel = mvc.Components.get("submitted");
+        $("#showButton").click(function(){
+            defaultTokenModel.set("show_details","true"); 
+            submittedTokenModel.set("show_details","true"); 
+        });
+        $("#hideButton").click(function(){
+            defaultTokenModel.unset("show_details");
+            submittedTokenModel.unset("show_details"); 
+        });
+});
