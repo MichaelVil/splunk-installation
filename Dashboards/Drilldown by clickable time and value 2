@@ -1,0 +1,35 @@
+XML
+
+<dashboard version="1.1" theme="light">
+  <label>Drilldown by clickable time and value 2</label>
+  <search id="base">
+    <query>index=_internal
+| fields host source sourcetype</query>
+    <earliest>-60m@h</earliest>
+    <latest>now</latest>
+    <sampleRatio>1</sampleRatio>
+  </search>
+  <row>
+    <panel>
+      <title>Click to Time</title>
+      <chart>
+        <search>
+          <query>
+index=_internal
+| fields host source sourcetype
+| bin span=1m _time
+| timechart count by sourcetype</query>
+        </search>
+        <option name="charting.chart">line</option>
+        <option name="charting.drilldown">all</option>
+        <drilldown>
+          <set token="source_tok">sourcetype</set>
+          <set token="day">$click.name$</set>
+          <eval token="det">if($day$="Today",$earliest$-900,$earliest$-((24*3600*7)+900)</eval>
+          <eval token="dit">if($day$="Today",$latest$,$latest$-(24*3600*7)</eval>
+          <link target="_blank">search?q=index%3D_internal%20sourcetype%3D%22mongod%22%20earliest%3D$det$%20latest%3D$dit$</link>
+        </drilldown>
+      </chart>
+    </panel>
+  </row>
+</dashboard>
