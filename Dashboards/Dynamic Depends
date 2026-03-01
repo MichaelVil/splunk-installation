@@ -1,0 +1,129 @@
+XML
+
+<dashboard version="1.1">
+  <label>Dynamic Depends</label>
+  <row>
+    <panel>
+      <table>
+        <search>
+          <query>| makeresults
+| eval F="A,B,C,D,E,F",F=split(F,",")
+| mvexpand F
+| eval H=F
+| table H F
+| transpose header_field=H
+| fields - column</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">cell</option>
+        <drilldown>
+          <condition match="$click.value2$==&quot;A&quot;">
+            <set token="panel_A">$click.value2$</set>
+            <unset token="panel_B"></unset>
+            <unset token="panel_C"></unset>
+            <unset token="panel_D"></unset>
+            <unset token="panel_E"></unset>
+            <unset token="panel_F"></unset>
+          </condition>
+          <condition match="$click.value2$==&quot;B&quot;">
+            <set token="panel_B">$click.value2$</set>
+            <unset token="panel_A"></unset>
+            <unset token="panel_C"></unset>
+            <unset token="panel_D"></unset>
+            <unset token="panel_E"></unset>
+            <unset token="panel_F"></unset>
+          </condition>
+          <condition match="$click.value2$==&quot;C&quot;">
+            <set token="panel_C">$click.value2$</set>
+            <unset token="panel_A"></unset>
+            <unset token="panel_B"></unset>
+            <unset token="panel_D"></unset>
+            <unset token="panel_E"></unset>
+            <unset token="panel_F"></unset>
+          </condition>
+          <condition match="$click.value2$==&quot;D&quot;">
+            <set token="panel_D">$click.value2$</set>
+            <unset token="panel_A"></unset>
+            <unset token="panel_B"></unset>
+            <unset token="panel_C"></unset>
+            <unset token="panel_E"></unset>
+            <unset token="panel_F"></unset>
+          </condition>
+          <condition match="$click.value2$==&quot;E&quot;">
+            <set token="panel_E">$click.value2$</set>
+            <unset token="panel_A"></unset>
+            <unset token="panel_B"></unset>
+            <unset token="panel_C"></unset>
+            <unset token="panel_D"></unset>
+            <unset token="panel_F"></unset>
+          </condition>
+          <condition match="$click.value2$==&quot;F&quot;">
+            <set token="panel_F">$click.value2$</set>
+            <unset token="panel_A"></unset>
+            <unset token="panel_B"></unset>
+            <unset token="panel_C"></unset>
+            <unset token="panel_D"></unset>
+            <unset token="panel_E"></unset>
+          </condition>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+   <row>
+    <panel depends="$panel_A$">
+      <title>Panel A</title>
+      <table>
+        <search>
+          <query>| makeresults | eval Message="This is flag $panel_A$"</query>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+    <panel depends="$panel_B$">
+      <title>Panel B</title>
+      <table>
+        <search>
+          <query>| makeresults | eval Message="This is flag $panel_B$"</query>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+    <panel depends="$panel_C$">
+      <title>Panel C</title>
+      <table>
+        <search>
+          <query>| makeresults | eval Message="This is flag $panel_C$"</query>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+    <panel depends="$panel_D$">
+      <title>Panel D</title>
+      <table>
+        <search>
+          <query>| makeresults | eval Message="This is flag $panel_D$"</query>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+    <panel depends="$panel_E$">
+      <title>Panel E</title>
+      <table>
+        <search>
+          <query>| makeresults | eval Message="This is flag $panel_E$"</query>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+    <panel depends="$panel_F$">
+      <title>Panel F</title>
+      <table>
+        <search>
+          <query>| makeresults | eval Message="This is flag $panel_F$"</query>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>
