@@ -1,0 +1,44 @@
+--Opens a new panel based on click
+--Manipulate time token to add time to drilldown
+
+XML
+
+<dashboard>
+  <label>Drilldown by time and value</label>
+  <row>
+    <panel>
+      <chart>
+        <search>
+          <query>index=_internal
+| timechart count by method usenull=f</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">line</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="time_tok">$click.value$</set>
+          <set token="method_tok">$click.name2$</set>
+          <eval token="earliest_day">relative_time($time_tok$, "-5m")</eval>
+          <eval token="latest_day">relative_time($time_tok$, "+5m")</eval>
+        </drilldown>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <search>
+          <query>index=_internal earliest="$earliest_day$" latest="$latest_day$" 
+| search method = $method_tok$
+| table _time method</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>
