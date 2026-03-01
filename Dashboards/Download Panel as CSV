@@ -1,0 +1,38 @@
+--Adds button to download result as CSV
+
+XML
+
+<dashboard>
+  <label>Download CSV file</label>
+  <row>
+    <panel>
+      <title></title>
+      <table>
+        <search>
+          <query>index=_internal 
+		  | head 1000 
+		  | stats count by sourcetype, source, host 
+		  | addinfo</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+          <done>
+            <set token="export_sid">$job.sid$</set>
+          </done>
+        </search>
+        <option name="count">100</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="link.visible">0</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+      <html>
+       <a class="btn btn-primary" role="button" href="/api/search/jobs/$export_sid$/results?isDownload=true&amp;timeFormat=%25FT%25T.%25Q%25%3Az&amp;maxLines=0&amp;count=0&amp;filename=ExportReport&amp;outputMode=csv">Download CSV</a>
+      </html>
+    </panel>
+  </row>
+</dashboard>
