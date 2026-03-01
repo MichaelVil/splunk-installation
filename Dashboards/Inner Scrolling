@@ -36,7 +36,6 @@ XML
 </form>
 
 JS
-$SPLUNK_HOME/etc/apps/<app_name>/appserver/static
 
 require([
     "jquery", 
