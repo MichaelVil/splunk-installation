@@ -1,0 +1,36 @@
+```
+<form version="1.1" theme="light" script="pagesizeee.js">
+  <label>table</label>
+  <fieldset submitButton="false">
+    <input type="text" token="tok">
+      <label>field1</label>
+      <default>*</default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <html>
+        <style>
+          .dashboard-row .dashboard-panel .panel-element-row {
+            overflow: auto;
+            max-height: 300px;
+          }
+        </style>
+     </html>
+      <table id="rk">
+        <search>
+          <query>index=_internal earliest=-5m
+| table _raw
+| search *$tok$*
+| streamstats count
+| table count *</query>
+          <earliest>$earliest$</earliest>
+          <latest>$latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </table>
+    </panel>
+  </row>
+</form>
+```
