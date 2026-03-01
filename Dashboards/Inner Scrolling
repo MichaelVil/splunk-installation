@@ -35,7 +35,7 @@ XML
   </row>
 </form>
 
-Javascript
+JS
 $SPLUNK_HOME/etc/apps/<app_name>/appserver/static
 
 require([
