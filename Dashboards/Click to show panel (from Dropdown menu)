@@ -1,0 +1,72 @@
+XML
+
+<form version="1.1">
+  <label>Panel Based On Token Value</label>
+  <fieldset submitButton="false">
+    <input type="dropdown" token="field1">
+      <label>Work Sites</label>
+      <choice value="site_a">Site-A</choice>
+      <choice value="site_b">Site-B</choice>
+      <choice value="site_c">Site_C</choice>
+      <default>site_a</default>
+      <change>
+        <condition value="site_a">
+          <set token="site_a">true</set>
+          <unset token="site_b"></unset>
+          <unset token="site_c"></unset>
+        </condition>
+        <condition value="site_b">
+          <set token="site_b">true</set>
+          <unset token="site_a"></unset>
+          <unset token="site_c"></unset>
+        </condition>
+        <condition value="site_c">
+          <set token="site_c">true</set>
+          <unset token="site_a"></unset>
+          <unset token="site_b"></unset>
+        </condition>
+      </change>
+    </input>
+  </fieldset>
+  <row>
+    <panel depends="$site_a$">
+      <title>Site A</title>
+      <chart>
+        <search>
+          <query>index=_*|stats count by index</query>
+          <earliest>-15m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.drilldown">none</option>
+      </chart>
+    </panel>
+    <panel depends="$site_b$">
+      <title>Site B</title>
+      <chart>
+        <search>
+          <query>index=_*|stats count by sourcetype</query>
+          <earliest>-15m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.drilldown">none</option>
+      </chart>
+    </panel>
+    <panel depends="$site_c$">
+      <title>Site C</title>
+      <chart>
+        <search>
+          <query>index=_*|stats count by source</query>
+          <earliest>-15m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.drilldown">none</option>
+      </chart>
+    </panel>
+  </row>
+</form>
