@@ -1,0 +1,134 @@
+--Show or Hide Details Panel (# Display Wiz)
+--Download Number Display Viz - https://splunkbase.splunk.com/app/4537
+
+XML
+
+<dashboard version="1.1">
+  <label>Show or Hide Details Panel (# Display Wiz)</label>
+  <row>
+    <panel>
+      <viz type="number_display_viz.number_display_viz">
+        <search>
+          <query>index="_internal" sourcetype="splunkd" log_level="*" 
+| stats count by log_level</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="number_display_viz.number_display_viz.bordercolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#0178c7</option>
+        <option name="number_display_viz.number_display_viz.padding">0</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">solid</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">70</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#009DD9</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#0178c7</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">auto</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">auto</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparknulls">gaps</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">no</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">line</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">20</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">1</option>
+        <option name="number_display_viz.number_display_viz.style">a4</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">70</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">40</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">60</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textdrop">no</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textmode">static</option>
+        <option name="number_display_viz.number_display_viz.textprecision">1</option>
+        <option name="number_display_viz.number_display_viz.textsize">100</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#1a9035</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#d16f18</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#b22b32</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">70</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">30</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#edd051</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">no</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">100</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <eval token="tokINFO">if($row.log_level$="INFO", 1, null())</eval>
+          <eval token="tokWARN">if($row.log_level$="WARN", 1, null())</eval>
+          <eval token="tokERROR">if($row.log_level$="ERROR", 1, null())</eval>
+        </drilldown>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel depends="$tokINFO$">
+      <table>
+        <title>INFO details</title>
+        <search>
+          <query>index=_internal sourcetype=splunkd log_level="INFO" 
+| timechart count by component</query>
+          <earliest>$earliest$</earliest>
+          <latest>$latest$</latest>
+        </search>
+        <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
+      </table>
+    </panel>
+    <panel depends="$tokWARN$">
+      <table>
+        <title>WARN details</title>
+        <search>
+          <query>index=_internal sourcetype=splunkd log_level="WARN" 
+| timechart count by component</query>
+          <earliest>$earliest$</earliest>
+          <latest>$latest$</latest>
+        </search>
+        <option name="drilldown">cell</option>
+      </table>
+    </panel>
+    <panel depends="$tokERROR$">
+      <table>
+        <title>ERROR details</title>
+        <search>
+          <query>index=_internal sourcetype=splunkd log_level="ERROR" 
+| timechart count by component</query>
+          <earliest>$earliest$</earliest>
+          <latest>$latest$</latest>
+        </search>
+        <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>
