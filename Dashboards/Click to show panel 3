@@ -1,0 +1,87 @@
+XML
+
+<dashboard version="1.1">
+  <label>Show Panel based on Column Click</label>
+  <row>
+    <panel>
+      <title>Table for drilldown</title>
+      <table>
+        <search>
+          <query>index="_internal" sourcetype="splunkd" log_level="*" 
+| timechart count by log_level</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">5</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <drilldown>
+          <condition field="INFO">
+            <set token="tokINFO">true</set>
+            <unset token="tokWARN"></unset>
+            <unset token="tokERROR"></unset>
+          </condition>
+          <condition field="WARN">
+            <unset token="tokINFO"></unset>
+            <set token="tokWARN">true</set>
+            <unset token="tokERROR"></unset>
+          </condition>
+          <condition field="ERROR">
+            <unset token="tokINFO"></unset>
+            <unset token="tokWARN"></unset>
+            <set token="tokERROR">ERROR</set>
+          </condition>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel depends="$tokINFO$">
+      <chart>
+        <title>INFO details</title>
+        <search>
+          <query>index=_internal sourcetype=splunkd log_level="INFO" 
+| timechart count by component</query>
+          <earliest>$earliest$</earliest>
+          <latest>$latest$</latest>
+        </search>
+        <option name="charting.chart">line</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+    <panel depends="$tokWARN$">
+      <chart>
+        <title>WARN details</title>
+        <search>
+          <query>index=_internal sourcetype=splunkd log_level="WARN" 
+| timechart count by component</query>
+          <earliest>$earliest$</earliest>
+          <latest>$latest$</latest>
+        </search>
+        <option name="charting.chart">line</option>
+        <option name="charting.drilldown">all</option>
+      </chart>
+    </panel>
+    <panel depends="$tokERROR$">
+      <chart>
+        <title>ERROR details</title>
+        <search>
+          <query>index=_internal sourcetype=splunkd log_level="ERROR" 
+| timechart count by component</query>
+          <earliest>$earliest$</earliest>
+          <latest>$latest$</latest>
+        </search>
+        <option name="charting.chart">line</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+  </row>
+</dashboard>
