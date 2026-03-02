@@ -1,0 +1,95 @@
+--Create custom Submit button for panel
+
+XML
+
+<form version="1.1">
+  <label>Panel with Submit Button</label>
+  <fieldset submitButton="false"></fieldset>
+  <row depends="$alwaysHideCSSPanel$">
+    <panel>
+      <html>
+        <style>
+          #link1 div[data-test="radio-bar"],
+          #link2 div[data-test="radio-bar"]{
+            width: 120px !important;
+            background-color: #5CC05C;
+          }
+          #link1 div[data-test="radio-bar"] button[data-test="option"] span[data-test="label"],
+          #link2 div[data-test="radio-bar"] button[data-test="option"] span[data-test="label"]{
+            color: #FFFFFF !important;
+          }
+        </style>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Panel 1</title>
+      <input type="time" token="time1">
+        <label></label>
+        <default>
+          <earliest>-7d@h</earliest>
+          <latest>now</latest>
+        </default>
+        <change>
+          <unset token="submit1"></unset>
+        </change>
+      </input>
+      <input id="link1" type="link" token="link1" searchWhenChanged="true">
+        <label></label>
+        <choice value="submit">Submit</choice>
+        <change>
+          <condition value="submit">
+            <set token="submit1">true</set>
+            <unset token="form.link1"></unset>
+          </condition>
+        </change>
+      </input>
+      <chart depends="$submit1$">
+        <title>Chart 1</title>
+        <search depends="$submit1$">
+          <query>| tstats count where index=_internal sourcetype=splunkd by _time span=1h</query>
+          <earliest>$time1.earliest$</earliest>
+          <latest>$time1.latest$</latest>
+        </search>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.chart">line</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+    <panel>
+      <title>Panel 2</title>
+      <input type="time" token="time2">
+        <label></label>
+        <default>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </default>
+        <change>
+          <unset token="submit2"></unset>
+        </change>
+      </input>
+      <input id="link2" type="link" token="link2" searchWhenChanged="true">
+        <label></label>
+        <choice value="submit">Submit</choice>
+        <change>
+          <condition value="submit">
+            <set token="submit2">true</set>
+            <unset token="form.link2"></unset>
+          </condition>
+        </change>
+      </input>
+      <chart depends="$submit2$">
+        <title>Chart 2</title>
+        <search depends="$submit2$">
+          <query>| tstats count where index=_internal sourcetype=splunkd by _time span=1h</query>
+          <earliest>$time2.earliest$</earliest>
+          <latest>$time2.latest$</latest>
+        </search>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.chart">line</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+  </row>
+</form>
