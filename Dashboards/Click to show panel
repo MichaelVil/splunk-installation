@@ -1,6 +1,6 @@
 XML
 
-<dashboard script="button_click.js">
+<dashboard version="1.1" script="button_click.js">
   <label>Button Switcher Example</label>
   <row>
     <panel>
