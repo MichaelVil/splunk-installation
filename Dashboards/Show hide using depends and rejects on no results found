@@ -1,0 +1,43 @@
+--If no result are found, a custom message appears
+
+XML
+
+<form version="1.1">
+  <label>Show hide using depends and rejects on no results found</label>
+  <fieldset submitButton="false">
+    <input type="time" token="tokTime" searchWhenChanged="true">
+      <label>Select Time</label>
+      <default>
+        <earliest>-60m@m</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <chart rejects="$show_html$">
+        <search>
+          <query>index=_internal sourcetype=splunkd log_level="ERROR"
+          | timechart count</query>
+          <earliest>$tokTime.earliest$</earliest>
+          <latest>$tokTime.latest$</latest>
+          <progress>
+            <condition match="$job.resultCount$ == 0">
+              <set token="show_html">true</set>
+            </condition>
+            <condition>
+              <unset token="show_html"></unset>
+            </condition>
+          </progress>
+        </search>
+        <option name="charting.axisTitleX.visibility">collapsed</option>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+      </chart>
+      <html depends="$show_html$">
+         <div style="font-weight:bold;font-size:150%;text-align:center;color:red">
+              No results found for selected timerange. Please relax the search filters or increase the time range.
+         </div>
+      </html>
+    </panel>
+  </row>
+</form>
