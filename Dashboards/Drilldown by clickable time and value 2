@@ -1,6 +1,6 @@
 XML
 
-<dashboard version="1.1" theme="light">
+<dashboard version="1.1">
   <label>Drilldown by clickable time and value 2</label>
   <search id="base">
     <query>index=_internal
