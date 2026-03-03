@@ -1,0 +1,71 @@
+XML
+
+<form version="1.1">
+  <label>Pie Chart Drilldown with Default Token</label>
+  <init>
+    <set token="component">*</set>
+    <set token="componentLabel">All</set>
+    <unset token="tokShowResetButton"></unset>
+  </init>
+  <fieldset submitButton="false"></fieldset>
+  <row>
+    <panel>
+      <title>Click Pie Chart to Drilldown with specific log_level</title>
+      <chart>
+        <search>
+          <query>index=_internal sourcetype=splunkd
+|  stats count by log_level</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <drilldown>
+          <set token="component">$click.value$</set>
+          <set token="componentLabel">$click.value$</set>
+          <set token="tokShowResetButton"></set>
+        </drilldown>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Show Component drilldown details for $componentLabel$ log_level</title>
+      <chart>
+        <search>
+          <query>index=_internal sourcetype=splunkd log_level="$component$" 
+| timechart count by component</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">line</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+  </row>
+  <row depends="$tokShowResetButton$">
+    <panel>
+      <input id="splk_chkbox_reset" type="link" token="tokReset" searchWhenChanged="true">
+        <label></label>
+        <choice value="reset">Reset to All</choice>
+        <change>
+          <condition value="reset">
+            <set token="component">*</set>
+            <set token="componentLabel">All</set>
+            <unset token="form.tokReset"></unset>
+            <unset token="tokShowResetButton"></unset>
+          </condition>
+        </change>
+      </input>
+      <html depends="$alwaysHideCSSPanel$">
+        <style>
+          #splk_chkbox_reset {
+                float: right;
+          }
+        </style>
+      </html>
+    </panel>
+  </row>
+</form>
