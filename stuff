@@ -351,3 +351,103 @@ TRANSFORMS-syslog_out = send_to_syslog
 REGEX = . #This will capture all events, you can write a regex to capture specific events
 DEST_KEY = _SYSLOG_ROUTING
 FORMAT = syslogGroup
+
+------------------------------------- Python to get data from REST API -------------------------------------
+
+import requests
+import time
+import json
+
+# ── Config ────────────────────────────────────────────────────────────────────
+SPLUNK_HOST    = "https://<host_name>:8089"
+TOKEN          = "<token>"
+SEARCH         = "<spl query>" 
+
+EARLIEST_TIME  = "<earliest_time>"
+LATEST_TIME    = "<latest_time>"
+
+HEADERS = {
+    "Authorization": f"Bearer {TOKEN}",
+    "Content-Type":  "application/x-www-form-urlencoded",
+}
+
+# ── 1. Submit search job ──────────────────────────────────────────────────────
+def submit_search(query: str, earliest: str = "<earliest_time>", latest: str = "<latest_time>") -> str:
+    url  = f"{SPLUNK_HOST}/services/search/jobs"
+    data = {
+        "search":         query,
+        "output_mode":    "json",
+        "earliest_time":  earliest,
+        "latest_time":    latest,
+    }
+
+    resp = requests.post(url, headers=HEADERS, data=data, verify=False)
+    resp.raise_for_status()
+
+    sid = resp.json()["sid"]
+    print(f"[✓] Job submitted — SID: {sid}  (range: {earliest} → {latest})")
+    return sid
+
+
+# ── 2. Poll until job is done ─────────────────────────────────────────────────
+def wait_for_job(sid: str, poll_interval: float = 2.0) -> None:
+    url = f"{SPLUNK_HOST}/services/search/jobs/{sid}"
+
+    while True:
+        resp = requests.get(url, headers=HEADERS, params={"output_mode": "json"}, verify=False)
+        resp.raise_for_status()
+
+        entry    = resp.json()["entry"][0]["content"]
+        state    = entry["dispatchState"]
+        progress = float(entry.get("doneProgress", 0)) * 100
+
+        print(f"    State: {state:<12}  Progress: {progress:.0f}%")
+
+        if state == "DONE":
+            print("[✓] Job complete")
+            break
+        elif state == "FAILED":
+            raise RuntimeError(f"Search job failed: {entry.get('messages')}")
+
+        time.sleep(poll_interval)
+
+
+# ── 3. Fetch results (auto-paginate if needed) ────────────────────────────────
+def get_results(sid: str, page_size: int = 1000) -> list[dict]:
+    url        = f"{SPLUNK_HOST}/services/search/jobs/{sid}/results"
+    all_results = []
+    offset     = 0
+
+    while True:
+        params = {
+            "output_mode": "json",
+            "count":       page_size,
+            "offset":      offset,
+        }
+
+        resp = requests.get(url, headers=HEADERS, params=params, verify=False)
+        resp.raise_for_status()
+
+        page = resp.json().get("results", [])
+        if not page:
+            break
+
+        all_results.extend(page)
+        print(f"    Fetched {len(all_results)} results so far...")
+
+        if len(page) < page_size:
+            break   # last page
+
+        offset += page_size
+
+    print(f"[✓] Total results retrieved: {len(all_results)}")
+    return all_results
+
+
+# ── Main ──────────────────────────────────────────────────────────────────────
+if __name__ == "__main__":
+    sid     = submit_search(SEARCH, earliest=EARLIEST_TIME, latest=LATEST_TIME)
+    wait_for_job(sid)
+    results = get_results(sid)
+
+    print(json.dumps(results, indent=2))
