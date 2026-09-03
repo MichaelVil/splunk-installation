@@ -1,0 +1,43 @@
+<form version="1.1">
+  <label>Close Button Panel</label>
+  <fieldset submitButton="false"></fieldset>
+  <row>
+    <panel>
+      <table>
+        <search>
+          <query>index=_internal
+| stats count by sourcetype</query>
+          <earliest>-15m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="show_details_panel">$click.value$</set>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel depends="$show_details_panel$">
+      <title>Details Panel</title>
+      <input type="link" token="close_trigger" searchWhenChanged="true">
+        <label></label>
+        <choice value="close">❌ Close Panel</choice>
+        <change>
+          <condition value="close">
+            <unset token="show_details_panel"></unset>
+            <unset token="form.close_trigger"></unset>
+          </condition>
+        </change>
+      </input>
+      <chart>
+        <search>
+          <query>index=_internal sourcetype="$show_details_panel$" | timechart count</query>
+          <earliest>-15m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+  </row>
+</form>
